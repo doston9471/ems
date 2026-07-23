@@ -1,0 +1,33 @@
+<%= form_with model: [:my, contact], class: "space-y-4" do |f| %>
+  <% if contact.errors.any? %>
+    <div class="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800">
+      <%= contact.errors.full_messages.to_sentence %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.text_field :name, required: true, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+  </div>
+  <div>
+    <%= f.label :relationship, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.text_field :relationship, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+  </div>
+  <div>
+    <%= f.label :phone, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.telephone_field :phone, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+  </div>
+  <div>
+    <%= f.label :email, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.email_field :email, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+  </div>
+  <div class="flex items-center gap-2">
+    <%= f.check_box :primary, class: "rounded border-slate-300" %>
+    <%= f.label :primary, "Primary contact", class: "text-sm text-slate-700" %>
+  </div>
+
+  <div class="flex gap-2">
+    <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <%= link_to "Cancel", my_emergency_contacts_path, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm text-slate-700 hover:bg-slate-50" %>
+  </div>
+<% end %>

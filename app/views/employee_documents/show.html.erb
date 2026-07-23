@@ -1,0 +1,58 @@
+<div class="mx-auto max-w-2xl space-y-6">
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= @employee_document.title %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= @employee_document.employee.full_name %> · <%= @employee_document.doc_type.humanize %> · <%= @employee_document.status.humanize %></p>
+  </div>
+
+  <% if policy(@employee_document).upload_version? %>
+    <%= form_with url: upload_version_employee_document_path(@employee_document), method: :post, multipart: true, class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do %>
+      <h2 class="text-sm font-semibold text-slate-900">Upload new version</h2>
+      <div>
+        <label class="block text-sm font-medium text-slate-700" for="file">File</label>
+        <input type="file" name="file" id="file" accept=".pdf,.png,.jpg,.jpeg,.gif,.webp,.doc,.docx,application/pdf,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="mt-1 block w-full text-sm text-slate-600">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700" for="change_note">Change note</label>
+        <input type="text" name="change_note" id="change_note" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
+      </div>
+      <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600">Upload version</button>
+    <% end %>
+  <% end %>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <h2 class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Version history</h2>
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Version</th>
+          <th class="px-4 py-3">Uploaded by</th>
+          <th class="px-4 py-3">Note</th>
+          <th class="px-4 py-3">File</th>
+          <th class="px-4 py-3">Date</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @document_versions.each do |version| %>
+          <tr>
+            <td class="px-4 py-3 font-medium">v<%= version.version_number %></td>
+            <td class="px-4 py-3"><%= version.uploaded_by_user.full_name %></td>
+            <td class="px-4 py-3 text-slate-600"><%= version.change_note.presence || "—" %></td>
+            <td class="px-4 py-3">
+              <% if version.file.attached? %>
+                <%= link_to version.file.filename, rails_blob_path(version.file, disposition: "attachment"), class: "text-teal-700 hover:text-teal-800" %>
+              <% else %>
+                —
+              <% end %>
+            </td>
+            <td class="px-4 py-3 text-slate-600"><%= version.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @document_versions.empty? %>
+      <p class="px-4 py-6 text-center text-sm text-slate-500">No versions uploaded yet.</p>
+    <% end %>
+  </div>
+
+  <p><%= link_to "← All documents", employee_documents_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
+</div>

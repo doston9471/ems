@@ -1,0 +1,32 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900">My assets</h1>
+    <p class="mt-1 text-sm text-slate-500">Equipment currently or previously assigned to you.</p>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Asset</th>
+          <th class="px-4 py-3">Type</th>
+          <th class="px-4 py-3">Assigned</th>
+          <th class="px-4 py-3">Returned</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @assignments.each do |assignment| %>
+          <tr>
+            <td class="px-4 py-3 font-medium"><%= assignment.company_asset.name %></td>
+            <td class="px-4 py-3"><%= assignment.company_asset.asset_type.humanize %></td>
+            <td class="px-4 py-3"><%= assignment.assigned_on %></td>
+            <td class="px-4 py-3"><%= assignment.returned_on || "Active" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @assignments.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No assets assigned.</p>
+    <% end %>
+  </div>
+</div>

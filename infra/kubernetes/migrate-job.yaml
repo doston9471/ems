@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ems-db-prepare
+  namespace: ems
+  labels:
+    app: ems-migrate
+spec:
+  backoffLimit: 3
+  template:
+    metadata:
+      labels:
+        app: ems-migrate
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: ghcr.io/example/employee-management-system:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: ems-config
+            - secretRef:
+                name: ems-secrets
+          command: ["./bin/rails", "db:prepare"]

@@ -1,0 +1,40 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Emergency contacts</h1>
+      <p class="mt-1 text-sm text-slate-500">People we should reach in an emergency.</p>
+    </div>
+    <%= link_to "Add contact", new_my_emergency_contact_path, class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Relationship</th>
+          <th class="px-4 py-3">Phone</th>
+          <th class="px-4 py-3">Email</th>
+          <th class="px-4 py-3"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @contacts.each do |contact| %>
+          <tr>
+            <td class="px-4 py-3 font-medium"><%= contact.name %><% if contact.primary %> <span class="text-xs text-teal-700">Primary</span><% end %></td>
+            <td class="px-4 py-3"><%= contact.relationship.presence || "—" %></td>
+            <td class="px-4 py-3"><%= contact.phone.presence || "—" %></td>
+            <td class="px-4 py-3"><%= contact.email.presence || "—" %></td>
+            <td class="px-4 py-3 text-right space-x-2">
+              <%= link_to "Edit", edit_my_emergency_contact_path(contact), class: "text-teal-700 hover:text-teal-800" %>
+              <%= button_to "Remove", my_emergency_contact_path(contact), method: :delete, form: { data: { turbo_confirm: "Remove this contact?" } }, class: "inline text-rose-600 hover:text-rose-700" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @contacts.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No emergency contacts yet.</p>
+    <% end %>
+  </div>
+</div>

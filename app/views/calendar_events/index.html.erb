@@ -1,0 +1,47 @@
+<% content_for :title, "#{t("nav.calendars")} — Sync history" %>
+
+<div class="space-y-6">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100">Calendar sync history</h1>
+      <p class="mt-1 text-sm text-slate-500">Recent calendar sync attempts for <%= current_company.name %>.</p>
+    </div>
+    <%= link_to "Connections", calendar_connections_path, class: "text-sm text-teal-700 hover:text-teal-900 dark:text-teal-400" %>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+    <table class="min-w-full divide-y divide-slate-200 text-sm dark:divide-slate-700">
+      <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+        <tr>
+          <th class="px-4 py-3 font-medium">Provider</th>
+          <th class="px-4 py-3 font-medium">Eventable</th>
+          <th class="px-4 py-3 font-medium">Status</th>
+          <th class="px-4 py-3 font-medium">External ID</th>
+          <th class="px-4 py-3 font-medium">Synced</th>
+          <th class="px-4 py-3 font-medium">Error</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+        <% @events.each do |event| %>
+          <tr>
+            <td class="px-4 py-3 capitalize"><%= event.provider %></td>
+            <td class="px-4 py-3 font-mono text-xs"><%= event.eventable_type %>#<%= event.eventable_id %></td>
+            <td class="px-4 py-3">
+              <span class="inline-flex rounded px-2 py-0.5 text-xs font-medium <%= event.status == 'synced' ? 'bg-teal-50 text-teal-800' : event.status == 'failed' ? 'bg-red-50 text-red-800' : 'bg-slate-100 text-slate-700' %>">
+                <%= event.status %>
+              </span>
+            </td>
+            <td class="px-4 py-3 font-mono text-xs"><%= event.external_event_id.presence || "—" %></td>
+            <td class="px-4 py-3 text-slate-500"><%= event.synced_at&.strftime("%Y-%m-%d %H:%M") || "—" %></td>
+            <td class="px-4 py-3 text-slate-500"><%= event.error_message.presence || "—" %></td>
+          </tr>
+        <% end %>
+        <% if @events.empty? %>
+          <tr>
+            <td colspan="6" class="px-4 py-8 text-center text-slate-500">No calendar sync attempts yet.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

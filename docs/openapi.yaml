@@ -1,0 +1,326 @@
+openapi: 3.0.3
+info:
+  title: Employee Management System API
+  description: |
+    REST API for the multi-tenant EMS portfolio app.
+    Authenticate with JWT (`POST /api/v1/session`) or a signed session cookie.
+    Pass `X-Company-Id` when the user belongs to multiple companies.
+  version: 1.0.0
+  contact:
+    name: EMS
+servers:
+  - url: http://localhost:3000
+    description: Local development
+  - url: /api/v1
+    description: Relative to the deployed host (paths below already include /api/v1 when using absolute paths)
+
+tags:
+  - name: Session
+  - name: Employees
+  - name: Departments
+  - name: Attendance
+  - name: Leave
+  - name: Webhooks
+  - name: SCIM
+
+paths:
+  /api/v1/session:
+    post:
+      tags: [Session]
+      summary: Create JWT session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email_address, password]
+              properties:
+                email_address: { type: string, format: email }
+                password: { type: string, format: password }
+      responses:
+        "200":
+          description: JWT issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: { type: string }
+                  token_type: { type: string, example: Bearer }
+                  expires_in: { type: integer }
+                  user:
+                    type: object
+                    properties:
+                      id: { type: integer }
+                      email_address: { type: string }
+                      full_name: { type: string }
+        "401":
+          description: Invalid credentials
+
+  /api/v1/employees:
+    get:
+      tags: [Employees]
+      summary: List employees
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+        - name: name
+          in: query
+          schema: { type: string }
+        - name: email
+          in: query
+          schema: { type: string }
+        - name: department_id
+          in: query
+          schema: { type: integer }
+        - name: status
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: JSON:API employee collection
+        "401":
+          description: Unauthorized
+
+  /api/v1/employees/{id}:
+    get:
+      tags: [Employees]
+      summary: Show employee
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: JSON:API employee resource
+        "404":
+          description: Not found
+
+  /api/v1/departments:
+    get:
+      tags: [Departments]
+      summary: List departments
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      responses:
+        "200":
+          description: JSON:API department collection
+
+  /api/v1/attendance/clock_in:
+    post:
+      tags: [Attendance]
+      summary: Clock in linked employee
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      responses:
+        "200":
+          description: Attendance day opened
+        "422":
+          description: Domain validation error
+
+  /api/v1/attendance/clock_out:
+    post:
+      tags: [Attendance]
+      summary: Clock out linked employee
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      responses:
+        "200":
+          description: Attendance day completed (may set overtime)
+
+  /api/v1/leave_requests:
+    post:
+      tags: [Leave]
+      summary: Submit leave request
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                leave_request:
+                  type: object
+                  required: [leave_type_id, start_on, end_on, days]
+                  properties:
+                    leave_type_id: { type: integer }
+                    start_on: { type: string, format: date }
+                    end_on: { type: string, format: date }
+                    days: { type: number }
+                    reason: { type: string }
+      responses:
+        "201":
+          description: Leave request created
+        "422":
+          description: Validation failed
+
+  /api/v1/webhooks:
+    get:
+      tags: [Webhooks]
+      summary: List webhooks
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      responses:
+        "200":
+          description: Webhook list
+    post:
+      tags: [Webhooks]
+      summary: Create webhook
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook:
+                  type: object
+                  required: [url, event_keys]
+                  properties:
+                    url: { type: string, format: uri }
+                    event_keys:
+                      type: array
+                      items: { type: string }
+                    active: { type: boolean }
+      responses:
+        "201":
+          description: Created
+
+  /api/v1/webhooks/{id}:
+    get:
+      tags: [Webhooks]
+      summary: Show webhook
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Webhook
+    patch:
+      tags: [Webhooks]
+      summary: Update webhook
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Webhooks]
+      summary: Delete webhook
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: "#/components/parameters/CompanyId"
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /api/v1/scim/Users:
+    get:
+      tags: [SCIM]
+      summary: List SCIM users
+      security: [{ scimBearer: [] }]
+      responses:
+        "200":
+          description: SCIM ListResponse
+    post:
+      tags: [SCIM]
+      summary: Create SCIM user
+      security: [{ scimBearer: [] }]
+      responses:
+        "201":
+          description: Created
+
+  /api/v1/scim/Users/{id}:
+    get:
+      tags: [SCIM]
+      summary: Show SCIM user
+      security: [{ scimBearer: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: SCIM User
+    put:
+      tags: [SCIM]
+      summary: Replace SCIM user
+      security: [{ scimBearer: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Updated
+    patch:
+      tags: [SCIM]
+      summary: Patch SCIM user (e.g. active)
+      security: [{ scimBearer: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Patched
+    delete:
+      tags: [SCIM]
+      summary: Deactivate SCIM user
+      security: [{ scimBearer: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Deactivated
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    scimBearer:
+      type: http
+      scheme: bearer
+      description: Company SCIM token
+  parameters:
+    CompanyId:
+      name: X-Company-Id
+      in: header
+      required: false
+      schema: { type: integer }
+      description: Active company when the user has multiple memberships

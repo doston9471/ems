@@ -1,0 +1,120 @@
+<div class="mx-auto max-w-3xl space-y-6">
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= @review_cycle.name %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= @review_cycle.kind.humanize %> · <%= @review_cycle.status.humanize %> · <%= @review_cycle.period_start %> → <%= @review_cycle.period_end %></p>
+    </div>
+    <% if policy(@review_cycle).close? && @review_cycle.open? %>
+      <div class="flex flex-wrap gap-2">
+        <%= button_to "Close cycle", close_review_cycle_path(@review_cycle), method: :post,
+              class: "rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-800",
+              form: { data: { turbo_confirm: "Close this cycle? Submitted reviews will be marked completed. Pending reviews must be finished first (or use Force close)." } } %>
+        <%= button_to "Force close", close_review_cycle_path(@review_cycle, force: true), method: :post,
+              class: "rounded-md border border-amber-300 px-3.5 py-2 text-sm font-medium text-amber-800 hover:bg-amber-50",
+              form: { data: { turbo_confirm: "Force close and mark any pending reviews as completed?" } } %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if policy(@review_cycle).assign_reviews? && @review_cycle.open? %>
+    <section class="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
+      <div>
+        <h2 class="text-sm font-semibold text-slate-900">Assign reviews</h2>
+        <p class="mt-1 text-sm text-slate-500">Create pending self and/or manager reviews for selected employees. Manager reviews use each employee’s manager.</p>
+      </div>
+
+      <%= form_with url: assign_reviews_review_cycle_path(@review_cycle), method: :post, class: "space-y-4" do %>
+        <div class="flex flex-wrap gap-4 text-sm">
+          <label class="inline-flex items-center gap-2">
+            <input type="checkbox" name="assign[include_self]" value="1" checked class="rounded border-slate-300 text-teal-700">
+            <span>Self-reviews</span>
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input type="checkbox" name="assign[include_manager]" value="1" checked class="rounded border-slate-300 text-teal-700">
+            <span>Manager reviews</span>
+          </label>
+        </div>
+
+        <div>
+          <p class="mb-2 text-sm font-medium text-slate-700">Employees</p>
+          <div class="max-h-56 space-y-2 overflow-y-auto rounded-md border border-slate-200 p-3">
+            <% @assignable_employees.each do |employee| %>
+              <label class="flex items-start gap-2 text-sm text-slate-700">
+                <input type="checkbox" name="assign[employee_ids][]" value="<%= employee.id %>" class="mt-0.5 rounded border-slate-300 text-teal-700">
+                <span>
+                  <span class="font-medium"><%= employee.full_name %></span>
+                  <span class="text-slate-500"> · <%= employee.job_title.presence || "No title" %></span>
+                  <% if employee.manager %>
+                    <span class="block text-xs text-slate-500">Manager: <%= employee.manager.full_name %></span>
+                  <% else %>
+                    <span class="block text-xs text-amber-700">No manager assigned</span>
+                  <% end %>
+                </span>
+              </label>
+            <% end %>
+            <% if @assignable_employees.empty? %>
+              <p class="text-sm text-slate-500">No active employees available.</p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4">
+          <h3 class="text-sm font-semibold text-slate-900">Optional peer review</h3>
+          <p class="mt-1 text-xs text-slate-500">Assign one peer_360 review in the same submit.</p>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-slate-700" for="peer_employee_id">Employee</label>
+              <select name="peer[employee_id]" id="peer_employee_id" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
+                <option value="">—</option>
+                <% @assignable_employees.each do |employee| %>
+                  <option value="<%= employee.id %>"><%= employee.full_name %></option>
+                <% end %>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700" for="peer_reviewer_id">Peer reviewer</label>
+              <select name="peer[reviewer_id]" id="peer_reviewer_id" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
+                <option value="">—</option>
+                <% @assignable_employees.each do |employee| %>
+                  <option value="<%= employee.id %>"><%= employee.full_name %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600">Assign reviews</button>
+      <% end %>
+    </section>
+  <% elsif @review_cycle.closed? %>
+    <p class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">This cycle is closed; new reviews cannot be assigned.</p>
+  <% end %>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Employee</th>
+          <th class="px-4 py-3">Reviewer</th>
+          <th class="px-4 py-3">Type</th>
+          <th class="px-4 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @performance_reviews.each do |review| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3"><%= link_to review.employee.full_name, performance_review_path(review), class: "font-medium text-teal-700 hover:text-teal-800" %></td>
+            <td class="px-4 py-3"><%= review.reviewer.full_name %></td>
+            <td class="px-4 py-3"><%= review.review_type.humanize %></td>
+            <td class="px-4 py-3"><%= review.status.humanize %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @performance_reviews.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No reviews in this cycle yet.</p>
+    <% end %>
+  </div>
+
+  <p><%= link_to "← All cycles", review_cycles_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
+</div>

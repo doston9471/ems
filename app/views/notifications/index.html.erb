@@ -1,0 +1,40 @@
+<% content_for :title, t("nav.notifications") %>
+
+<div class="space-y-6">
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("nav.notifications") %></h1>
+    <p class="mt-1 text-sm text-slate-500">Recent notification delivery attempts for <%= current_company.name %>.</p>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+    <table class="min-w-full divide-y divide-slate-200 text-sm dark:divide-slate-700">
+      <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+        <tr>
+          <th class="px-4 py-3 font-medium">Event</th>
+          <th class="px-4 py-3 font-medium">Channel</th>
+          <th class="px-4 py-3 font-medium">Status</th>
+          <th class="px-4 py-3 font-medium">Sent</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+        <% @deliveries.each do |delivery| %>
+          <tr>
+            <td class="px-4 py-3 font-mono text-xs"><%= delivery.event_key %></td>
+            <td class="px-4 py-3"><%= delivery.channel %></td>
+            <td class="px-4 py-3">
+              <span class="inline-flex rounded px-2 py-0.5 text-xs font-medium <%= delivery.status == 'sent' ? 'bg-teal-50 text-teal-800' : delivery.status == 'failed' ? 'bg-red-50 text-red-800' : 'bg-slate-100 text-slate-700' %>">
+                <%= delivery.status %>
+              </span>
+            </td>
+            <td class="px-4 py-3 text-slate-500"><%= delivery.sent_at&.strftime("%Y-%m-%d %H:%M") || "—" %></td>
+          </tr>
+        <% end %>
+        <% if @deliveries.empty? %>
+          <tr>
+            <td colspan="4" class="px-4 py-8 text-center text-slate-500">No notification deliveries yet.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

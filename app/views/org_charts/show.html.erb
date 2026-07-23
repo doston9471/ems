@@ -1,0 +1,20 @@
+<% content_for :title, t("nav.org_chart") %>
+
+<div class="space-y-6">
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("nav.org_chart") %></h1>
+    <p class="mt-1 text-sm text-slate-500">Reporting lines by manager.</p>
+  </div>
+
+  <div class="overflow-x-auto rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
+    <% if @roots.any? %>
+      <ul class="space-y-2">
+        <% @roots.each do |node| %>
+          <%= render "org_charts/node", node: node, depth: 0, highlight_employee_id: @highlight_employee_id %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-sm text-slate-500">No active employees to display.</p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="flex items-center gap-3 text-xs">
+  <div class="flex flex-wrap gap-1 items-center">
+    <% Locale.available.each_with_index do |locale, index| %>
+      <%= link_to Locale.label_for(locale),
+                  url_for(locale: locale),
+                  class: "hover:text-teal-300 #{I18n.locale.to_s == locale ? 'text-teal-300' : 'text-slate-500'}",
+                  aria: { current: (I18n.locale.to_s == locale ? "true" : nil) } %>
+      <% if index < Locale.available.size - 1 %>
+        <span class="text-slate-600">/</span>
+      <% end %>
+    <% end %>
+  </div>
+  <button type="button"
+          class="rounded border border-slate-700 px-2 py-1 text-slate-400 hover:border-slate-500 hover:text-slate-200"
+          data-controller="dark-mode"
+          data-action="click->dark-mode#toggle"
+          aria-label="Toggle dark mode">
+    <span data-dark-mode-target="label">Dark</span>
+  </button>
+</div>

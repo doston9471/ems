@@ -1,0 +1,29 @@
+<%# locals: () %>
+<nav
+  class="flex flex-wrap gap-1.5 text-sm"
+  data-controller="my-nav"
+  data-action="turbo:frame-load@document->my-nav#sync turbo:morph@document->my-nav#sync"
+>
+  <%
+    items = [
+      [ "Overview", my_dashboard_path, -> { controller_name == "dashboard" } ],
+      [ "Attendance", my_attendance_path, -> { controller_name == "attendance" } ],
+      [ "Leave", my_leave_requests_path, -> { controller_name == "leave_requests" } ],
+      [ "Reviews", my_performance_reviews_path, -> { controller_name == "performance_reviews" } ],
+      [ "Payslips", my_payslips_path, -> { controller_name == "payslips" } ],
+      [ "Objectives", my_objectives_path, -> { controller_name == "objectives" } ],
+      [ "Documents", my_documents_path, -> { controller_name == "documents" } ],
+      [ "Assets", my_assets_path, -> { controller_name == "assets" } ],
+      [ "Team", my_team_path, -> { controller_name == "team" } ],
+      [ "Upcoming", my_upcoming_path, -> { controller_name == "upcoming" } ],
+      [ "Contacts", my_emergency_contacts_path, -> { controller_name == "emergency_contacts" } ],
+      [ "Inbox", my_notifications_path, -> { controller_name == "notifications" } ],
+      [ "Notify prefs", edit_my_notification_preferences_path, -> { controller_name == "notification_preferences" } ]
+    ]
+  %>
+  <% items.each do |label, path, active_proc| %>
+    <%= link_to label, path,
+          data: { turbo_frame: "my_content", turbo_action: "advance", my_nav_target: "link" },
+          class: my_nav_class(active_proc.call) %>
+  <% end %>
+</nav>

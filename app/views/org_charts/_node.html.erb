@@ -1,0 +1,19 @@
+<li class="relative" style="padding-left: <%= depth * 1.5 %>rem">
+  <div class="flex items-start gap-3 py-2">
+    <% if depth > 0 %>
+      <span class="mt-3 h-px w-4 shrink-0 bg-slate-300 dark:bg-slate-600" aria-hidden="true"></span>
+    <% end %>
+    <% highlighted = highlight_employee_id.present? && node.employee.id == highlight_employee_id %>
+    <div class="min-w-0 rounded-md border px-3 py-2 <%= highlighted ? 'border-teal-500 bg-teal-50 ring-1 ring-teal-200 dark:border-teal-400 dark:bg-teal-950' : 'border-slate-200 bg-slate-50 dark:border-slate-600 dark:bg-slate-800' %>" <%= "id=org-me" if highlighted %>>
+      <%= link_to node.employee.full_name, employee_path(node.employee), class: "font-medium text-slate-900 hover:text-teal-700 dark:text-slate-100 dark:hover:text-teal-300" %>
+      <p class="text-xs text-slate-500"><%= node.employee.job_title.presence || "—" %> · <%= node.employee.department&.name || "No department" %><% if highlighted %> · you<% end %></p>
+    </div>
+  </div>
+  <% if node.children.any? %>
+    <ul class="border-l border-slate-200 dark:border-slate-700" style="margin-left: <%= depth * 1.5 + 0.75 %>rem">
+      <% node.children.each do |child| %>
+        <%= render "org_charts/node", node: child, depth: depth + 1, highlight_employee_id: highlight_employee_id %>
+      <% end %>
+    </ul>
+  <% end %>
+</li>

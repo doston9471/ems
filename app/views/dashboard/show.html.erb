@@ -1,0 +1,119 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "chart.umd", defer: true, "data-turbo-track": "reload" %>
+<% end %>
+
+<div class="space-y-6">
+  <% unless current_user.email_verified? %>
+    <div class="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+      Your email address is not verified.
+      <%= button_to "Resend verification email", email_verification_path, method: :post, class: "ml-1 font-medium text-amber-900 underline hover:no-underline inline cursor-pointer bg-transparent border-0 p-0" %>
+    </div>
+  <% end %>
+
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100">Dashboard</h1>
+    <p class="mt-1 text-sm text-slate-500">Overview for <%= current_company.name %></p>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <div class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Employees</p>
+      <p class="mt-2 text-3xl font-semibold text-slate-900 dark:text-white"><%= @widgets[:employees_count] %></p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Present today</p>
+      <p class="mt-2 text-3xl font-semibold text-teal-700"><%= @widgets[:present_today] %></p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">On leave</p>
+      <p class="mt-2 text-3xl font-semibold text-slate-900 dark:text-white"><%= @widgets[:on_leave] %></p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Birthdays this week</p>
+      <p class="mt-2 text-3xl font-semibold text-slate-900 dark:text-white"><%= @widgets[:birthdays_this_week].size %></p>
+    </div>
+  </div>
+
+  <div
+    class="grid gap-6 lg:grid-cols-2"
+    data-controller="dashboard-charts"
+    data-dashboard-charts-department-value="<%= h @charts[:headcount_by_department].to_json %>"
+    data-dashboard-charts-status-value="<%= h @charts[:employment_status].to_json %>"
+    data-dashboard-charts-attendance-value="<%= h @charts[:attendance_trend].to_json %>"
+    data-dashboard-charts-leave-value="<%= h @charts[:leave_pipeline].to_json %>"
+  >
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Headcount by department</h2>
+      <div class="relative mt-4 h-64">
+        <% if @charts[:headcount_by_department][:labels].any? %>
+          <canvas data-dashboard-charts-target="department" aria-label="Headcount by department chart"></canvas>
+        <% else %>
+          <p class="text-sm text-slate-500">No employees to chart yet.</p>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Employment status</h2>
+      <div class="relative mt-4 h-64">
+        <% if @charts[:employment_status][:values].sum.positive? %>
+          <canvas data-dashboard-charts-target="status" aria-label="Employment status chart"></canvas>
+        <% else %>
+          <p class="text-sm text-slate-500">No status data yet.</p>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Attendance (14 days)</h2>
+      <div class="relative mt-4 h-64">
+        <canvas data-dashboard-charts-target="attendance" aria-label="Attendance trend chart"></canvas>
+      </div>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Leave pipeline</h2>
+      <div class="relative mt-4 h-64">
+        <% if @charts[:leave_pipeline][:values].sum.positive? %>
+          <canvas data-dashboard-charts-target="leave" aria-label="Leave pipeline chart"></canvas>
+        <% else %>
+          <p class="text-sm text-slate-500">No leave requests yet.</p>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Recent hires</h2>
+      <% if @widgets[:recent_hires].any? %>
+        <ul class="mt-4 divide-y divide-slate-100 dark:divide-slate-800">
+          <% @widgets[:recent_hires].each do |employee| %>
+            <li class="flex items-center justify-between py-3 text-sm">
+              <%= link_to employee.full_name, employee_path(employee), class: "font-medium text-teal-700 hover:text-teal-800" %>
+              <span class="text-slate-500"><%= employee.joining_date %></span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="mt-4 text-sm text-slate-500">No recent hires.</p>
+      <% end %>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Birthdays this week</h2>
+      <% if @widgets[:birthdays_this_week].any? %>
+        <ul class="mt-4 divide-y divide-slate-100 dark:divide-slate-800">
+          <% @widgets[:birthdays_this_week].each do |employee| %>
+            <li class="flex items-center justify-between py-3 text-sm">
+              <span class="font-medium text-slate-800 dark:text-slate-100"><%= employee.full_name %></span>
+              <span class="text-slate-500"><%= employee.birthday&.strftime("%b %d") %></span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="mt-4 text-sm text-slate-500">No birthdays this week.</p>
+      <% end %>
+    </section>
+  </div>
+</div>

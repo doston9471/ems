@@ -1,0 +1,32 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-2xl font-semibold text-slate-900">My documents</h1>
+    <p class="mt-1 text-sm text-slate-500">Contracts and files on your employee record.</p>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Type</th>
+          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3">Version</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @documents.each do |doc| %>
+          <tr>
+            <td class="px-4 py-3 font-medium"><%= link_to doc.title, my_document_path(doc), class: "text-teal-700 hover:text-teal-800" %></td>
+            <td class="px-4 py-3"><%= doc.doc_type.humanize %></td>
+            <td class="px-4 py-3"><%= doc.status.humanize %></td>
+            <td class="px-4 py-3"><%= doc.latest_version&.version_number || "—" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @documents.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No documents on your record.</p>
+    <% end %>
+  </div>
+</div>

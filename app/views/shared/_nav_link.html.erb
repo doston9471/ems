@@ -1,0 +1,12 @@
+<%# locals: (path:, label:, active:, badge_id: nil, badge_count: 0) %>
+<% classes = active ? "bg-teal-600/20 text-teal-200" : "hover:bg-slate-800 hover:text-white" %>
+<%= link_to path, class: "flex items-center justify-between gap-2 rounded-md px-3 py-2 text-sm font-medium #{classes}" do %>
+  <span><%= label %></span>
+  <% if badge_id %>
+    <span
+      id="<%= badge_id %>"
+      class="min-w-[1.25rem] rounded-full bg-rose-500 px-1.5 py-0.5 text-center text-[10px] font-semibold leading-none text-white <%= badge_count.to_i.positive? ? '' : 'hidden' %>"
+      data-pulse="false"
+    ><%= badge_count.to_i > 99 ? "99+" : badge_count %></span>
+  <% end %>
+<% end %>

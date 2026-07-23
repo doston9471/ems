@@ -1,0 +1,17 @@
+<div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+  <p class="text-xs font-medium uppercase tracking-widest text-teal-700">Security</p>
+  <h1 class="mt-2 text-3xl font-semibold text-slate-900">Authenticator code</h1>
+  <p class="mt-2 text-sm text-slate-500">Enter the 6-digit code from your authenticator app to finish signing in.</p>
+
+  <%= form_with url: mfa_challenge_path, class: "mt-8 space-y-5" do |form| %>
+    <div>
+      <%= form.label :code, "Authentication code", class: "block text-sm font-medium text-slate-700" %>
+      <%= form.text_field :code, required: true, autofocus: true, autocomplete: "one-time-code", inputmode: "numeric", maxlength: 8, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm tracking-widest focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600" %>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <%= form.submit "Verify", class: "rounded-md bg-teal-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= link_to "Cancel", new_session_path, class: "text-sm text-slate-600 underline hover:no-underline" %>
+    </div>
+  <% end %>
+</div>

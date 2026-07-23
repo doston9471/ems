@@ -1,0 +1,37 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Performance reviews</h1>
+      <p class="mt-1 text-sm text-slate-500">Self, manager, and 360 feedback</p>
+    </div>
+    <%= link_to "Review cycles", review_cycles_path, class: "inline-flex rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Employee</th>
+          <th class="px-4 py-3">Reviewer</th>
+          <th class="px-4 py-3">Cycle</th>
+          <th class="px-4 py-3">Type</th>
+          <th class="px-4 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @performance_reviews.each do |review| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3"><%= link_to review.employee.full_name, performance_review_path(review), class: "font-medium text-teal-700 hover:text-teal-800" %></td>
+            <td class="px-4 py-3"><%= review.reviewer.full_name %></td>
+            <td class="px-4 py-3"><%= review.review_cycle.name %></td>
+            <td class="px-4 py-3"><%= review.review_type.humanize %></td>
+            <td class="px-4 py-3"><%= review.status.humanize %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @performance_reviews.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No performance reviews yet.</p>
+    <% end %>
+  </div>
+</div>

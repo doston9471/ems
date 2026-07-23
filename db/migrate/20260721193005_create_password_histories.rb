@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+class CreatePasswordHistories < ActiveRecord::Migration[8.1]
+  def change
+    create_table :password_histories do |t|
+      t.references :user, null: false, foreign_key: true
+      t.string :password_digest, null: false
+      t.datetime :created_at, null: false
+    end
+
+    add_index :password_histories, [ :user_id, :created_at ]
+  end
+end

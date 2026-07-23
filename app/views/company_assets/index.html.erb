@@ -1,0 +1,39 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Assets</h1>
+      <p class="mt-1 text-sm text-slate-500">Company equipment and assignments</p>
+    </div>
+    <% if policy(CompanyAsset).create? %>
+      <%= link_to "New asset", new_company_asset_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <% end %>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Type</th>
+          <th class="px-4 py-3">Serial</th>
+          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3">Assigned to</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @company_assets.each do |asset| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3"><%= link_to asset.name, company_asset_path(asset), class: "font-medium text-teal-700 hover:text-teal-800" %></td>
+            <td class="px-4 py-3"><%= asset.asset_type.humanize %></td>
+            <td class="px-4 py-3 text-slate-600"><%= asset.serial_number.presence || "—" %></td>
+            <td class="px-4 py-3"><%= asset.status.humanize %></td>
+            <td class="px-4 py-3"><%= asset.current_assignment&.employee&.full_name || "—" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @company_assets.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No assets yet.</p>
+    <% end %>
+  </div>
+</div>

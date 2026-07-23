@@ -1,0 +1,43 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Recruitment</h1>
+      <p class="mt-1 text-sm text-slate-500">Applicants and hiring pipeline</p>
+    </div>
+    <% if policy(Applicant).create? %>
+      <%= link_to "New applicant", new_applicant_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <% end %>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Role</th>
+          <th class="px-4 py-3">Department</th>
+          <th class="px-4 py-3">Stage</th>
+          <th class="px-4 py-3">Email</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @applicants.each do |applicant| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3">
+              <%= link_to applicant.full_name, applicant_path(applicant), class: "font-medium text-teal-700 hover:text-teal-800" %>
+            </td>
+            <td class="px-4 py-3"><%= applicant.job_title.presence || "—" %></td>
+            <td class="px-4 py-3"><%= applicant.department&.name || "—" %></td>
+            <td class="px-4 py-3">
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700"><%= applicant.stage.humanize %></span>
+            </td>
+            <td class="px-4 py-3 text-slate-600"><%= applicant.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @applicants.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No applicants yet.</p>
+    <% end %>
+  </div>
+</div>

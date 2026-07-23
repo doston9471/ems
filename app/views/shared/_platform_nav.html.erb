@@ -1,0 +1,15 @@
+<%# Additive nav links for platform features (reports, search, notifications, org chart). %>
+<%= render "shared/nav_link", path: search_path, label: t("nav.search"), active: controller_name == "searches" %>
+<%= render "shared/nav_link", path: reports_path, label: t("nav.reports"), active: controller_name == "reports" %>
+<%= render "shared/nav_link", path: payroll_runs_path, label: t("nav.payroll"), active: controller_name == "payroll_runs" %>
+<%= render "shared/nav_link", path: applicants_path, label: t("nav.recruitment"), active: controller_name == "applicants" %>
+<%= render "shared/nav_link", path: audit_logs_path, label: t("nav.audit"), active: controller_name == "audit_logs" %>
+<%= render "shared/nav_link", path: notifications_path, label: t("nav.notifications"), active: controller_name == "notifications", badge_id: "notification-badge", badge_count: (@unread_notification_count || 0) %>
+<%= render "shared/nav_link", path: calendar_connections_path, label: t("nav.calendars"), active: %w[calendar_connections calendar_events calendar_oauth].include?(controller_name) %>
+<% if policy(current_company).update? %>
+  <%= render "shared/nav_link", path: edit_company_settings_path, label: t("nav.integrations", default: "Integrations"), active: controller_name == "company_settings" %>
+  <%= render "shared/nav_link", path: custom_field_definitions_path, label: t("nav.custom_fields", default: "Custom fields"), active: controller_name == "custom_field_definitions" %>
+<% end %>
+<% if FeatureFlag.enabled?("org_chart", company: current_company) %>
+  <%= render "shared/nav_link", path: org_chart_path, label: t("nav.org_chart"), active: controller_name == "org_charts" %>
+<% end %>

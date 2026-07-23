@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ems-web
+  namespace: ems
+  labels:
+    app: ems-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ems-web
+  template:
+    metadata:
+      labels:
+        app: ems-web
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/example/employee-management-system:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: ems-config
+            - secretRef:
+                name: ems-secrets
+          readinessProbe:
+            httpGet:
+              path: /up
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /up
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          command: ["./bin/thrust", "./bin/rails", "server", "-b", "0.0.0.0"]

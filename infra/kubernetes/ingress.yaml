@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ems-ingress
+  namespace: ems
+  annotations:
+    # Adjust for your ingress controller (nginx, traefik, alb, etc.)
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ems.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ems-web
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - ems.example.com
+      secretName: ems-tls

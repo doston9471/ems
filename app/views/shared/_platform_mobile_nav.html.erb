@@ -1,0 +1,14 @@
+<%# Mobile additive nav links for platform features. %>
+<%= link_to t("nav.search"), search_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'searches' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.reports"), reports_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'reports' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.payroll"), payroll_runs_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'payroll_runs' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.recruitment"), applicants_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'applicants' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.audit"), audit_logs_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'audit_logs' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.notifications"), notifications_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'notifications' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<%= link_to t("nav.calendars"), calendar_connections_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{%w[calendar_connections calendar_events].include?(controller_name) ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<% if policy(current_company).update? %>
+  <%= link_to t("nav.integrations", default: "Integrations"), edit_company_settings_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'company_settings' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<% end %>
+<% if FeatureFlag.enabled?("org_chart", company: current_company) %>
+  <%= link_to t("nav.org_chart"), org_chart_path, class: "px-3 py-1.5 rounded-md whitespace-nowrap #{controller_name == 'org_charts' ? 'bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200' : 'text-slate-600 dark:text-slate-300'}" %>
+<% end %>

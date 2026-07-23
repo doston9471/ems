@@ -1,0 +1,46 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Employees</h1>
+      <p class="mt-1 text-sm text-slate-500">People in <%= current_company.name %></p>
+    </div>
+    <% if policy(Employee).create? %>
+      <%= link_to "New employee", new_employee_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <% end %>
+  </div>
+
+  <%= form_with url: employees_path, method: :get, class: "grid gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4" do |f| %>
+    <%= f.text_field :name, value: params[:name], placeholder: "Name", class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+    <%= f.text_field :email, value: params[:email], placeholder: "Email", class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+    <%= f.select :status, Employee.employment_statuses.keys.map { |s| [s.humanize, s] }, { include_blank: "Status", selected: params[:status] }, class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+    <%= f.submit "Filter", class: "rounded-md bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-slate-700 cursor-pointer" %>
+  <% end %>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Number</th>
+          <th class="px-4 py-3">Department</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @employees.each do |employee| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3"><%= link_to employee.full_name, employee_path(employee), class: "font-medium text-teal-700 hover:text-teal-800" %></td>
+            <td class="px-4 py-3 font-mono text-slate-600"><%= employee.employee_number %></td>
+            <td class="px-4 py-3 text-slate-600"><%= employee.department&.name || "—" %></td>
+            <td class="px-4 py-3 text-slate-600"><%= employee.job_title || "—" %></td>
+            <td class="px-4 py-3"><span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"><%= employee.employment_status.humanize %></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @employees.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No employees found.</p>
+    <% end %>
+  </div>
+</div>

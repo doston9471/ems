@@ -1,0 +1,12 @@
+<% memberships = Current.user&.memberships&.active&.includes(:company)&.order("companies.name") || [] %>
+<% if memberships.size > 1 %>
+  <div class="px-3 pb-3">
+    <p class="mb-1 px-1 text-[10px] uppercase tracking-wider text-slate-500">Company</p>
+    <%= form_with url: company_switcher_path, method: :post, class: "space-y-1" do %>
+      <%= select_tag :company_id,
+            options_from_collection_for_select(memberships.map(&:company), :id, :name, Current.company&.id),
+            class: "w-full rounded-md border-0 bg-slate-800 px-2 py-1.5 text-sm text-slate-100 focus:ring-1 focus:ring-teal-500",
+            onchange: "this.form.requestSubmit()" %>
+    <% end %>
+  </div>
+<% end %>

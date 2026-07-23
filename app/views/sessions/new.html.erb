@@ -1,0 +1,59 @@
+<div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+  <p class="text-xs font-medium uppercase tracking-widest text-teal-700">Employee Management</p>
+  <h1 class="mt-2 text-3xl font-semibold text-slate-900">Sign in</h1>
+  <p class="mt-2 text-sm text-slate-500">Access your company workspace</p>
+
+  <%= form_with url: session_url, class: "mt-8 space-y-5" do |form| %>
+    <div>
+      <%= form.label :email_address, "Email", class: "block text-sm font-medium text-slate-700" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", value: params[:email_address], class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600" %>
+    </div>
+
+    <div>
+      <%= form.label :password, class: "block text-sm font-medium text-slate-700" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600" %>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <%= form.submit "Sign in", class: "rounded-md bg-teal-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= link_to "Forgot password?", new_password_path, class: "text-sm text-slate-600 underline hover:no-underline" %>
+    </div>
+  <% end %>
+
+  <% sso_configs = enabled_sso_configurations_for_login %>
+  <% if sso_configs.any? || oauth_configured? %>
+    <div class="relative my-8">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-slate-200"></div>
+      </div>
+      <div class="relative flex justify-center text-xs uppercase tracking-wide">
+        <span class="bg-white px-3 text-slate-500">Or continue with</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <% if sso_configs.any? %>
+        <%= form_with url: new_session_path, method: :get, class: "space-y-2" do %>
+          <label class="block text-sm font-medium text-slate-700" for="company_slug">Company (SSO)</label>
+          <input type="text" name="company_slug" id="company_slug" value="<%= params[:company_slug].presence || "acme" %>" class="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600" placeholder="acme">
+          <button type="submit" class="text-xs text-teal-700 hover:underline">Load SSO options</button>
+        <% end %>
+        <% sso_configs.each do |config| %>
+          <%= button_to sso_initiate_path(provider: config.provider, company_slug: params[:company_slug].presence || "acme"), method: :post, class: "w-full rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-50 cursor-pointer", data: { turbo: false } do %>
+            Sign in with SSO (<%= config.provider.upcase %>)
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if google_oauth_configured? %>
+        <%= button_to "/auth/google_oauth2", method: :post, class: "w-full rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-50 cursor-pointer", data: { turbo: false } do %>
+          Continue with Google
+        <% end %>
+      <% end %>
+      <% if github_oauth_configured? %>
+        <%= button_to "/auth/github", method: :post, class: "w-full rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-50 cursor-pointer", data: { turbo: false } do %>
+          Continue with GitHub
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

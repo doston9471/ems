@@ -1,0 +1,5 @@
+<%= form_with url: search_path, method: :get, local: true, class: "px-3 pb-3" do %>
+  <%= text_field_tag :q, params[:q],
+        placeholder: t("nav.search"),
+        class: "w-full rounded-md border-0 bg-slate-800 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:ring-1 focus:ring-teal-500" %>
+<% end %>

@@ -1,0 +1,42 @@
+<div class="space-y-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-slate-900">Goals</h1>
+      <p class="mt-1 text-sm text-slate-500">Track employee objectives</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <%= link_to "Review cycles", review_cycles_path, class: "inline-flex rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+      <% if policy(Goal).create? %>
+        <%= link_to "New goal", new_goal_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-4 py-3">Employee</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Progress</th>
+          <th class="px-4 py-3">Target</th>
+          <th class="px-4 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @goals.each do |goal| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3"><%= goal.employee.full_name %></td>
+            <td class="px-4 py-3 font-medium text-slate-900"><%= goal.title %></td>
+            <td class="px-4 py-3"><%= goal.progress_percent %>%</td>
+            <td class="px-4 py-3 text-slate-600"><%= goal.target_date || "—" %></td>
+            <td class="px-4 py-3"><%= goal.status.humanize %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @goals.empty? %>
+      <p class="px-4 py-8 text-center text-sm text-slate-500">No goals yet.</p>
+    <% end %>
+  </div>
+</div>
