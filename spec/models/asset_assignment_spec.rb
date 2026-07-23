@@ -17,7 +17,8 @@ RSpec.describe AssetAssignment, type: :model do
 
   it "scopes active assignments" do
     active = create(:asset_assignment)
-    create(:asset_assignment, returned_on: Date.current)
-    expect(described_class.active).to contain_exactly(active)
+    returned = create(:asset_assignment, returned_on: Date.current)
+
+    expect(described_class.active.where(id: [ active.id, returned.id ])).to contain_exactly(active)
   end
 end

@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "SsoController", type: :request do
-  let(:company) { create(:company, slug: "acme") }
+  let(:company_slug) { "acme-sso-#{SecureRandom.hex(4)}" }
+  let(:company) { create(:company, slug: company_slug) }
 
   around do |example|
     ActsAsTenant.with_tenant(company) { example.run }
@@ -22,7 +23,7 @@ RSpec.describe "SsoController", type: :request do
       }
     )
 
-    post sso_initiate_path(provider: "oidc", company_slug: "acme")
+    post sso_initiate_path(provider: "oidc", company_slug: company_slug)
 
     expect(response).to redirect_to(new_session_path)
     follow_redirect!
@@ -41,13 +42,13 @@ RSpec.describe "SsoController", type: :request do
         "client_secret" => "secret"
       }
     )
-    user = create(:user, email_address: "oidc.callback@example.com")
+    user = create(:user, email_address: "oidc.callback.#{SecureRandom.hex(4)}@example.com")
     create(:membership, company: company, user: user)
 
-    payload = Base64.urlsafe_encode64({ email: "oidc.callback@example.com", sub: "1" }.to_json, padding: false)
+    payload = Base64.urlsafe_encode64({ email: user.email_address, sub: "1" }.to_json, padding: false)
     id_token = "header.#{payload}."
 
-    get sso_callback_path(provider: "oidc"), params: { id_token: id_token, company_slug: "acme" }
+    get sso_callback_path(provider: "oidc"), params: { id_token: id_token, company_slug: company_slug }
 
     expect(response).to redirect_to(root_url)
     expect(cookies[:session_id]).to be_present
