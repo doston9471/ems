@@ -16,3 +16,5 @@ ru:
       back: "← Все офисы"
     form:
       timezone_placeholder: "America/New_York"
+      create: "Создать офис"
+      update: "Обновить офис"

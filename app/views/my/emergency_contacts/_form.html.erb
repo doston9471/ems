@@ -6,19 +6,19 @@
   <% end %>
 
   <div>
-    <%= f.label :name, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :name, t("common.name"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.text_field :name, required: true, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
-    <%= f.label :relationship, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :relationship, t("common.relationship"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.text_field :relationship, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
-    <%= f.label :phone, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :phone, t("common.phone"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.telephone_field :phone, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
-    <%= f.label :email, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :email, t("common.email"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.email_field :email, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div class="flex items-center gap-2">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="flex gap-2">
-    <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <%= f.submit t(contact.persisted? ? "common.update" : "common.create"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <%= link_to t("common.cancel"), my_emergency_contacts_path, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm text-slate-700 hover:bg-slate-50" %>
   </div>
 <% end %>

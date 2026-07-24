@@ -10,31 +10,31 @@
 
     <div class="grid gap-4 sm:grid-cols-2">
       <div>
-        <%= f.label :employee_number, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :employee_number, t("employees.form.employee_number"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :employee_number, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
-        <%= f.label :employment_status, class: "block text-sm font-medium text-slate-700" %>
-        <%= f.select :employment_status, Employee.employment_statuses.keys.map { |s| [s.humanize, s] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+        <%= f.label :employment_status, t("employees.form.employment_status"), class: "block text-sm font-medium text-slate-700" %>
+        <%= f.select :employment_status, Employee.employment_statuses.keys.map { |s| [t("employees.statuses.#{s}"), s] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
-        <%= f.label :first_name, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :first_name, t("employees.form.first_name"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :first_name, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
-        <%= f.label :last_name, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :last_name, t("employees.form.last_name"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :last_name, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div class="sm:col-span-2">
-        <%= f.label :email, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :email, t("employees.form.email"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.email_field :email, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
-        <%= f.label :job_title, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :job_title, t("employees.form.job_title"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :job_title, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
-        <%= f.label :joining_date, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :joining_date, t("employees.form.joining_date"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.date_field :joining_date, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
@@ -55,7 +55,7 @@
         <p class="mt-1 text-xs text-slate-500"><%= t("employees.form.salary_hint") %></p>
       </div>
       <div>
-        <%= f.label :currency, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :currency, t("employees.form.currency"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :currency, maxlength: 3, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm uppercase" %>
       </div>
     </div>
@@ -87,7 +87,7 @@
     <% end %>
 
     <div class="flex gap-3 pt-2">
-      <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= f.submit t(employee.persisted? ? "employees.form.update" : "employees.form.create"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
       <%= link_to t("employees.form.cancel"), employees_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
     </div>
   <% end %>

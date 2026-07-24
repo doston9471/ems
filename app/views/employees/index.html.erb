@@ -12,7 +12,7 @@
   <%= form_with url: employees_path, method: :get, class: "grid gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4" do |f| %>
     <%= f.text_field :name, value: params[:name], placeholder: t("employees.index.placeholder_name"), class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     <%= f.text_field :email, value: params[:email], placeholder: t("employees.index.placeholder_email"), class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
-    <%= f.select :status, Employee.employment_statuses.keys.map { |s| [s.humanize, s] }, { include_blank: t("employees.index.placeholder_status"), selected: params[:status] }, class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+    <%= f.select :status, Employee.employment_statuses.keys.map { |s| [t("employees.statuses.#{s}"), s] }, { include_blank: t("employees.index.placeholder_status"), selected: params[:status] }, class: "rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     <%= f.submit t("common.filter"), class: "rounded-md bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-slate-700 cursor-pointer" %>
   <% end %>
 

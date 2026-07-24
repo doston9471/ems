@@ -13,3 +13,5 @@ es:
       parent: "Superior"
     form:
       parent: "Departamento superior"
+      create: "Crear departamento"
+      update: "Actualizar departamento"

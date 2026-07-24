@@ -14,3 +14,5 @@ en:
       key_hint: "snake_case identifier, unique per company."
       select_choices: "Select choices (comma-separated)"
       choices_placeholder: "A, B, C"
+      create: "Create custom field"
+      update: "Update custom field"

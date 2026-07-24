@@ -4,20 +4,20 @@
   <% end %>
 
   <div>
-    <%= f.label :label, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :label, t("common.label"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.text_field :label, required: true, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
-    <%= f.label :key, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :key, t("common.key"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.text_field :key, required: true, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm font-mono" %>
     <p class="mt-1 text-xs text-slate-500"><%= t("custom_fields.form.key_hint") %></p>
   </div>
   <div>
-    <%= f.label :field_type, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :field_type, t("common.field_type"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.select :field_type, CustomFieldDefinition::FIELD_TYPES, {}, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
-    <%= f.label :position, class: "block text-sm font-medium text-slate-700" %>
+    <%= f.label :position, t("common.position"), class: "block text-sm font-medium text-slate-700" %>
     <%= f.number_field :position, class: "mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
   </div>
   <div>
@@ -26,12 +26,12 @@
   </div>
   <div class="flex items-center gap-2">
     <%= f.check_box :required, class: "rounded border-slate-300" %>
-    <%= f.label :required, class: "text-sm text-slate-700" %>
+    <%= f.label :required, t("common.required"), class: "text-sm text-slate-700" %>
   </div>
   <%= f.hidden_field :resource_type, value: "Employee" %>
 
   <div class="flex gap-2">
-    <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <%= f.submit t(definition.persisted? ? "custom_fields.form.update" : "custom_fields.form.create"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <%= link_to t("common.cancel"), custom_field_definitions_path, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm text-slate-700" %>
   </div>
 <% end %>

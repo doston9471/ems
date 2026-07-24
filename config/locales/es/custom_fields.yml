@@ -14,3 +14,5 @@ es:
       key_hint: "Identificador snake_case, único por empresa."
       select_choices: "Opciones de selección (separadas por comas)"
       choices_placeholder: "A, B, C"
+      create: "Crear campo personalizado"
+      update: "Actualizar campo personalizado"

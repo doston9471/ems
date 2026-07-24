@@ -16,3 +16,5 @@ ky:
       back: "← Бардык офистер"
     form:
       timezone_placeholder: "America/New_York"
+      create: "Офис түзүү"
+      update: "Офисти жаңыртуу"

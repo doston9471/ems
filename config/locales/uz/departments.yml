@@ -13,3 +13,5 @@ uz:
       parent: "Yuqori"
     form:
       parent: "Yuqori bo‘lim"
+      create: "Bo‘lim yaratish"
+      update: "Bo‘limni yangilash"

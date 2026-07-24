@@ -13,16 +13,16 @@
       <%= f.collection_select :employee_id, @employees, :id, :full_name, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>
-      <%= f.label :title, class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :title, t("common.title"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.text_field :title, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>
-      <%= f.label :description, class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :description, t("common.description"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.text_area :description, rows: 3, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div class="grid gap-4 sm:grid-cols-2">
       <div>
-        <%= f.label :target_date, class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :target_date, t("common.target_date"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.date_field :target_date, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div>
-      <%= f.label :status, class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :status, t("common.status"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.select :status, Goal.statuses.keys.map { |k| [k.humanize, k] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
 

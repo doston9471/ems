@@ -16,3 +16,5 @@ uz:
       back: "← Barcha ofislar"
     form:
       timezone_placeholder: "America/New_York"
+      create: "Ofis yaratish"
+      update: "Ofisni yangilash"

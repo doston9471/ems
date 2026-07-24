@@ -13,11 +13,11 @@
       <%= f.collection_select :employee_id, @employees, :id, :full_name, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>
-      <%= f.label :title, class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :title, t("common.title"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.text_field :title, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>
-      <%= f.label :doc_type, class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :doc_type, t("common.doc_type"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.select :doc_type, EmployeeDocument.doc_types.keys.map { |k| [k.humanize, k] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>

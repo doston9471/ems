@@ -13,3 +13,5 @@ en:
       parent: "Parent"
     form:
       parent: "Parent department"
+      create: "Create department"
+      update: "Update department"

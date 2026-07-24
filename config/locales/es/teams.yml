@@ -14,3 +14,6 @@ es:
       lead: "Responsable: %{name}"
       no_members: "Aún no hay miembros."
       back: "← Todos los equipos"
+    form:
+      create: "Crear equipo"
+      update: "Actualizar equipo"

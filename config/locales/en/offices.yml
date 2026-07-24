@@ -16,3 +16,5 @@ en:
       back: "← All offices"
     form:
       timezone_placeholder: "America/New_York"
+      create: "Create office"
+      update: "Update office"

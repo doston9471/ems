@@ -14,3 +14,6 @@ en:
       lead: "Lead: %{name}"
       no_members: "No members yet."
       back: "← All teams"
+    form:
+      create: "Create team"
+      update: "Update team"
