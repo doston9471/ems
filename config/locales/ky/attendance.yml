@@ -1,0 +1,22 @@
+ky:
+  attendance:
+    index:
+      title: "Катышуу"
+      subtitle: "%{date} үчүн күндүк жыйынтык"
+      clock_in: "Кирүү"
+      clock_out: "Чыгуу"
+      break_start: "Тыныгууну баштоо"
+      break_end: "Тыныгууну бүтүрүү"
+      today_status: "Бүгүн: %{status}"
+      records_today: "Бүгүнкү жазуулар"
+      complete: "Аяктаган"
+      open: "Ачык"
+      week_worked: "Апталык иш (саат)"
+    my:
+      title: "Менин катышуум"
+      subtitle: "Кирүү/чыгууну белгилеп, күндөрдү караңыз."
+      start_break: "Тыныгууну баштоо"
+      end_break: "Тыныгууну бүтүрүү"
+      no_day: "Катышуу жазуусу жок."
+      empty: "Катышуу тарыхы жок."
+      minutes: "Мүнөт"

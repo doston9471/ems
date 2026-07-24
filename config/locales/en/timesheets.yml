@@ -1,0 +1,12 @@
+en:
+  timesheets:
+    index:
+      title: "Timesheets / overtime"
+      subtitle: "Review overtime above the company standard day (default 8 hours)."
+      pending: "Pending approval"
+      worked: "Worked"
+      overtime: "Overtime"
+      empty_pending: "No pending overtime."
+      recent_decisions: "Recent decisions"
+      overtime_min: "%{minutes} min OT"
+      empty_decisions: "No decisions yet."

@@ -1,0 +1,18 @@
+uz:
+  payroll:
+    index:
+      title: "Ish haqi"
+      subtitle: "Yaratilgan ish haqi hisoblari va xodim pozitsiyalari"
+      generate: "Hisob yaratish"
+      generated: "Yaratilgan"
+      items: "Pozitsiyalar"
+      empty: "Hali ish haqi hisoblari yo‘q."
+    new:
+      title: "Ish haqi hisobini yaratish"
+      submit: "Yaratish"
+    show:
+      title: "Ish haqi hisobi"
+      generated_at: "Yaratilgan vaqt"
+      total_net: "Jami sof"
+      empty: "Ish haqi pozitsiyalari yo‘q."
+      back: "← Barcha hisoblar"

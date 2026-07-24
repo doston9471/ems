@@ -9,8 +9,8 @@ module Reports
     def call
       package = Axlsx::Package.new
       workbook = package.workbook
-      workbook.add_worksheet(name: "Employees") do |sheet|
-        sheet.add_row Reports::CsvExporter::HEADERS
+      workbook.add_worksheet(name: I18n.t("reports.export.sheet_name")) do |sheet|
+        sheet.add_row Reports::CsvExporter.translated_headers
         @employees.find_each do |employee|
           sheet.add_row [
             employee.employee_number,

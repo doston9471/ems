@@ -17,4 +17,13 @@ RSpec.describe Reports::PdfExporter do
     expect(binary.bytesize).to be > 0
     expect(binary[0, 4]).to eq("%PDF")
   end
+
+  it "renders a PDF for a non-default locale" do
+    I18n.with_locale(:es) do
+      binary = described_class.new(employees: company.employees.kept, company: company).call
+      expect(binary).to be_a(String)
+      expect(binary.bytesize).to be > 0
+      expect(binary[0, 4]).to eq("%PDF")
+    end
+  end
 end

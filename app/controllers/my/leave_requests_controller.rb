@@ -26,7 +26,7 @@ module My
 
       result = Leave::SubmitRequestService.call(employee: Current.employee, attributes: leave_params.to_h)
       if result.success?
-        redirect_to my_leave_request_path(result.value), notice: "Leave request submitted."
+        redirect_to my_leave_request_path(result.value), notice: t("flash.my.leave_submitted")
       else
         @leave_request.assign_attributes(leave_params)
         @leave_request.errors.add(:base, result.errors.join(", "))

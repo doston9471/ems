@@ -1,0 +1,32 @@
+ky:
+  layout:
+    app_name: "Кызматкерлерди башкаруу"
+    brand: "EMS"
+    overview_for: "%{company} үчүн сереп"
+  flash:
+    unauthorized: "Бул аракетти аткарууга укугуңуз жок."
+    no_employee_profile: "Аккаунтуңузга байланган кызматкер профили жок."
+    try_again_later: "Кийинчерээк кайра аракет кылыңыз."
+    sessions:
+      invalid_credentials: "Башка email же сырсөз менен аракет кылыңыз."
+      mfa_required: "Кирүүнү бүтүрүү үчүн аутентификатор кодун киргизиңиз."
+    employees:
+      created: "Кызматкер түзүлдү."
+      updated: "Кызматкер жаңыртылды."
+    leave:
+      submitted: "Өргүү өтүнүчү жөнөтүлдү."
+      approved: "Өргүү өтүнүчү бекитилди."
+      rejected: "Өргүү өтүнүчү четке кагылды."
+    my:
+      review_submitted: "Баалоо жөнөтүлдү."
+      leave_submitted: "Өргүү өтүнүчү жөнөтүлдү."
+      contact_added: "Шашылыш контакт кошулду."
+      contact_updated: "Шашылыш контакт жаңыртылды."
+      contact_removed: "Шашылыш контакт өчүрүлдү."
+      preferences_saved: "Билдирме жөндөөлөрү сакталды."
+      marked_read: "Окулду деп белгиленди."
+      marked_all_read: "Бардык билдирмелер окулду."
+      clocked_in: "Кирүү катталды."
+      clocked_out: "Чыгуу катталды."
+      break_started: "Тыныгуу башталды."
+      break_ended: "Тыныгуу аяктады."

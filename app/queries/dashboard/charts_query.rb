@@ -25,7 +25,7 @@ module Dashboard
                      .left_joins(:department)
                      .group("departments.name")
                      .count
-                     .transform_keys { |name| name.presence || "Unassigned" }
+                     .transform_keys { |name| name.presence || I18n.t("dashboard.unassigned") }
                      .sort_by { |_name, count| -count }
 
       {

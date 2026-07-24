@@ -1,22 +1,22 @@
-<% content_for :title, "Integrations" %>
+<% content_for :title, t("integrations.edit.title") %>
 
 <div class="mx-auto max-w-2xl space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100">Integration settings</h1>
-    <p class="mt-1 text-sm text-slate-500">Configure Slack, Teams, Telegram, Twilio SMS, and calendar stub flags for <%= @company.name %>.</p>
+    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("integrations.edit.heading") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("integrations.edit.subtitle", company: @company.name) %></p>
   </div>
 
   <%= form_with url: company_settings_path, method: :patch, class: "space-y-6 rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900" do %>
     <fieldset class="space-y-3">
-      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100">Chat webhooks</legend>
+      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100"><%= t("integrations.edit.chat_webhooks") %></legend>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_slack_webhook_url">Slack webhook URL</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_slack_webhook_url"><%= t("integrations.edit.slack_webhook") %></label>
         <input type="url" name="settings[slack_webhook_url]" id="settings_slack_webhook_url"
                value="<%= @company.settings['slack_webhook_url'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_teams_webhook_url">Teams webhook URL</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_teams_webhook_url"><%= t("integrations.edit.teams_webhook") %></label>
         <input type="url" name="settings[teams_webhook_url]" id="settings_teams_webhook_url"
                value="<%= @company.settings['teams_webhook_url'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
@@ -24,15 +24,15 @@
     </fieldset>
 
     <fieldset class="space-y-3">
-      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100">Telegram</legend>
+      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100"><%= t("integrations.edit.telegram") %></legend>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_telegram_bot_token">Bot token</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_telegram_bot_token"><%= t("integrations.edit.bot_token") %></label>
         <input type="text" name="settings[telegram_bot_token]" id="settings_telegram_bot_token"
                value="<%= @company.settings['telegram_bot_token'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_telegram_chat_id">Default chat ID</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_telegram_chat_id"><%= t("integrations.edit.default_chat_id") %></label>
         <input type="text" name="settings[telegram_chat_id]" id="settings_telegram_chat_id"
                value="<%= @company.settings['telegram_chat_id'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
@@ -40,21 +40,21 @@
     </fieldset>
 
     <fieldset class="space-y-3">
-      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100">Twilio SMS</legend>
+      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100"><%= t("integrations.edit.twilio") %></legend>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_account_sid">Account SID</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_account_sid"><%= t("integrations.edit.account_sid") %></label>
         <input type="text" name="settings[twilio_account_sid]" id="settings_twilio_account_sid"
                value="<%= @company.settings['twilio_account_sid'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_auth_token">Auth token</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_auth_token"><%= t("integrations.edit.auth_token") %></label>
         <input type="password" name="settings[twilio_auth_token]" id="settings_twilio_auth_token"
                value="<%= @company.settings['twilio_auth_token'] %>"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_from_number">From number</label>
+        <label class="block text-sm font-medium text-slate-700" for="settings_twilio_from_number"><%= t("integrations.edit.from_number") %></label>
         <input type="text" name="settings[twilio_from_number]" id="settings_twilio_from_number"
                value="<%= @company.settings['twilio_from_number'] %>" placeholder="+15551234567"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800">
@@ -62,21 +62,21 @@
     </fieldset>
 
     <fieldset class="space-y-2">
-      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100">Calendar stubs</legend>
+      <legend class="text-sm font-semibold text-slate-900 dark:text-slate-100"><%= t("integrations.edit.calendar_stubs") %></legend>
       <label class="inline-flex items-center gap-2 text-sm">
         <input type="hidden" name="settings[google_calendar_stub]" value="0">
         <input type="checkbox" name="settings[google_calendar_stub]" value="1" class="rounded border-slate-300 text-teal-700"
                <%= "checked" if ActiveModel::Type::Boolean.new.cast(@company.settings["google_calendar_stub"]) %>>
-        Force Google Calendar stub mode
+        <%= t("integrations.edit.force_google_stub") %>
       </label>
       <label class="inline-flex items-center gap-2 text-sm">
         <input type="hidden" name="settings[outlook_calendar_stub]" value="0">
         <input type="checkbox" name="settings[outlook_calendar_stub]" value="1" class="rounded border-slate-300 text-teal-700"
                <%= "checked" if ActiveModel::Type::Boolean.new.cast(@company.settings["outlook_calendar_stub"]) %>>
-        Force Outlook Calendar stub mode
+        <%= t("integrations.edit.force_outlook_stub") %>
       </label>
     </fieldset>
 
-    <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600">Save settings</button>
+    <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600"><%= t("common.save_settings") %></button>
   <% end %>
 </div>

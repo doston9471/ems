@@ -1,32 +1,32 @@
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">My attendance</h1>
-    <p class="mt-1 text-sm text-slate-500">Clock in/out and review your recent days.</p>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("attendance.my.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("attendance.my.subtitle") %></p>
   </div>
 
   <% if policy(AttendanceDay).clock_in? %>
     <div class="flex flex-wrap gap-2">
-      <%= button_to "Clock in", clock_in_my_attendance_path, method: :post, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
-      <%= button_to "Clock out", clock_out_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
-      <%= button_to "Start break", break_start_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
-      <%= button_to "End break", break_end_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+      <%= button_to t("attendance.index.clock_in"), clock_in_my_attendance_path, method: :post, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= button_to t("attendance.index.clock_out"), clock_out_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+      <%= button_to t("attendance.my.start_break"), break_start_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+      <%= button_to t("attendance.my.end_break"), break_end_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
     </div>
   <% end %>
 
   <div class="rounded-lg border border-slate-200 bg-white p-5 text-sm">
-    <p class="text-xs uppercase tracking-wide text-slate-500">Today</p>
-    <p class="mt-2 font-medium text-slate-900"><%= @today ? "#{@today.status.humanize} · in #{@today.clock_in_at&.strftime('%H:%M') || '—'} · out #{@today.clock_out_at&.strftime('%H:%M') || '—'}" : "No attendance day yet." %></p>
+    <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.today") %></p>
+    <p class="mt-2 font-medium text-slate-900"><%= @today ? "#{@today.status.humanize} · #{t('common.in')} #{@today.clock_in_at&.strftime('%H:%M') || t('common.empty_value')} · #{t('common.out')} #{@today.clock_out_at&.strftime('%H:%M') || t('common.empty_value')}" : t("attendance.my.no_day") %></p>
   </div>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Date</th>
-          <th class="px-4 py-3">Status</th>
-          <th class="px-4 py-3">In</th>
-          <th class="px-4 py-3">Out</th>
-          <th class="px-4 py-3">Minutes</th>
+          <th class="px-4 py-3"><%= t("common.date") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
+          <th class="px-4 py-3"><%= t("common.in") %></th>
+          <th class="px-4 py-3"><%= t("common.out") %></th>
+          <th class="px-4 py-3"><%= t("attendance.my.minutes") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -34,15 +34,15 @@
           <tr>
             <td class="px-4 py-3"><%= day.work_date %></td>
             <td class="px-4 py-3"><%= day.status.humanize %></td>
-            <td class="px-4 py-3"><%= day.clock_in_at&.strftime("%H:%M") || "—" %></td>
-            <td class="px-4 py-3"><%= day.clock_out_at&.strftime("%H:%M") || "—" %></td>
+            <td class="px-4 py-3"><%= day.clock_in_at&.strftime("%H:%M") || t("common.empty_value") %></td>
+            <td class="px-4 py-3"><%= day.clock_out_at&.strftime("%H:%M") || t("common.empty_value") %></td>
             <td class="px-4 py-3"><%= day.worked_minutes %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <% if @days.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No attendance history yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("attendance.my.empty") %></p>
     <% end %>
   </div>
 </div>

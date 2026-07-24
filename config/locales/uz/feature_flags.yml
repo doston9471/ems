@@ -1,0 +1,10 @@
+uz:
+  feature_flags:
+    index:
+      title: "Feature flags"
+      subtitle: "Kompaniya yoki global imkoniyatlarni yoqing yoki o‘chiring."
+      scope: "Qamrov"
+      description: "Tavsif"
+      enabled: "Yoqilgan"
+      company: "Kompaniya"
+      global: "Global"

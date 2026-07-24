@@ -1,0 +1,16 @@
+en:
+  teams:
+    index:
+      title: "Teams"
+      subtitle: "Team structure for %{company}"
+      new: "New team"
+      empty: "No teams yet."
+    new:
+      title: "New team"
+    edit:
+      title: "Edit team"
+    show:
+      no_department: "No department"
+      lead: "Lead: %{name}"
+      no_members: "No members yet."
+      back: "← All teams"

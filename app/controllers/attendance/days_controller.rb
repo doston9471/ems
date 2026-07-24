@@ -16,25 +16,25 @@ module Attendance
     def clock_in
       authorize AttendanceDay, :clock_in?
       result = Attendance::ClockInService.call(employee: Current.employee)
-      redirect_with_result(result, "Clocked in.")
+      redirect_with_result(result, t("flash.my.clocked_in"))
     end
 
     def clock_out
       authorize AttendanceDay, :clock_out?
       result = Attendance::ClockOutService.call(employee: Current.employee)
-      redirect_with_result(result, "Clocked out.")
+      redirect_with_result(result, t("flash.my.clocked_out"))
     end
 
     def break_start
       authorize AttendanceDay, :break_start?
       result = Attendance::BreakStartService.call(employee: Current.employee)
-      redirect_with_result(result, "Break started.")
+      redirect_with_result(result, t("flash.my.break_started"))
     end
 
     def break_end
       authorize AttendanceDay, :break_end?
       result = Attendance::BreakEndService.call(employee: Current.employee)
-      redirect_with_result(result, "Break ended.")
+      redirect_with_result(result, t("flash.my.break_ended"))
     end
 
     private
@@ -42,7 +42,7 @@ module Attendance
     def require_employee!
       return if Current.employee
 
-      redirect_to attendance_days_path, alert: "No employee profile linked to your account."
+      redirect_to attendance_days_path, alert: t("flash.no_employee_profile")
     end
 
     def date_param

@@ -1,0 +1,26 @@
+ru:
+  calendars:
+    index:
+      subtitle: "Подключите календари Google или Outlook для синхронизации одобренных отпусков и собеседований."
+      connect_google: "Подключить Google"
+      connect_outlook: "Подключить Outlook"
+      sync_history: "История синхронизации"
+      provider: "Провайдер"
+      calendar_id: "ID календаря"
+      enabled: "Включено"
+      expires: "Истекает"
+      remove_confirm: "Удалить это подключение календаря?"
+      empty: "Пока нет подключений календаря."
+      add: "Добавить подключение"
+      add_hint: "Заглушки провайдера и ID календаря для локальных демо. Токены можно заполнить позже."
+      calendar_id_placeholder: "primary"
+    events:
+      title: "История синхронизации календаря"
+      page_title: "%{calendars} — История синхронизации"
+      subtitle: "Недавние попытки синхронизации календаря для %{company}."
+      connections: "Подключения"
+      eventable: "Объект"
+      external_id: "Внешний ID"
+      synced: "Синхронизировано"
+      error: "Ошибка"
+      empty: "Пока нет попыток синхронизации календаря."

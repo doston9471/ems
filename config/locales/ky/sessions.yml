@@ -1,0 +1,15 @@
+ky:
+  sessions:
+    brand: "Кызматкерлерди башкаруу"
+    title: "Кирүү"
+    subtitle: "Компаниянын иш мейкиндигине кириңиз"
+    email: "Email"
+    password: "Сырсөз"
+    submit: "Кирүү"
+    forgot_password: "Сырсөздү унуттуңузбу?"
+    or_continue: "Же улантыңыз"
+    company_sso: "Компания (SSO)"
+    load_sso: "SSO параметрлерин жүктөө"
+    sign_in_sso: "SSO менен кирүү (%{provider})"
+    continue_google: "Google менен улантуу"
+    continue_github: "GitHub менен улантуу"

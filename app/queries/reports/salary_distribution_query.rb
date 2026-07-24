@@ -3,10 +3,10 @@
 module Reports
   class SalaryDistributionQuery
     BUCKETS = [
-      [ 0, 50_000_00, "< $50k" ],
-      [ 50_000_00, 100_000_00, "$50k–$100k" ],
-      [ 100_000_00, 150_000_00, "$100k–$150k" ],
-      [ 150_000_00, nil, "$150k+" ]
+      [ 0, 50_000_00, :under_50k ],
+      [ 50_000_00, 100_000_00, :from_50k_to_100k ],
+      [ 100_000_00, 150_000_00, :from_100k_to_150k ],
+      [ 150_000_00, nil, :over_150k ]
     ].freeze
 
     def initialize(company:)
@@ -15,11 +15,11 @@ module Reports
 
     def call
       salaries = @company.employees.kept.pluck(:salary_cents)
-      distribution = BUCKETS.map do |min, max, label|
+      distribution = BUCKETS.map do |min, max, key|
         count = salaries.count do |cents|
           cents >= min && (max.nil? || cents < max)
         end
-        [ label, count ]
+        [ I18n.t("reports.buckets.#{key}"), count ]
       end.to_h
 
       {

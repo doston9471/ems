@@ -1,0 +1,15 @@
+en:
+  departments:
+    index:
+      title: "Departments"
+      subtitle: "Organization structure"
+      new: "New department"
+      empty: "No departments yet."
+    new:
+      title: "New department"
+    edit:
+      title: "Edit department"
+    show:
+      parent: "Parent"
+    form:
+      parent: "Parent department"

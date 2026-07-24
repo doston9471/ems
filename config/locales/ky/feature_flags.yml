@@ -1,0 +1,10 @@
+ky:
+  feature_flags:
+    index:
+      title: "Feature flags"
+      subtitle: "Компания же глобалдык мүмкүнчүлүктөрдү күйгүзүңүз же өчүрүңүз."
+      scope: "Чөйрө"
+      description: "Сүрөттөмө"
+      enabled: "Күйгүзүлгөн"
+      company: "Компания"
+      global: "Глобалдык"

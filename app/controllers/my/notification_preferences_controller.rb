@@ -11,7 +11,7 @@ module My
 
     def update
       Current.user.update_notification_preferences!(preference_params)
-      redirect_to edit_my_notification_preferences_path, notice: "Notification preferences saved."
+      redirect_to edit_my_notification_preferences_path, notice: t("flash.my.preferences_saved")
     end
 
     private

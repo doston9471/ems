@@ -1,0 +1,25 @@
+ru:
+  assets:
+    index:
+      title: "Активы"
+      subtitle: "Оборудование компании и назначения"
+      new: "Новый актив"
+      assigned_to: "Назначено"
+      empty: "Пока нет активов."
+    new:
+      title: "Новый актив"
+      submit: "Создать актив"
+    show:
+      serial_number: "Серийный номер"
+      purchased: "Куплено"
+      assign_title: "Назначить актив"
+      assigned_on: "Назначено"
+      return_title: "Вернуть актив"
+      returned_on: "Возвращено"
+      condition: "Состояние"
+      mark_returned: "Отметить возврат"
+      history: "История назначений"
+      assigned: "Назначено"
+      returned: "Возвращено"
+      empty_assignments: "Пока нет назначений."
+      back: "← Все активы"

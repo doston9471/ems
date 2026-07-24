@@ -1,0 +1,25 @@
+uz:
+  assets:
+    index:
+      title: "Aktivlar"
+      subtitle: "Kompaniya jihozlari va biriktirishlar"
+      new: "Yangi aktiv"
+      assigned_to: "Biriktirilgan"
+      empty: "Hali aktivlar yo‘q."
+    new:
+      title: "Yangi aktiv"
+      submit: "Aktiv yaratish"
+    show:
+      serial_number: "Seriya raqami"
+      purchased: "Sotib olingan"
+      assign_title: "Aktivni biriktirish"
+      assigned_on: "Biriktirilgan sana"
+      return_title: "Aktivni qaytarish"
+      returned_on: "Qaytarilgan sana"
+      condition: "Holat"
+      mark_returned: "Qaytarilgan deb belgilash"
+      history: "Biriktirish tarixi"
+      assigned: "Biriktirilgan"
+      returned: "Qaytarilgan"
+      empty_assignments: "Hali biriktirishlar yo‘q."
+      back: "← Barcha aktivlar"

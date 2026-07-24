@@ -1,0 +1,25 @@
+ky:
+  assets:
+    index:
+      title: "Активдер"
+      subtitle: "Компаниянын жабдуулары жана дайындоолор"
+      new: "Жаңы актив"
+      assigned_to: "Дайындалган"
+      empty: "Активдер жок."
+    new:
+      title: "Жаңы актив"
+      submit: "Актив түзүү"
+    show:
+      serial_number: "Сериялык номер"
+      purchased: "Сатылып алынган"
+      assign_title: "Активди дайындоо"
+      assigned_on: "Дайындалган күнү"
+      return_title: "Активди кайтаруу"
+      returned_on: "Кайтарылган күнү"
+      condition: "Абалы"
+      mark_returned: "Кайтарылган деп белгилөө"
+      history: "Дайындоо тарыхы"
+      assigned: "Дайындалган"
+      returned: "Кайтарылган"
+      empty_assignments: "Дайындоолор жок."
+      back: "← Бардык активдер"

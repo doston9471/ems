@@ -1,0 +1,14 @@
+uz:
+  mailers:
+    email_verifications:
+      subject: "Email manzilingizni tasdiqlang"
+      html_intro: "Email manzilingizni tasdiqlash uchun"
+      html_link: "ushbu tasdiqlash havolasiga"
+      expires: "Bu havola 2 kundan keyin muddati tugaydi."
+      text_intro: "Email manzilingizni tasdiqlang:"
+    passwords:
+      subject: "Parolingizni tiklang"
+      html_intro: "Parolingizni quyidagi sahifada tiklashingiz mumkin"
+      html_link: "parolni tiklash sahifasi"
+      text_intro: "Parolingizni quyidagi havola orqali tiklashingiz mumkin"
+      expires_in: "Bu havola %{duration} ichida muddati tugaydi."

@@ -1,0 +1,16 @@
+es:
+  custom_fields:
+    index:
+      title: "Campos personalizados"
+      subtitle: "Atributos definidos por el inquilino para empleados."
+      new: "Nuevo campo"
+      delete_confirm: "¿Eliminar este campo?"
+      empty: "Aún no hay campos personalizados."
+    new:
+      title: "Nuevo campo personalizado"
+    edit:
+      title: "Editar campo personalizado"
+    form:
+      key_hint: "Identificador snake_case, único por empresa."
+      select_choices: "Opciones de selección (separadas por comas)"
+      choices_placeholder: "A, B, C"

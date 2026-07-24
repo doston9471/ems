@@ -6,24 +6,24 @@
 
   <dl class="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:grid-cols-2 text-sm">
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Serial number</dt>
-      <dd class="mt-1"><%= @company_asset.serial_number.presence || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("assets.show.serial_number") %></dt>
+      <dd class="mt-1"><%= @company_asset.serial_number.presence || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Purchased</dt>
-      <dd class="mt-1"><%= @company_asset.purchased_on || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("assets.show.purchased") %></dt>
+      <dd class="mt-1"><%= @company_asset.purchased_on || t("common.empty_value") %></dd>
     </div>
     <div class="sm:col-span-2">
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Notes</dt>
-      <dd class="mt-1"><%= @company_asset.notes.presence || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.notes") %></dt>
+      <dd class="mt-1"><%= @company_asset.notes.presence || t("common.empty_value") %></dd>
     </div>
   </dl>
 
   <% if policy(@company_asset).assign? && (@company_asset.purchased? || @company_asset.returned?) %>
     <%= form_with url: assign_company_asset_path(@company_asset), method: :post, class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do %>
-      <h2 class="text-sm font-semibold text-slate-900">Assign asset</h2>
+      <h2 class="text-sm font-semibold text-slate-900"><%= t("assets.show.assign_title") %></h2>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="employee_id">Employee</label>
+        <label class="block text-sm font-medium text-slate-700" for="employee_id"><%= t("common.employee") %></label>
         <select name="employee_id" id="employee_id" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
           <% Employee.kept.where(employment_status: :active).order(:last_name, :first_name).each do |employee| %>
             <option value="<%= employee.id %>"><%= employee.full_name %></option>
@@ -31,37 +31,37 @@
         </select>
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="assigned_on">Assigned on</label>
+        <label class="block text-sm font-medium text-slate-700" for="assigned_on"><%= t("assets.show.assigned_on") %></label>
         <input type="date" name="assigned_on" id="assigned_on" value="<%= Date.current %>" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
       </div>
-      <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600">Assign</button>
+      <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600"><%= t("common.assign") %></button>
     <% end %>
   <% end %>
 
   <% if policy(@company_asset).return_asset? && @company_asset.assigned? %>
     <%= form_with url: return_asset_company_asset_path(@company_asset), method: :post, class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do %>
-      <h2 class="text-sm font-semibold text-slate-900">Return asset</h2>
+      <h2 class="text-sm font-semibold text-slate-900"><%= t("assets.show.return_title") %></h2>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="returned_on">Returned on</label>
+        <label class="block text-sm font-medium text-slate-700" for="returned_on"><%= t("assets.show.returned_on") %></label>
         <input type="date" name="returned_on" id="returned_on" value="<%= Date.current %>" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
       </div>
       <div>
-        <label class="block text-sm font-medium text-slate-700" for="condition_on_return">Condition</label>
+        <label class="block text-sm font-medium text-slate-700" for="condition_on_return"><%= t("assets.show.condition") %></label>
         <input type="text" name="condition_on_return" id="condition_on_return" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
       </div>
-      <button type="submit" class="rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Mark returned</button>
+      <button type="submit" class="rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"><%= t("assets.show.mark_returned") %></button>
     <% end %>
   <% end %>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
-    <h2 class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Assignment history</h2>
+    <h2 class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500"><%= t("assets.show.history") %></h2>
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Employee</th>
-          <th class="px-4 py-3">Assigned</th>
-          <th class="px-4 py-3">Returned</th>
-          <th class="px-4 py-3">Condition</th>
+          <th class="px-4 py-3"><%= t("common.employee") %></th>
+          <th class="px-4 py-3"><%= t("assets.show.assigned") %></th>
+          <th class="px-4 py-3"><%= t("assets.show.returned") %></th>
+          <th class="px-4 py-3"><%= t("assets.show.condition") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -69,16 +69,16 @@
           <tr>
             <td class="px-4 py-3"><%= assignment.employee.full_name %></td>
             <td class="px-4 py-3"><%= assignment.assigned_on %></td>
-            <td class="px-4 py-3"><%= assignment.returned_on || "—" %></td>
-            <td class="px-4 py-3"><%= assignment.condition_on_return.presence || "—" %></td>
+            <td class="px-4 py-3"><%= assignment.returned_on || t("common.empty_value") %></td>
+            <td class="px-4 py-3"><%= assignment.condition_on_return.presence || t("common.empty_value") %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <% if @assignments.empty? %>
-      <p class="px-4 py-6 text-center text-sm text-slate-500">No assignments yet.</p>
+      <p class="px-4 py-6 text-center text-sm text-slate-500"><%= t("assets.show.empty_assignments") %></p>
     <% end %>
   </div>
 
-  <p><%= link_to "← All assets", company_assets_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
+  <p><%= link_to t("assets.show.back"), company_assets_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
 </div>

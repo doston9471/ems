@@ -1,0 +1,7 @@
+en:
+  audit:
+    index:
+      title: "Audit log"
+      subtitle: "Recent changes across the company workspace"
+      empty: "No audit entries."
+      page: "Page %{page} of %{total}"

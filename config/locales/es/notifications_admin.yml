@@ -1,0 +1,8 @@
+es:
+  notifications_admin:
+    index:
+      subtitle: "Intentos recientes de entrega de notificaciones para %{company}."
+      event: "Evento"
+      channel: "Canal"
+      sent: "Enviado"
+      empty: "Aún no hay entregas de notificaciones."

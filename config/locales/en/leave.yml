@@ -1,0 +1,16 @@
+en:
+  leave:
+    index:
+      title: "Leave requests"
+      subtitle: "Submit and approve time off"
+      request: "Request leave"
+      empty: "No leave requests yet."
+    show:
+      title: "Leave request"
+      reason: "Reason"
+      approve: "Approve"
+      reject: "Reject"
+    new:
+      title: "Request leave"
+      leave_type: "Leave type"
+      submit: "Submit request"

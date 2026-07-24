@@ -11,12 +11,19 @@ module Reports
 
     def call
       Prawn::Document.new(page_layout: :landscape) do |pdf|
-        pdf.text "#{@company.name} — Employee Report", size: 18, style: :bold
+        pdf.text I18n.t("reports.export.pdf_title", company: @company.name), size: 18, style: :bold
         pdf.move_down 12
-        pdf.text "Generated #{Time.current.strftime('%Y-%m-%d %H:%M UTC')}", size: 9, color: "666666"
+        pdf.text I18n.t("reports.export.generated", timestamp: Time.current.strftime("%Y-%m-%d %H:%M UTC")), size: 9, color: "666666"
         pdf.move_down 16
 
-        data = [ [ "Number", "Name", "Email", "Title", "Department", "Status" ] ]
+        data = [ [
+          I18n.t("reports.export.number"),
+          I18n.t("reports.export.name"),
+          I18n.t("reports.export.email"),
+          I18n.t("reports.export.title"),
+          I18n.t("reports.export.department"),
+          I18n.t("reports.export.status")
+        ] ]
         @employees.includes(:department).find_each do |employee|
           data << [
             employee.employee_number,

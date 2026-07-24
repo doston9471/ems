@@ -1,0 +1,32 @@
+uz:
+  layout:
+    app_name: "Xodimlarni boshqarish"
+    brand: "EMS"
+    overview_for: "%{company} uchun umumiy ko‘rinish"
+  flash:
+    unauthorized: "Bu amalni bajarishga ruxsatingiz yo‘q."
+    no_employee_profile: "Hisobingizga bog‘langan xodim profili yo‘q."
+    try_again_later: "Keyinroq qayta urinib ko‘ring."
+    sessions:
+      invalid_credentials: "Boshqa email yoki parol bilan urinib ko‘ring."
+      mfa_required: "Kirishni yakunlash uchun autentifikator kodini kiriting."
+    employees:
+      created: "Xodim yaratildi."
+      updated: "Xodim yangilandi."
+    leave:
+      submitted: "Ta’til so‘rovi yuborildi."
+      approved: "Ta’til so‘rovi tasdiqlandi."
+      rejected: "Ta’til so‘rovi rad etildi."
+    my:
+      review_submitted: "Baholash yuborildi."
+      leave_submitted: "Ta’til so‘rovi yuborildi."
+      contact_added: "Favqulodda kontakt qo‘shildi."
+      contact_updated: "Favqulodda kontakt yangilandi."
+      contact_removed: "Favqulodda kontakt o‘chirildi."
+      preferences_saved: "Bildirishnoma sozlamalari saqlandi."
+      marked_read: "O‘qilgan deb belgilandi."
+      marked_all_read: "Barcha bildirishnomalar o‘qilgan."
+      clocked_in: "Kirish qayd etildi."
+      clocked_out: "Chiqish qayd etildi."
+      break_started: "Tanaffus boshlandi."
+      break_ended: "Tanaffus tugadi."

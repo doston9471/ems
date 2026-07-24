@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-xl space-y-6">
-  <h1 class="text-2xl font-semibold text-slate-900">Start review cycle</h1>
+  <h1 class="text-2xl font-semibold text-slate-900"><%= t("performance.new.title") %></h1>
 
   <%= form_with model: @review_cycle, class: "space-y-4 rounded-lg border border-slate-200 bg-white p-5" do |f| %>
     <% if @review_cycle.errors.any? %>
@@ -28,8 +28,8 @@
     </div>
 
     <div class="flex gap-3 pt-2">
-      <%= f.submit "Start cycle", class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
-      <%= link_to "Cancel", review_cycles_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
+      <%= f.submit t("performance.new.submit"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= link_to t("common.cancel"), review_cycles_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
     </div>
   <% end %>
 </div>

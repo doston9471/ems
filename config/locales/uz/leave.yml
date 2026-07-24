@@ -1,0 +1,16 @@
+uz:
+  leave:
+    index:
+      title: "Ta’til so‘rovlari"
+      subtitle: "Ta’til so‘rash va tasdiqlash"
+      request: "Ta’til so‘rash"
+      empty: "Hali ta’til so‘rovlari yo‘q."
+    show:
+      title: "Ta’til so‘rovi"
+      reason: "Sabab"
+      approve: "Tasdiqlash"
+      reject: "Rad etish"
+    new:
+      title: "Ta’til so‘rovi"
+      leave_type: "Ta’til turi"
+      submit: "So‘rovni yuborish"

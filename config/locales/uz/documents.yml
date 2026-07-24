@@ -1,0 +1,18 @@
+uz:
+  documents:
+    index:
+      title: "Hujjatlar"
+      subtitle: "Versiya tarixi bilan xodim hujjatlari"
+      new: "Yangi hujjat"
+      empty: "Hali hujjatlar yo‘q."
+    new:
+      title: "Yangi hujjat"
+      initial_file: "Dastlabki fayl"
+      submit: "Hujjat yaratish"
+    show:
+      upload_version: "Yangi versiya yuklash"
+      change_note: "O‘zgarish izohi"
+      upload_submit: "Versiyani yuklash"
+      version_history: "Versiya tarixi"
+      empty_versions: "Hali versiyalar yuklanmagan."
+      back: "← Barcha hujjatlar"

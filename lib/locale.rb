@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Single source of truth for UI locales. Keep in sync with config/locales/*.yml
+# Single source of truth for UI locales. Keep in sync with config/locales/<locale>/*.yml
 module Locale
   AVAILABLE = %w[en es ru uz ky].freeze
 

@@ -1,0 +1,16 @@
+ru:
+  teams:
+    index:
+      title: "Команды"
+      subtitle: "Структура команд для %{company}"
+      new: "Новая команда"
+      empty: "Пока нет команд."
+    new:
+      title: "Новая команда"
+    edit:
+      title: "Редактировать команду"
+    show:
+      no_department: "Без отдела"
+      lead: "Руководитель: %{name}"
+      no_members: "Пока нет участников."
+      back: "← Все команды"

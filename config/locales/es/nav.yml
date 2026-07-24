@@ -1,5 +1,4 @@
 es:
-  hello: "Hola mundo"
   nav:
     dashboard: "Panel"
     employees: "Empleados"
@@ -21,4 +20,7 @@ es:
     calendars: "Calendario"
     integrations: "Integraciones"
     org_chart: "Organigrama"
+    timesheets: "Partes de horas"
+    custom_fields: "Campos personalizados"
+    security_mfa: "Seguridad (MFA)"
     sign_out: "Cerrar sesión"

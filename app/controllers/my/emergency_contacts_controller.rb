@@ -16,7 +16,7 @@ module My
     def create
       @contact = Current.employee.emergency_contacts.new(contact_params)
       if @contact.save
-        redirect_to my_emergency_contacts_path, notice: "Emergency contact added."
+        redirect_to my_emergency_contacts_path, notice: t("flash.my.contact_added")
       else
         render :new, status: :unprocessable_entity
       end
@@ -27,7 +27,7 @@ module My
 
     def update
       if @contact.update(contact_params)
-        redirect_to my_emergency_contacts_path, notice: "Emergency contact updated."
+        redirect_to my_emergency_contacts_path, notice: t("flash.my.contact_updated")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -35,7 +35,7 @@ module My
 
     def destroy
       @contact.destroy!
-      redirect_to my_emergency_contacts_path, notice: "Emergency contact removed."
+      redirect_to my_emergency_contacts_path, notice: t("flash.my.contact_removed")
     end
 
     private

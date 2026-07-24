@@ -1,29 +1,29 @@
-<% content_for :title, "Feature flags" %>
+<% content_for :title, t("feature_flags.index.title") %>
 
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100">Feature flags</h1>
-    <p class="mt-1 text-sm text-slate-500">Toggle company or global capabilities.</p>
+    <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("feature_flags.index.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("feature_flags.index.subtitle") %></p>
   </div>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
     <table class="min-w-full divide-y divide-slate-200 text-sm dark:divide-slate-700">
       <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-800">
         <tr>
-          <th class="px-4 py-3 font-medium">Key</th>
-          <th class="px-4 py-3 font-medium">Scope</th>
-          <th class="px-4 py-3 font-medium">Description</th>
-          <th class="px-4 py-3 font-medium">Enabled</th>
+          <th class="px-4 py-3 font-medium"><%= t("common.key") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("feature_flags.index.scope") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("feature_flags.index.description") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("feature_flags.index.enabled") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
         <% @flags.each do |flag| %>
           <tr>
             <td class="px-4 py-3 font-mono text-xs"><%= flag.key %></td>
-            <td class="px-4 py-3"><%= flag.company_id ? "Company" : "Global" %></td>
+            <td class="px-4 py-3"><%= flag.company_id ? t("feature_flags.index.company") : t("feature_flags.index.global") %></td>
             <td class="px-4 py-3 text-slate-600 dark:text-slate-400"><%= flag.description %></td>
             <td class="px-4 py-3">
-              <%= button_to flag.enabled? ? "On" : "Off",
+              <%= button_to flag.enabled? ? t("common.on") : t("common.off"),
                             feature_flag_path(flag, enabled: !flag.enabled?),
                             method: :patch,
                             class: "rounded px-3 py-1 text-xs font-medium #{flag.enabled? ? 'bg-teal-100 text-teal-800' : 'bg-slate-100 text-slate-600'}" %>

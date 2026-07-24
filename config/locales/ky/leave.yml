@@ -1,0 +1,16 @@
+ky:
+  leave:
+    index:
+      title: "Өргүү өтүнүчтөрү"
+      subtitle: "Өргүү суроо жана бекитүү"
+      request: "Өргүү суроо"
+      empty: "Өргүү өтүнүчтөрү жок."
+    show:
+      title: "Өргүү өтүнүчү"
+      reason: "Себеп"
+      approve: "Бекитүү"
+      reject: "Четке кагуу"
+    new:
+      title: "Өргүү өтүнүчү"
+      leave_type: "Өргүү түрү"
+      submit: "Өтүнүчтү жөнөтүү"

@@ -1,11 +1,11 @@
 <div class="space-y-6">
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-semibold text-slate-900">Custom fields</h1>
-      <p class="mt-1 text-sm text-slate-500">Tenant-defined attributes for employees.</p>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= t("custom_fields.index.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("custom_fields.index.subtitle") %></p>
     </div>
     <% if policy(CustomFieldDefinition).create? %>
-      <%= link_to "New field", new_custom_field_definition_path, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("custom_fields.index.new"), new_custom_field_definition_path, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <% end %>
   </div>
 
@@ -13,10 +13,10 @@
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Label</th>
-          <th class="px-4 py-3">Key</th>
-          <th class="px-4 py-3">Type</th>
-          <th class="px-4 py-3">Required</th>
+          <th class="px-4 py-3"><%= t("common.label") %></th>
+          <th class="px-4 py-3"><%= t("common.key") %></th>
+          <th class="px-4 py-3"><%= t("common.type") %></th>
+          <th class="px-4 py-3"><%= t("common.required") %></th>
           <th class="px-4 py-3"></th>
         </tr>
       </thead>
@@ -26,17 +26,17 @@
             <td class="px-4 py-3 font-medium"><%= definition.label %></td>
             <td class="px-4 py-3 font-mono text-xs"><%= definition.key %></td>
             <td class="px-4 py-3"><%= definition.field_type %></td>
-            <td class="px-4 py-3"><%= definition.required? ? "Yes" : "No" %></td>
+            <td class="px-4 py-3"><%= definition.required? ? t("common.yes") : t("common.no") %></td>
             <td class="px-4 py-3 text-right space-x-2">
-              <%= link_to "Edit", edit_custom_field_definition_path(definition), class: "text-teal-700 hover:text-teal-800" %>
-              <%= button_to "Delete", custom_field_definition_path(definition), method: :delete, form: { data: { turbo_confirm: "Delete this field?" } }, class: "inline text-rose-600" %>
+              <%= link_to t("common.edit"), edit_custom_field_definition_path(definition), class: "text-teal-700 hover:text-teal-800" %>
+              <%= button_to t("common.delete"), custom_field_definition_path(definition), method: :delete, form: { data: { turbo_confirm: t("custom_fields.index.delete_confirm") } }, class: "inline text-rose-600" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <% if @definitions.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No custom fields yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("custom_fields.index.empty") %></p>
     <% end %>
   </div>
 </div>

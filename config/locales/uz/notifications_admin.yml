@@ -1,0 +1,8 @@
+uz:
+  notifications_admin:
+    index:
+      subtitle: "%{company} uchun so‘nggi bildirishnoma yetkazish urinishlari."
+      event: "Hodisa"
+      channel: "Kanal"
+      sent: "Yuborilgan"
+      empty: "Hali bildirishnoma yetkazishlar yo‘q."

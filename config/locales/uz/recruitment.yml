@@ -1,0 +1,22 @@
+uz:
+  recruitment:
+    index:
+      title: "Ishga olish"
+      subtitle: "Nomzodlar va yollash jarayoni"
+      new: "Yangi nomzod"
+      empty: "Hali nomzodlar yo‘q."
+    new:
+      title: "Yangi nomzod"
+      submit: "Nomzod yaratish"
+    show:
+      applicant: "Nomzod"
+      hired_employee: "Ishga olingan xodim"
+      update_stage: "Bosqichni yangilash"
+      hire_title: "Nomzodni ishga olish"
+      hire_hint: "Xodim yozuvini yaratadi va ushbu nomzodni ishga olingan deb belgilaydi."
+      schedule_interview: "Suhbatni rejalashtirish"
+      interviewer: "Suhbat oluvchi"
+      interviews: "Suhbatlar"
+      mode: "Rejim"
+      empty_interviews: "Hali suhbatlar yo‘q."
+      back: "← Barcha nomzodlar"

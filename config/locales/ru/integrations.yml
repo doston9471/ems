@@ -1,0 +1,19 @@
+ru:
+  integrations:
+    edit:
+      title: "Интеграции"
+      heading: "Настройки интеграций"
+      subtitle: "Настройте Slack, Teams, Telegram, Twilio SMS и флаги заглушек календаря для %{company}."
+      chat_webhooks: "Вебхуки чата"
+      slack_webhook: "URL вебхука Slack"
+      teams_webhook: "URL вебхука Teams"
+      telegram: "Telegram"
+      bot_token: "Токен бота"
+      default_chat_id: "ID чата по умолчанию"
+      twilio: "Twilio SMS"
+      account_sid: "Account SID"
+      auth_token: "Auth token"
+      from_number: "Номер отправителя"
+      calendar_stubs: "Заглушки календаря"
+      force_google_stub: "Принудительный stub-режим Google Calendar"
+      force_outlook_stub: "Принудительный stub-режим Outlook Calendar"

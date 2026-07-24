@@ -19,10 +19,10 @@
       </div>
       <div>
         <%= f.label :timezone, class: "block text-sm font-medium text-slate-700" %>
-        <%= f.text_field :timezone, placeholder: "America/New_York", class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
+        <%= f.text_field :timezone, placeholder: t("offices.form.timezone_placeholder"), class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div class="sm:col-span-2">
-        <%= f.label :address_line1, "Address", class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :address_line1, t("common.address"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_field :address_line1, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
@@ -36,14 +36,14 @@
       <div class="sm:col-span-2">
         <label class="inline-flex items-center gap-2 text-sm">
           <%= f.check_box :active, class: "rounded border-slate-300 text-teal-700" %>
-          Active
+          <%= t("common.active") %>
         </label>
       </div>
     </div>
 
     <div class="flex gap-3 pt-2">
       <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
-      <%= link_to "Cancel", offices_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
+      <%= link_to t("common.cancel"), offices_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
     </div>
   <% end %>
 </div>

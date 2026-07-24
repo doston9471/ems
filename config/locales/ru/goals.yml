@@ -1,0 +1,12 @@
+ru:
+  goals:
+    index:
+      title: "Цели"
+      subtitle: "Отслеживание целей сотрудников"
+      review_cycles: "Циклы оценки"
+      new: "Новая цель"
+      empty: "Пока нет целей."
+    new:
+      title: "Новая цель"
+      progress_percent: "Прогресс %"
+      submit: "Создать цель"

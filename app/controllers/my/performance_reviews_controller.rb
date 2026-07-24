@@ -27,7 +27,7 @@ module My
       )
 
       if result.success?
-        redirect_to my_performance_review_path(result.value), notice: "Review submitted."
+        redirect_to my_performance_review_path(result.value), notice: t("flash.my.review_submitted")
       else
         redirect_to my_performance_review_path(@performance_review), alert: result.errors.join(", ")
       end

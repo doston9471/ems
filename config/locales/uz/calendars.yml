@@ -1,0 +1,26 @@
+uz:
+  calendars:
+    index:
+      subtitle: "Tasdiqlangan ta’tillar va suhbatlarni sinxronlash uchun Google yoki Outlook taqvimlarini ulang."
+      connect_google: "Google ulash"
+      connect_outlook: "Outlook ulash"
+      sync_history: "Sinxronlash tarixi"
+      provider: "Provayder"
+      calendar_id: "Taqvim ID"
+      enabled: "Yoqilgan"
+      expires: "Muddati"
+      remove_confirm: "Bu taqvim ulanishi olib tashlansinmi?"
+      empty: "Hali taqvim ulanishlari yo‘q."
+      add: "Ulanish qo‘shish"
+      add_hint: "Mahalliy demolar uchun provayder va taqvim ID o‘rinbosarlari. Tokenlar keyinroq to‘ldirilishi mumkin."
+      calendar_id_placeholder: "primary"
+    events:
+      title: "Taqvim sinxronlash tarixi"
+      page_title: "%{calendars} — Sinxronlash tarixi"
+      subtitle: "%{company} uchun yaqinda taqvim sinxronlash urinishlari."
+      connections: "Ulanishlar"
+      eventable: "Obyekt"
+      external_id: "Tashqi ID"
+      synced: "Sinxronlangan"
+      error: "Xato"
+      empty: "Hali taqvim sinxronlash urinishlari yo‘q."

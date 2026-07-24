@@ -1,0 +1,15 @@
+ru:
+  sessions:
+    brand: "Управление сотрудниками"
+    title: "Вход"
+    subtitle: "Доступ к пространству компании"
+    email: "Email"
+    password: "Пароль"
+    submit: "Войти"
+    forgot_password: "Забыли пароль?"
+    or_continue: "Или продолжить через"
+    company_sso: "Компания (SSO)"
+    load_sso: "Загрузить SSO"
+    sign_in_sso: "Войти через SSO (%{provider})"
+    continue_google: "Продолжить с Google"
+    continue_github: "Продолжить с GitHub"

@@ -1,0 +1,25 @@
+es:
+  assets:
+    index:
+      title: "Activos"
+      subtitle: "Equipamiento de la empresa y asignaciones"
+      new: "Nuevo activo"
+      assigned_to: "Asignado a"
+      empty: "Aún no hay activos."
+    new:
+      title: "Nuevo activo"
+      submit: "Crear activo"
+    show:
+      serial_number: "Número de serie"
+      purchased: "Comprado"
+      assign_title: "Asignar activo"
+      assigned_on: "Asignado el"
+      return_title: "Devolver activo"
+      returned_on: "Devuelto el"
+      condition: "Condición"
+      mark_returned: "Marcar como devuelto"
+      history: "Historial de asignaciones"
+      assigned: "Asignado"
+      returned: "Devuelto"
+      empty_assignments: "Aún no hay asignaciones."
+      back: "← Todos los activos"

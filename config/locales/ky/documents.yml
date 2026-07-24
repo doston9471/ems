@@ -1,0 +1,18 @@
+ky:
+  documents:
+    index:
+      title: "Документтер"
+      subtitle: "Версия тарыхы менен кызматкер документтери"
+      new: "Жаңы документ"
+      empty: "Документтер жок."
+    new:
+      title: "Жаңы документ"
+      initial_file: "Баштапкы файл"
+      submit: "Документ түзүү"
+    show:
+      upload_version: "Жаңы версия жүктөө"
+      change_note: "Өзгөртүү эскертүүсү"
+      upload_submit: "Версияны жүктөө"
+      version_history: "Версия тарыхы"
+      empty_versions: "Версиялар жүктөлгөн эмес."
+      back: "← Бардык документтер"

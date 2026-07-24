@@ -1,11 +1,11 @@
 <div class="space-y-6">
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-semibold text-slate-900">Payroll</h1>
-      <p class="mt-1 text-sm text-slate-500">Generated payroll runs and employee items</p>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= t("payroll.index.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("payroll.index.subtitle") %></p>
     </div>
     <% if policy(PayrollRun).create? %>
-      <%= link_to "Generate run", new_payroll_run_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("payroll.index.generate"), new_payroll_run_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <% end %>
   </div>
 
@@ -13,10 +13,10 @@
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Period</th>
-          <th class="px-4 py-3">Status</th>
-          <th class="px-4 py-3">Generated</th>
-          <th class="px-4 py-3">Items</th>
+          <th class="px-4 py-3"><%= t("common.period") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
+          <th class="px-4 py-3"><%= t("payroll.index.generated") %></th>
+          <th class="px-4 py-3"><%= t("payroll.index.items") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -28,14 +28,14 @@
             <td class="px-4 py-3">
               <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700"><%= run.status.humanize %></span>
             </td>
-            <td class="px-4 py-3 text-slate-600"><%= run.generated_at&.strftime("%Y-%m-%d %H:%M") || "—" %></td>
+            <td class="px-4 py-3 text-slate-600"><%= run.generated_at&.strftime("%Y-%m-%d %H:%M") || t("common.empty_value") %></td>
             <td class="px-4 py-3"><%= run.payroll_items.size %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <% if @payroll_runs.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No payroll runs yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("payroll.index.empty") %></p>
     <% end %>
   </div>
 </div>

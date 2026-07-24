@@ -1,0 +1,17 @@
+en:
+  mfa:
+    show:
+      title: "Two-factor authentication"
+      enabled_hint: "Authenticator app verification is enabled on your account."
+      disabled_hint: "Scan the QR code with your authenticator app, then enter a code to enable MFA."
+      code: "Authenticator code"
+      manual_secret: "Or enter this secret manually"
+      enable: "Enable MFA"
+      disable: "Disable MFA"
+      back: "Back to dashboard"
+    challenge:
+      brand: "Security"
+      title: "Authenticator code"
+      subtitle: "Enter the 6-digit code from your authenticator app to finish signing in."
+      code: "Authentication code"
+      verify: "Verify"

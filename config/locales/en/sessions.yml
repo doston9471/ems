@@ -1,0 +1,15 @@
+en:
+  sessions:
+    brand: "Employee Management"
+    title: "Sign in"
+    subtitle: "Access your company workspace"
+    email: "Email"
+    password: "Password"
+    submit: "Sign in"
+    forgot_password: "Forgot password?"
+    or_continue: "Or continue with"
+    company_sso: "Company (SSO)"
+    load_sso: "Load SSO options"
+    sign_in_sso: "Sign in with SSO (%{provider})"
+    continue_google: "Continue with Google"
+    continue_github: "Continue with GitHub"

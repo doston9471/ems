@@ -1,0 +1,19 @@
+es:
+  integrations:
+    edit:
+      title: "Integraciones"
+      heading: "Configuración de integraciones"
+      subtitle: "Configure Slack, Teams, Telegram, Twilio SMS y flags de calendario stub para %{company}."
+      chat_webhooks: "Webhooks de chat"
+      slack_webhook: "URL del webhook de Slack"
+      teams_webhook: "URL del webhook de Teams"
+      telegram: "Telegram"
+      bot_token: "Token del bot"
+      default_chat_id: "ID de chat predeterminado"
+      twilio: "Twilio SMS"
+      account_sid: "Account SID"
+      auth_token: "Auth token"
+      from_number: "Número de origen"
+      calendar_stubs: "Stubs de calendario"
+      force_google_stub: "Forzar modo stub de Google Calendar"
+      force_outlook_stub: "Forzar modo stub de Outlook Calendar"

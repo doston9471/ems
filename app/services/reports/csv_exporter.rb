@@ -9,13 +9,17 @@ module Reports
       employment_status joining_date salary_cents currency manager
     ].freeze
 
+    def self.translated_headers
+      HEADERS.map { |header| I18n.t("reports.export.headers.#{header}") }
+    end
+
     def initialize(employees:)
       @employees = employees
     end
 
     def call
       CSV.generate(headers: true) do |csv|
-        csv << HEADERS
+        csv << self.class.translated_headers
         @employees.find_each do |employee|
           csv << [
             employee.employee_number,

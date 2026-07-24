@@ -1,0 +1,15 @@
+ru:
+  departments:
+    index:
+      title: "Отделы"
+      subtitle: "Структура организации"
+      new: "Новый отдел"
+      empty: "Пока нет отделов."
+    new:
+      title: "Новый отдел"
+    edit:
+      title: "Редактировать отдел"
+    show:
+      parent: "Родительский"
+    form:
+      parent: "Родительский отдел"

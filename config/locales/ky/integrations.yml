@@ -1,0 +1,19 @@
+ky:
+  integrations:
+    edit:
+      title: "Интеграциялар"
+      heading: "Интеграция жөндөөлөрү"
+      subtitle: "%{company} үчүн Slack, Teams, Telegram, Twilio SMS жана календар stub байрактарын жөндөңүз."
+      chat_webhooks: "Чат webhook'тору"
+      slack_webhook: "Slack webhook URL"
+      teams_webhook: "Teams webhook URL"
+      telegram: "Telegram"
+      bot_token: "Бот токени"
+      default_chat_id: "Демейки чат ID"
+      twilio: "Twilio SMS"
+      account_sid: "Account SID"
+      auth_token: "Auth token"
+      from_number: "Жөнөтүүчү номер"
+      calendar_stubs: "Календар stub'тары"
+      force_google_stub: "Google Calendar stub режимин мажбурлоо"
+      force_outlook_stub: "Outlook Calendar stub режимин мажбурлоо"

@@ -1,0 +1,26 @@
+ky:
+  calendars:
+    index:
+      subtitle: "Бекитилген өргүүлөрдү жана маектерди синхрондоштуруу үчүн Google же Outlook календарларын туташтырыңыз."
+      connect_google: "Google туташтыруу"
+      connect_outlook: "Outlook туташтыруу"
+      sync_history: "Синхрондоштуруу тарыхы"
+      provider: "Провайдер"
+      calendar_id: "Календар ID"
+      enabled: "Күйгүзүлгөн"
+      expires: "Мөөнөтү"
+      remove_confirm: "Бул календар туташуусу алынып салынсынбы?"
+      empty: "Календар туташуулары жок."
+      add: "Туташуу кошуу"
+      add_hint: "Жергиликтүү демолор үчүн провайдер жана календар ID орун басарлары. Токендерди кийинчерээк толтурса болот."
+      calendar_id_placeholder: "primary"
+    events:
+      title: "Календар синхрондоштуруу тарыхы"
+      page_title: "%{calendars} — Синхрондоштуруу тарыхы"
+      subtitle: "%{company} үчүн акыркы календар синхрондоштуруу аракеттери."
+      connections: "Туташуулар"
+      eventable: "Объект"
+      external_id: "Тышкы ID"
+      synced: "Синхрондолгон"
+      error: "Ката"
+      empty: "Календар синхрондоштуруу аракеттери жок."

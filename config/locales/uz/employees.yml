@@ -1,0 +1,32 @@
+uz:
+  employees:
+    index:
+      title: "Xodimlar"
+      subtitle: "%{company} dagi odamlar"
+      new: "Yangi xodim"
+      empty: "Xodimlar topilmadi."
+      placeholder_name: "Ism"
+      placeholder_email: "Email"
+      placeholder_status: "Holat"
+    form:
+      custom_fields: "Maxsus maydonlar"
+      salary_hint: "Yillik ish haqi asosiy birliklarda (masalan 120000.00)."
+      cancel: "Bekor qilish"
+      department: "Bo‘lim"
+      office: "Ofis"
+      manager: "Rahbar"
+      salary: "Ish haqi"
+    new:
+      title: "Yangi xodim"
+    edit:
+      title: "Xodimni tahrirlash"
+    show:
+      no_title: "Lavozimsiz"
+      edit: "Tahrirlash"
+      email: "Email"
+      status: "Holat"
+      department: "Bo‘lim"
+      office: "Ofis"
+      manager: "Rahbar"
+      joined: "Ishga kirgan sana"
+      salary: "Ish haqi"

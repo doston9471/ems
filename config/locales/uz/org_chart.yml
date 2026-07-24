@@ -1,0 +1,7 @@
+uz:
+  org_chart:
+    show:
+      subtitle: "Rahbarlar bo‘yicha hisobot chiziqlari."
+      empty: "Ko‘rsatish uchun faol xodimlar yo‘q."
+      no_department: "Bo‘lim yo‘q"
+      you: "siz"

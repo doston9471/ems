@@ -1,0 +1,15 @@
+ky:
+  departments:
+    index:
+      title: "Бөлүмдөр"
+      subtitle: "Уюмдун түзүмү"
+      new: "Жаңы бөлүм"
+      empty: "Бөлүмдөр жок."
+    new:
+      title: "Жаңы бөлүм"
+    edit:
+      title: "Бөлүмдү түзөтүү"
+    show:
+      parent: "Жогорку"
+    form:
+      parent: "Жогорку бөлүм"

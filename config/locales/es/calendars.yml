@@ -1,0 +1,26 @@
+es:
+  calendars:
+    index:
+      subtitle: "Conecte calendarios de Google u Outlook para sincronizar ausencias aprobadas y entrevistas."
+      connect_google: "Conectar Google"
+      connect_outlook: "Conectar Outlook"
+      sync_history: "Historial de sincronización"
+      provider: "Proveedor"
+      calendar_id: "ID del calendario"
+      enabled: "Habilitado"
+      expires: "Caduca"
+      remove_confirm: "¿Eliminar esta conexión de calendario?"
+      empty: "Aún no hay conexiones de calendario."
+      add: "Añadir conexión"
+      add_hint: "Marcadores de proveedor e ID de calendario para demos locales. Los tokens se pueden completar después."
+      calendar_id_placeholder: "primary"
+    events:
+      title: "Historial de sincronización del calendario"
+      page_title: "%{calendars} — Historial de sincronización"
+      subtitle: "Intentos recientes de sincronización de calendario para %{company}."
+      connections: "Conexiones"
+      eventable: "Eventable"
+      external_id: "ID externo"
+      synced: "Sincronizado"
+      error: "Error"
+      empty: "Aún no hay intentos de sincronización de calendario."

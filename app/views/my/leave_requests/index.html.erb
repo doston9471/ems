@@ -1,11 +1,11 @@
 <div class="space-y-6">
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-semibold text-slate-900">My leave</h1>
-      <p class="mt-1 text-sm text-slate-500">Balances and your requests.</p>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= t("my.leave.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("my.leave.subtitle") %></p>
     </div>
     <% if policy(LeaveRequest).create? %>
-      <%= link_to "Request leave", new_my_leave_request_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("leave.index.request"), new_my_leave_request_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <% end %>
   </div>
 
@@ -14,8 +14,8 @@
       <% @balances.each do |balance| %>
         <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm">
           <p class="text-xs uppercase tracking-wide text-slate-500"><%= balance.leave_type.name %></p>
-          <p class="mt-2 text-xl font-semibold text-slate-900"><%= balance.entitled - balance.used %> left</p>
-          <p class="text-xs text-slate-500"><%= balance.used %> used of <%= balance.entitled %></p>
+          <p class="mt-2 text-xl font-semibold text-slate-900"><%= t("my.leave.remaining", count: balance.entitled - balance.used) %></p>
+          <p class="text-xs text-slate-500"><%= t("my.leave.used_of", used: balance.used, entitled: balance.entitled) %></p>
         </div>
       <% end %>
     </div>
@@ -25,10 +25,10 @@
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Type</th>
-          <th class="px-4 py-3">Dates</th>
-          <th class="px-4 py-3">Days</th>
-          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3"><%= t("common.type") %></th>
+          <th class="px-4 py-3"><%= t("common.dates") %></th>
+          <th class="px-4 py-3"><%= t("common.days") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -43,7 +43,7 @@
       </tbody>
     </table>
     <% if @leave_requests.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No leave requests yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("leave.index.empty") %></p>
     <% end %>
   </div>
 </div>

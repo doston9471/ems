@@ -1,11 +1,11 @@
 <div class="space-y-6">
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-semibold text-slate-900">Leave requests</h1>
-      <p class="mt-1 text-sm text-slate-500">Submit and approve time off</p>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= t("leave.index.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("leave.index.subtitle") %></p>
     </div>
     <% if Current.employee && policy(LeaveRequest).create? %>
-      <%= link_to "Request leave", new_leave_request_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("leave.index.request"), new_leave_request_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <% end %>
   </div>
 
@@ -13,11 +13,11 @@
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Employee</th>
-          <th class="px-4 py-3">Type</th>
-          <th class="px-4 py-3">Dates</th>
-          <th class="px-4 py-3">Days</th>
-          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3"><%= t("common.employee") %></th>
+          <th class="px-4 py-3"><%= t("common.type") %></th>
+          <th class="px-4 py-3"><%= t("common.dates") %></th>
+          <th class="px-4 py-3"><%= t("common.days") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -33,7 +33,7 @@
       </tbody>
     </table>
     <% if @leave_requests.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No leave requests yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("leave.index.empty") %></p>
     <% end %>
   </div>
 </div>

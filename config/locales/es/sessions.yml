@@ -1,0 +1,15 @@
+es:
+  sessions:
+    brand: "Gestión de empleados"
+    title: "Iniciar sesión"
+    subtitle: "Accede al espacio de tu empresa"
+    email: "Correo"
+    password: "Contraseña"
+    submit: "Iniciar sesión"
+    forgot_password: "¿Olvidaste la contraseña?"
+    or_continue: "O continúa con"
+    company_sso: "Empresa (SSO)"
+    load_sso: "Cargar opciones SSO"
+    sign_in_sso: "Entrar con SSO (%{provider})"
+    continue_google: "Continuar con Google"
+    continue_github: "Continuar con GitHub"

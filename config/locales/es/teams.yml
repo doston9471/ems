@@ -1,0 +1,16 @@
+es:
+  teams:
+    index:
+      title: "Equipos"
+      subtitle: "Estructura de equipos de %{company}"
+      new: "Nuevo equipo"
+      empty: "Aún no hay equipos."
+    new:
+      title: "Nuevo equipo"
+    edit:
+      title: "Editar equipo"
+    show:
+      no_department: "Sin departamento"
+      lead: "Responsable: %{name}"
+      no_members: "Aún no hay miembros."
+      back: "← Todos los equipos"

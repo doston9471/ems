@@ -1,0 +1,12 @@
+ky:
+  goals:
+    index:
+      title: "Максаттар"
+      subtitle: "Кызматкерлердин максаттарын көзөмөлдөө"
+      review_cycles: "Баалоо циклдери"
+      new: "Жаңы максат"
+      empty: "Максаттар жок."
+    new:
+      title: "Жаңы максат"
+      progress_percent: "Прогресс %"
+      submit: "Максат түзүү"

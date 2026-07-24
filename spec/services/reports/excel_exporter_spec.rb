@@ -18,4 +18,12 @@ RSpec.describe Reports::ExcelExporter do
     # XLSX files are ZIP archives
     expect(binary[0, 2]).to eq("PK")
   end
+
+  it "uses a translated worksheet name" do
+    I18n.with_locale(:ru) do
+      binary = described_class.new(employees: company.employees.kept).call
+      expect(binary).to be_a(String)
+      expect(binary.bytesize).to be > 0
+    end
+  end
 end

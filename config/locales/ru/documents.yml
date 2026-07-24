@@ -1,0 +1,18 @@
+ru:
+  documents:
+    index:
+      title: "Документы"
+      subtitle: "Документы сотрудников с историей версий"
+      new: "Новый документ"
+      empty: "Пока нет документов."
+    new:
+      title: "Новый документ"
+      initial_file: "Исходный файл"
+      submit: "Создать документ"
+    show:
+      upload_version: "Загрузить новую версию"
+      change_note: "Примечание к изменению"
+      upload_submit: "Загрузить версию"
+      version_history: "История версий"
+      empty_versions: "Версии ещё не загружены."
+      back: "← Все документы"

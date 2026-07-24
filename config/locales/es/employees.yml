@@ -1,0 +1,32 @@
+es:
+  employees:
+    index:
+      title: "Empleados"
+      subtitle: "Personas en %{company}"
+      new: "Nuevo empleado"
+      empty: "No se encontraron empleados."
+      placeholder_name: "Nombre"
+      placeholder_email: "Correo"
+      placeholder_status: "Estado"
+    form:
+      custom_fields: "Campos personalizados"
+      salary_hint: "Salario anual en unidades mayores (p. ej. 120000.00)."
+      cancel: "Cancelar"
+      department: "Departamento"
+      office: "Oficina"
+      manager: "Manager"
+      salary: "Salario"
+    new:
+      title: "Nuevo empleado"
+    edit:
+      title: "Editar empleado"
+    show:
+      no_title: "Sin cargo"
+      edit: "Editar"
+      email: "Correo"
+      status: "Estado"
+      department: "Departamento"
+      office: "Oficina"
+      manager: "Manager"
+      joined: "Ingreso"
+      salary: "Salario"

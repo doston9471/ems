@@ -1,0 +1,14 @@
+es:
+  mailers:
+    email_verifications:
+      subject: "Verifica tu dirección de correo"
+      html_intro: "Confirma tu dirección de correo visitando"
+      html_link: "este enlace de verificación"
+      expires: "Este enlace caduca en 2 días."
+      text_intro: "Confirma tu dirección de correo:"
+    passwords:
+      subject: "Restablece tu contraseña"
+      html_intro: "Puedes restablecer tu contraseña en"
+      html_link: "esta página de restablecimiento"
+      text_intro: "Puedes restablecer tu contraseña en"
+      expires_in: "Este enlace caduca en %{duration}."

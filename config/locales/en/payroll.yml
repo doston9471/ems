@@ -1,0 +1,18 @@
+en:
+  payroll:
+    index:
+      title: "Payroll"
+      subtitle: "Generated payroll runs and employee items"
+      generate: "Generate run"
+      generated: "Generated"
+      items: "Items"
+      empty: "No payroll runs yet."
+    new:
+      title: "Generate payroll run"
+      submit: "Generate"
+    show:
+      title: "Payroll run"
+      generated_at: "Generated at"
+      total_net: "Total net"
+      empty: "No payroll items."
+      back: "← All payroll runs"

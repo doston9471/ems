@@ -1,0 +1,17 @@
+uz:
+  mfa:
+    show:
+      title: "Ikki bosqichli autentifikatsiya"
+      enabled_hint: "Hisobingizda autentifikator ilovasi orqali tekshiruv yoqilgan."
+      disabled_hint: "QR kodni autentifikator ilovasida skanerlang, so‘ng MFA yoqish uchun kodni kiriting."
+      code: "Autentifikator kodi"
+      manual_secret: "Yoki bu maxfiy kalitni qo‘lda kiriting"
+      enable: "MFA yoqish"
+      disable: "MFA o‘chirish"
+      back: "Boshqaruv paneliga qaytish"
+    challenge:
+      brand: "Xavfsizlik"
+      title: "Autentifikator kodi"
+      subtitle: "Kirishni yakunlash uchun autentifikator ilovasidagi 6 xonali kodni kiriting."
+      code: "Autentifikatsiya kodi"
+      verify: "Tasdiqlash"

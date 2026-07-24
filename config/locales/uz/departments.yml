@@ -1,0 +1,15 @@
+uz:
+  departments:
+    index:
+      title: "Bo‘limlar"
+      subtitle: "Tashkilot tuzilmasi"
+      new: "Yangi bo‘lim"
+      empty: "Hali bo‘limlar yo‘q."
+    new:
+      title: "Yangi bo‘lim"
+    edit:
+      title: "Bo‘limni tahrirlash"
+    show:
+      parent: "Yuqori"
+    form:
+      parent: "Yuqori bo‘lim"

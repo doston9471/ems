@@ -1,0 +1,16 @@
+ky:
+  teams:
+    index:
+      title: "Командалар"
+      subtitle: "%{company} үчүн команда түзүмү"
+      new: "Жаңы команда"
+      empty: "Командалар жок."
+    new:
+      title: "Жаңы команда"
+    edit:
+      title: "Команданы түзөтүү"
+    show:
+      no_department: "Бөлүм жок"
+      lead: "Жетекчи: %{name}"
+      no_members: "Мүчөлөр жок."
+      back: "← Бардык командалар"

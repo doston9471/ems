@@ -1,0 +1,18 @@
+en:
+  documents:
+    index:
+      title: "Documents"
+      subtitle: "Employee documents with version history"
+      new: "New document"
+      empty: "No documents yet."
+    new:
+      title: "New document"
+      initial_file: "Initial file"
+      submit: "Create document"
+    show:
+      upload_version: "Upload new version"
+      change_note: "Change note"
+      upload_submit: "Upload version"
+      version_history: "Version history"
+      empty_versions: "No versions uploaded yet."
+      back: "← All documents"

@@ -7,8 +7,8 @@
 <%= render "shared/nav_link", path: notifications_path, label: t("nav.notifications"), active: controller_name == "notifications", badge_id: "notification-badge", badge_count: (@unread_notification_count || 0) %>
 <%= render "shared/nav_link", path: calendar_connections_path, label: t("nav.calendars"), active: %w[calendar_connections calendar_events calendar_oauth].include?(controller_name) %>
 <% if policy(current_company).update? %>
-  <%= render "shared/nav_link", path: edit_company_settings_path, label: t("nav.integrations", default: "Integrations"), active: controller_name == "company_settings" %>
-  <%= render "shared/nav_link", path: custom_field_definitions_path, label: t("nav.custom_fields", default: "Custom fields"), active: controller_name == "custom_field_definitions" %>
+  <%= render "shared/nav_link", path: edit_company_settings_path, label: t("nav.integrations"), active: controller_name == "company_settings" %>
+  <%= render "shared/nav_link", path: custom_field_definitions_path, label: t("nav.custom_fields"), active: controller_name == "custom_field_definitions" %>
 <% end %>
 <% if FeatureFlag.enabled?("org_chart", company: current_company) %>
   <%= render "shared/nav_link", path: org_chart_path, label: t("nav.org_chart"), active: controller_name == "org_charts" %>

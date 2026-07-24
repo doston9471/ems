@@ -16,7 +16,9 @@ export default class extends Controller {
     department: Object,
     status: Object,
     attendance: Object,
-    leave: Object
+    leave: Object,
+    employeesLabel: String,
+    presentLabel: String
   }
 
   connect() {
@@ -44,13 +46,13 @@ export default class extends Controller {
     this.charts = []
 
     if (this.hasDepartmentTarget) {
-      this.charts.push(this.renderBar(this.departmentTarget, this.departmentValue, "Employees"))
+      this.charts.push(this.renderBar(this.departmentTarget, this.departmentValue, this.employeesLabelValue))
     }
     if (this.hasStatusTarget) {
       this.charts.push(this.renderDoughnut(this.statusTarget, this.statusValue))
     }
     if (this.hasAttendanceTarget) {
-      this.charts.push(this.renderLine(this.attendanceTarget, this.attendanceValue, "Present"))
+      this.charts.push(this.renderLine(this.attendanceTarget, this.attendanceValue, this.presentLabelValue))
     }
     if (this.hasLeaveTarget) {
       this.charts.push(this.renderDoughnut(this.leaveTarget, this.leaveValue))

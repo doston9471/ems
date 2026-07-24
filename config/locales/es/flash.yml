@@ -1,0 +1,32 @@
+es:
+  layout:
+    app_name: "Gestión de empleados"
+    brand: "EMS"
+    overview_for: "Resumen de %{company}"
+  flash:
+    unauthorized: "No estás autorizado para realizar esta acción."
+    no_employee_profile: "No hay un perfil de empleado vinculado a tu cuenta."
+    try_again_later: "Inténtalo de nuevo más tarde."
+    sessions:
+      invalid_credentials: "Prueba con otro correo o contraseña."
+      mfa_required: "Introduce el código del autenticador para terminar el acceso."
+    employees:
+      created: "Empleado creado."
+      updated: "Empleado actualizado."
+    leave:
+      submitted: "Solicitud de ausencia enviada."
+      approved: "Solicitud de ausencia aprobada."
+      rejected: "Solicitud de ausencia rechazada."
+    my:
+      review_submitted: "Evaluación enviada."
+      leave_submitted: "Solicitud de ausencia enviada."
+      contact_added: "Contacto de emergencia añadido."
+      contact_updated: "Contacto de emergencia actualizado."
+      contact_removed: "Contacto de emergencia eliminado."
+      preferences_saved: "Preferencias de notificación guardadas."
+      marked_read: "Marcado como leído."
+      marked_all_read: "Todas las notificaciones marcadas como leídas."
+      clocked_in: "Entrada registrada."
+      clocked_out: "Salida registrada."
+      break_started: "Descanso iniciado."
+      break_ended: "Descanso finalizado."

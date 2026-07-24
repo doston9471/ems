@@ -2,7 +2,7 @@
   <div>
     <h1 class="text-2xl font-semibold text-slate-900"><%= @applicant.full_name %></h1>
     <p class="mt-1 text-sm text-slate-500">
-      <%= @applicant.job_title.presence || "Applicant" %>
+      <%= @applicant.job_title.presence || t("recruitment.show.applicant") %>
       · <%= @applicant.stage.humanize %>
     </p>
   </div>
@@ -15,36 +15,36 @@
 
   <dl class="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:grid-cols-2 text-sm">
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Email</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.email") %></dt>
       <dd class="mt-1"><%= @applicant.email %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Phone</dt>
-      <dd class="mt-1"><%= @applicant.phone.presence || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.phone") %></dt>
+      <dd class="mt-1"><%= @applicant.phone.presence || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Department</dt>
-      <dd class="mt-1"><%= @applicant.department&.name || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.department") %></dt>
+      <dd class="mt-1"><%= @applicant.department&.name || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Hired employee</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("recruitment.show.hired_employee") %></dt>
       <dd class="mt-1">
         <% if @applicant.hired_employee %>
           <%= link_to @applicant.hired_employee.full_name, employee_path(@applicant.hired_employee), class: "text-teal-700 hover:text-teal-800" %>
         <% else %>
-          —
+          <%= t("common.empty_value") %>
         <% end %>
       </dd>
     </div>
     <div class="sm:col-span-2">
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Notes</dt>
-      <dd class="mt-1"><%= @applicant.notes.presence || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.notes") %></dt>
+      <dd class="mt-1"><%= @applicant.notes.presence || t("common.empty_value") %></dd>
     </div>
   </dl>
 
   <% if policy(@applicant).update? && !@applicant.hired? %>
     <%= form_with model: @applicant, class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do |f| %>
-      <h2 class="text-sm font-semibold text-slate-900">Update stage</h2>
+      <h2 class="text-sm font-semibold text-slate-900"><%= t("recruitment.show.update_stage") %></h2>
       <div>
         <%= f.label :stage, class: "block text-sm font-medium text-slate-700" %>
         <%= f.select :stage, Applicant.stages.keys.map { |k| [k.humanize, k] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
@@ -53,36 +53,36 @@
         <%= f.label :notes, class: "block text-sm font-medium text-slate-700" %>
         <%= f.text_area :notes, rows: 2, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
-      <%= f.submit "Save", class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= f.submit t("common.save"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
     <% end %>
   <% end %>
 
   <% if policy(@applicant).hire? && !@applicant.hired? && !@applicant.rejected? %>
     <%= form_with url: hire_applicant_path(@applicant), method: :post, class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do %>
-      <h2 class="text-sm font-semibold text-slate-900">Hire applicant</h2>
-      <p class="text-sm text-slate-500">Creates an employee record and marks this applicant as hired.</p>
+      <h2 class="text-sm font-semibold text-slate-900"><%= t("recruitment.show.hire_title") %></h2>
+      <p class="text-sm text-slate-500"><%= t("recruitment.show.hire_hint") %></p>
       <div class="grid gap-3 sm:grid-cols-2">
         <div>
-          <label for="hire_salary" class="block text-sm font-medium text-slate-700">Salary</label>
+          <label for="hire_salary" class="block text-sm font-medium text-slate-700"><%= t("common.salary") %></label>
           <input type="number" name="hire[salary]" id="hire_salary" step="0.01" min="0" value="0"
                  class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
         </div>
         <div>
-          <label for="hire_currency" class="block text-sm font-medium text-slate-700">Currency</label>
+          <label for="hire_currency" class="block text-sm font-medium text-slate-700"><%= t("common.currency") %></label>
           <input type="text" name="hire[currency]" id="hire_currency" maxlength="3"
                  value="<%= Current.company.currency %>"
                  class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm uppercase">
         </div>
       </div>
-      <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600">Hire</button>
+      <button type="submit" class="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600"><%= t("common.hire") %></button>
     <% end %>
   <% end %>
 
   <% if policy(@interview).create? && !@applicant.hired? && !@applicant.rejected? %>
     <%= form_with model: [@applicant, @interview], class: "space-y-3 rounded-lg border border-slate-200 bg-white p-5" do |f| %>
-      <h2 class="text-sm font-semibold text-slate-900">Schedule interview</h2>
+      <h2 class="text-sm font-semibold text-slate-900"><%= t("recruitment.show.schedule_interview") %></h2>
       <div>
-        <%= f.label :interviewer_id, "Interviewer", class: "block text-sm font-medium text-slate-700" %>
+        <%= f.label :interviewer_id, t("recruitment.show.interviewer"), class: "block text-sm font-medium text-slate-700" %>
         <%= f.collection_select :interviewer_id, @employees, :id, :full_name, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
       <div>
@@ -93,19 +93,19 @@
         <%= f.label :mode, class: "block text-sm font-medium text-slate-700" %>
         <%= f.select :mode, Interview.modes.keys.map { |k| [k.humanize, k] }, {}, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
       </div>
-      <%= f.submit "Schedule", class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
+      <%= f.submit t("common.schedule"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
     <% end %>
   <% end %>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
-    <h2 class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Interviews</h2>
+    <h2 class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500"><%= t("recruitment.show.interviews") %></h2>
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">When</th>
-          <th class="px-4 py-3">Interviewer</th>
-          <th class="px-4 py-3">Mode</th>
-          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3"><%= t("common.when") %></th>
+          <th class="px-4 py-3"><%= t("recruitment.show.interviewer") %></th>
+          <th class="px-4 py-3"><%= t("recruitment.show.mode") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -120,9 +120,9 @@
       </tbody>
     </table>
     <% if @interviews.empty? %>
-      <p class="px-4 py-6 text-center text-sm text-slate-500">No interviews yet.</p>
+      <p class="px-4 py-6 text-center text-sm text-slate-500"><%= t("recruitment.show.empty_interviews") %></p>
     <% end %>
   </div>
 
-  <p><%= link_to "← All applicants", applicants_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
+  <p><%= link_to t("recruitment.show.back"), applicants_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
 </div>

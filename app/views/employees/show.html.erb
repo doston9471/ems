@@ -2,40 +2,40 @@
   <div class="flex flex-wrap items-start justify-between gap-3">
     <div>
       <h1 class="text-2xl font-semibold text-slate-900"><%= @employee.full_name %></h1>
-      <p class="mt-1 text-sm text-slate-500"><%= @employee.job_title || "No title" %> · <%= @employee.employee_number %></p>
+      <p class="mt-1 text-sm text-slate-500"><%= @employee.job_title || t("employees.show.no_title") %> · <%= @employee.employee_number %></p>
     </div>
     <% if policy(@employee).update? %>
-      <%= link_to "Edit", edit_employee_path(@employee), class: "rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
+      <%= link_to t("employees.show.edit"), edit_employee_path(@employee), class: "rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" %>
     <% end %>
   </div>
 
   <dl class="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:grid-cols-2">
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Email</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.email") %></dt>
       <dd class="mt-1 text-sm text-slate-900"><%= @employee.email %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Status</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.status") %></dt>
       <dd class="mt-1 text-sm text-slate-900"><%= @employee.employment_status.humanize %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Department</dt>
-      <dd class="mt-1 text-sm text-slate-900"><%= @employee.department&.name || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.department") %></dt>
+      <dd class="mt-1 text-sm text-slate-900"><%= @employee.department&.name || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Office</dt>
-      <dd class="mt-1 text-sm text-slate-900"><%= @employee.office&.name || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.office") %></dt>
+      <dd class="mt-1 text-sm text-slate-900"><%= @employee.office&.name || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Manager</dt>
-      <dd class="mt-1 text-sm text-slate-900"><%= @employee.manager&.full_name || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.manager") %></dt>
+      <dd class="mt-1 text-sm text-slate-900"><%= @employee.manager&.full_name || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Joined</dt>
-      <dd class="mt-1 text-sm text-slate-900"><%= @employee.joining_date || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.joined") %></dt>
+      <dd class="mt-1 text-sm text-slate-900"><%= @employee.joining_date || t("common.empty_value") %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Salary</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("employees.show.salary") %></dt>
       <dd class="mt-1 text-sm text-slate-900">
         <%= number_to_currency(@employee.salary, unit: @employee.currency.presence || "", format: "%u %n") %>
       </dd>
@@ -48,7 +48,7 @@
       <% custom_values.each do |value| %>
         <div>
           <dt class="text-xs uppercase tracking-wide text-slate-500"><%= value.custom_field_definition.label %></dt>
-          <dd class="mt-1 text-sm text-slate-900"><%= value.value.presence || "—" %></dd>
+          <dd class="mt-1 text-sm text-slate-900"><%= value.value.presence || t("common.empty_value") %></dd>
         </div>
       <% end %>
     </dl>

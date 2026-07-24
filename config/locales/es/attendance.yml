@@ -1,0 +1,22 @@
+es:
+  attendance:
+    index:
+      title: "Asistencia"
+      subtitle: "Resumen diario del %{date}"
+      clock_in: "Entrada"
+      clock_out: "Salida"
+      break_start: "Inicio de descanso"
+      break_end: "Fin de descanso"
+      today_status: "Hoy: %{status}"
+      records_today: "Registros hoy"
+      complete: "Completo"
+      open: "Abierto"
+      week_worked: "Semana trabajada (h)"
+    my:
+      title: "Mi asistencia"
+      subtitle: "Registra entrada/salida y revisa tus días."
+      start_break: "Iniciar descanso"
+      end_break: "Finalizar descanso"
+      no_day: "Aún no hay registro de asistencia."
+      empty: "Aún no hay historial de asistencia."
+      minutes: "Minutos"

@@ -1,11 +1,11 @@
 <div class="space-y-6">
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-semibold text-slate-900">Departments</h1>
-      <p class="mt-1 text-sm text-slate-500">Organization structure</p>
+      <h1 class="text-2xl font-semibold text-slate-900"><%= t("departments.index.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("departments.index.subtitle") %></p>
     </div>
     <% if policy(Department).create? %>
-      <%= link_to "New department", new_department_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("departments.index.new"), new_department_path, class: "inline-flex rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
     <% end %>
   </div>
 
@@ -17,7 +17,7 @@
         <% end %>
       </ul>
     <% else %>
-      <p class="text-sm text-slate-500">No departments yet.</p>
+      <p class="text-sm text-slate-500"><%= t("departments.index.empty") %></p>
     <% end %>
   </div>
 </div>

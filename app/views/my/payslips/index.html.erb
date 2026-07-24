@@ -1,15 +1,15 @@
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">My payslips</h1>
-    <p class="mt-1 text-sm text-slate-500">Completed payroll runs for your employee record.</p>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("my.payslips.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("my.payslips.subtitle") %></p>
   </div>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Period</th>
-          <th class="px-4 py-3">Net</th>
+          <th class="px-4 py-3"><%= t("my.payslips.period") %></th>
+          <th class="px-4 py-3"><%= t("my.payslips.net") %></th>
           <th class="px-4 py-3"></th>
         </tr>
       </thead>
@@ -19,15 +19,15 @@
             <td class="px-4 py-3"><%= item.payroll_run.period_start %> → <%= item.payroll_run.period_end %></td>
             <td class="px-4 py-3 font-medium"><%= number_to_currency(item.net_cents / 100.0, unit: "#{item.currency} ") %></td>
             <td class="px-4 py-3 text-right space-x-3">
-              <%= link_to "View", my_payslip_path(item), class: "text-teal-700 hover:text-teal-800" %>
-              <%= link_to "PDF", my_payslip_path(item, format: :pdf), data: { turbo: false }, class: "text-teal-700 hover:text-teal-800" %>
+              <%= link_to t("common.view"), my_payslip_path(item), class: "text-teal-700 hover:text-teal-800" %>
+              <%= link_to t("my.payslips.pdf"), my_payslip_path(item, format: :pdf), data: { turbo: false }, class: "text-teal-700 hover:text-teal-800" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <% if @payslips.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No payslips yet.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("my.payslips.empty") %></p>
     <% end %>
   </div>
 </div>

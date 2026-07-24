@@ -6,11 +6,11 @@
         <span class="ml-2 font-mono text-xs text-slate-500"><%= node.department.code %></span>
       <% end %>
       <% unless node.department.active? %>
-        <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">Inactive</span>
+        <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600"><%= t("common.inactive") %></span>
       <% end %>
     </div>
     <% if policy(node.department).update? %>
-      <%= link_to "Edit", edit_department_path(node.department), class: "text-sm text-teal-700 hover:text-teal-800" %>
+      <%= link_to t("common.edit"), edit_department_path(node.department), class: "text-sm text-teal-700 hover:text-teal-800" %>
     <% end %>
   </div>
   <% if node.children.any? %>

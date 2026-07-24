@@ -1,0 +1,32 @@
+ky:
+  employees:
+    index:
+      title: "Кызматкерлер"
+      subtitle: "%{company}дагы адамдар"
+      new: "Жаңы кызматкер"
+      empty: "Кызматкерлер табылган жок."
+      placeholder_name: "Аты"
+      placeholder_email: "Email"
+      placeholder_status: "Абал"
+    form:
+      custom_fields: "Жеке талаалар"
+      salary_hint: "Жылдык эмгек акы негизги бирдиктерде (мис. 120000.00)."
+      cancel: "Жокко чыгаруу"
+      department: "Бөлүм"
+      office: "Офис"
+      manager: "Жетекчи"
+      salary: "Эмгек акы"
+    new:
+      title: "Жаңы кызматкер"
+    edit:
+      title: "Кызматкерди түзөтүү"
+    show:
+      no_title: "Кызматсыз"
+      edit: "Түзөтүү"
+      email: "Email"
+      status: "Абал"
+      department: "Бөлүм"
+      office: "Офис"
+      manager: "Жетекчи"
+      joined: "Ишке кирген күн"
+      salary: "Эмгек акы"

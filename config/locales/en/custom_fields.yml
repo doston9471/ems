@@ -1,0 +1,16 @@
+en:
+  custom_fields:
+    index:
+      title: "Custom fields"
+      subtitle: "Tenant-defined attributes for employees."
+      new: "New field"
+      delete_confirm: "Delete this field?"
+      empty: "No custom fields yet."
+    new:
+      title: "New custom field"
+    edit:
+      title: "Edit custom field"
+    form:
+      key_hint: "snake_case identifier, unique per company."
+      select_choices: "Select choices (comma-separated)"
+      choices_placeholder: "A, B, C"

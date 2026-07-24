@@ -1,0 +1,9 @@
+es:
+  search:
+    subtitle: "Empleados y departamentos."
+    placeholder: "Nombre, correo, cargo, departamento…"
+    submit: "Buscar"
+    employees: "Empleados (%{count})"
+    departments: "Departamentos (%{count})"
+    no_employees: "No coincidió ningún empleado."
+    no_departments: "No coincidió ningún departamento."

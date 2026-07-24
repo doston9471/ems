@@ -1,18 +1,18 @@
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">Timesheets / overtime</h1>
-    <p class="mt-1 text-sm text-slate-500">Review overtime above the company standard day (default 8 hours).</p>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("timesheets.index.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("timesheets.index.subtitle") %></p>
   </div>
 
   <section class="overflow-hidden rounded-lg border border-slate-200 bg-white">
-    <div class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">Pending approval</div>
+    <div class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700"><%= t("timesheets.index.pending") %></div>
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Employee</th>
-          <th class="px-4 py-3">Date</th>
-          <th class="px-4 py-3">Worked</th>
-          <th class="px-4 py-3">Overtime</th>
+          <th class="px-4 py-3"><%= t("common.employee") %></th>
+          <th class="px-4 py-3"><%= t("common.date") %></th>
+          <th class="px-4 py-3"><%= t("timesheets.index.worked") %></th>
+          <th class="px-4 py-3"><%= t("timesheets.index.overtime") %></th>
           <th class="px-4 py-3"></th>
         </tr>
       </thead>
@@ -21,12 +21,12 @@
           <tr>
             <td class="px-4 py-3 font-medium"><%= day.employee.full_name %></td>
             <td class="px-4 py-3"><%= day.work_date %></td>
-            <td class="px-4 py-3"><%= day.worked_minutes %> min</td>
-            <td class="px-4 py-3"><%= day.overtime_minutes %> min</td>
+            <td class="px-4 py-3"><%= day.worked_minutes %> <%= t("common.min") %></td>
+            <td class="px-4 py-3"><%= day.overtime_minutes %> <%= t("common.min") %></td>
             <td class="px-4 py-3 text-right space-x-2">
               <% if policy(day).update? %>
-                <%= button_to "Approve", approve_timesheet_path(day), method: :post, class: "inline text-teal-700 hover:text-teal-800" %>
-                <%= button_to "Reject", reject_timesheet_path(day), method: :post, class: "inline text-rose-600 hover:text-rose-700" %>
+                <%= button_to t("common.approve"), approve_timesheet_path(day), method: :post, class: "inline text-teal-700 hover:text-teal-800" %>
+                <%= button_to t("common.reject"), reject_timesheet_path(day), method: :post, class: "inline text-rose-600 hover:text-rose-700" %>
               <% end %>
             </td>
           </tr>
@@ -34,21 +34,21 @@
       </tbody>
     </table>
     <% if @pending.empty? %>
-      <p class="px-4 py-6 text-center text-sm text-slate-500">No pending overtime.</p>
+      <p class="px-4 py-6 text-center text-sm text-slate-500"><%= t("timesheets.index.empty_pending") %></p>
     <% end %>
   </section>
 
   <section class="overflow-hidden rounded-lg border border-slate-200 bg-white">
-    <div class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">Recent decisions</div>
+    <div class="border-b border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700"><%= t("timesheets.index.recent_decisions") %></div>
     <ul class="divide-y divide-slate-100 text-sm">
       <% @recent.each do |day| %>
         <li class="flex flex-wrap items-center justify-between gap-2 px-4 py-3">
-          <span><%= day.employee.full_name %> · <%= day.work_date %> · <%= day.overtime_minutes %> min OT</span>
+          <span><%= day.employee.full_name %> · <%= day.work_date %> · <%= t("timesheets.index.overtime_min", minutes: day.overtime_minutes) %></span>
           <span class="text-slate-500"><%= day.overtime_status.humanize %></span>
         </li>
       <% end %>
       <% if @recent.empty? %>
-        <li class="px-4 py-6 text-center text-slate-500">No decisions yet.</li>
+        <li class="px-4 py-6 text-center text-slate-500"><%= t("timesheets.index.empty_decisions") %></li>
       <% end %>
     </ul>
   </section>

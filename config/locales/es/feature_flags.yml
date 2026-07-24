@@ -1,0 +1,10 @@
+es:
+  feature_flags:
+    index:
+      title: "Feature flags"
+      subtitle: "Activa o desactiva capacidades de la empresa o globales."
+      scope: "Ámbito"
+      description: "Descripción"
+      enabled: "Activado"
+      company: "Empresa"
+      global: "Global"

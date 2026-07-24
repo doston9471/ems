@@ -1,0 +1,32 @@
+ru:
+  layout:
+    app_name: "Управление сотрудниками"
+    brand: "EMS"
+    overview_for: "Обзор для %{company}"
+  flash:
+    unauthorized: "У вас нет прав для этого действия."
+    no_employee_profile: "К аккаунту не привязан профиль сотрудника."
+    try_again_later: "Попробуйте позже."
+    sessions:
+      invalid_credentials: "Проверьте email или пароль."
+      mfa_required: "Введите код аутентификатора, чтобы завершить вход."
+    employees:
+      created: "Сотрудник создан."
+      updated: "Сотрудник обновлён."
+    leave:
+      submitted: "Заявка на отпуск отправлена."
+      approved: "Заявка на отпуск одобрена."
+      rejected: "Заявка на отпуск отклонена."
+    my:
+      review_submitted: "Оценка отправлена."
+      leave_submitted: "Заявка на отпуск отправлена."
+      contact_added: "Контакт для экстренной связи добавлен."
+      contact_updated: "Контакт для экстренной связи обновлён."
+      contact_removed: "Контакт для экстренной связи удалён."
+      preferences_saved: "Настройки уведомлений сохранены."
+      marked_read: "Отмечено как прочитанное."
+      marked_all_read: "Все уведомления отмечены как прочитанные."
+      clocked_in: "Приход отмечен."
+      clocked_out: "Уход отмечен."
+      break_started: "Перерыв начат."
+      break_ended: "Перерыв завершён."

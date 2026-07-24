@@ -1,6 +1,6 @@
 <p>
-  Please confirm your email address by visiting
-  <%= link_to "this verification link", email_verification_url(token: @token) %>.
+  <%= t("mailers.email_verifications.html_intro") %>
+  <%= link_to t("mailers.email_verifications.html_link"), email_verification_url(token: @token) %>.
 </p>
 
-<p>This link will expire in 2 days.</p>
+<p><%= t("mailers.email_verifications.expires") %></p>

@@ -11,22 +11,22 @@ module My
 
     def clock_in
       authorize AttendanceDay, :clock_in?
-      redirect_with_result(Attendance::ClockInService.call(employee: Current.employee), "Clocked in.")
+      redirect_with_result(Attendance::ClockInService.call(employee: Current.employee), t("flash.my.clocked_in"))
     end
 
     def clock_out
       authorize AttendanceDay, :clock_out?
-      redirect_with_result(Attendance::ClockOutService.call(employee: Current.employee), "Clocked out.")
+      redirect_with_result(Attendance::ClockOutService.call(employee: Current.employee), t("flash.my.clocked_out"))
     end
 
     def break_start
       authorize AttendanceDay, :break_start?
-      redirect_with_result(Attendance::BreakStartService.call(employee: Current.employee), "Break started.")
+      redirect_with_result(Attendance::BreakStartService.call(employee: Current.employee), t("flash.my.break_started"))
     end
 
     def break_end
       authorize AttendanceDay, :break_end?
-      redirect_with_result(Attendance::BreakEndService.call(employee: Current.employee), "Break ended.")
+      redirect_with_result(Attendance::BreakEndService.call(employee: Current.employee), t("flash.my.break_ended"))
     end
 
     private

@@ -1,0 +1,18 @@
+ky:
+  offices:
+    index:
+      title: "Офистер"
+      subtitle: "%{company} жайгашуулары"
+      new: "Жаңы офис"
+      empty: "Офистер жок."
+    new:
+      title: "Жаңы офис"
+    edit:
+      title: "Офисти түзөтүү"
+    show:
+      no_code: "Код жок"
+      no_timezone: "Убакыт алкагы жок"
+      no_employees: "Дайындалган кызматкерлер жок."
+      back: "← Бардык офистер"
+    form:
+      timezone_placeholder: "America/New_York"

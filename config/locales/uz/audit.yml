@@ -1,0 +1,7 @@
+uz:
+  audit:
+    index:
+      title: "Audit jurnali"
+      subtitle: "Kompaniya ish maydonidagi so‘nggi o‘zgarishlar"
+      empty: "Audit yozuvlari yo‘q."
+      page: "Sahifa %{page} / %{total}"

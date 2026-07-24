@@ -14,12 +14,12 @@ module My
 
     def mark_read
       @notification.mark_read!
-      redirect_to my_notifications_path, notice: "Marked as read."
+      redirect_to my_notifications_path, notice: t("flash.my.marked_read")
     end
 
     def mark_all_read
       NotificationDelivery.for_user(Current.user).in_app.unread.find_each(&:mark_read!)
-      redirect_to my_notifications_path, notice: "All notifications marked as read."
+      redirect_to my_notifications_path, notice: t("flash.my.marked_all_read")
     end
 
     private

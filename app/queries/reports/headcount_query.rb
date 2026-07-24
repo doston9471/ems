@@ -11,7 +11,7 @@ module Reports
       {
         total: scope.count,
         by_status: scope.group(:employment_status).count,
-        by_department: scope.left_joins(:department).group("departments.name").count.transform_keys { |k| k.presence || "Unassigned" }
+        by_department: scope.left_joins(:department).group("departments.name").count.transform_keys { |k| k.presence || I18n.t("common.unassigned") }
       }
     end
   end

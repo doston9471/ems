@@ -3,17 +3,17 @@
 <div class="space-y-6">
   <div>
     <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("nav.search") %></h1>
-    <p class="mt-1 text-sm text-slate-500">Employees and departments.</p>
+    <p class="mt-1 text-sm text-slate-500"><%= t("search.subtitle") %></p>
   </div>
 
   <%= form_with url: search_path, method: :get, local: true, class: "flex gap-2" do |f| %>
-    <%= text_field_tag :q, @query, placeholder: "Name, email, title, department…", class: "w-full max-w-xl rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100" %>
-    <%= submit_tag "Search", class: "rounded-md bg-teal-700 px-4 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+    <%= text_field_tag :q, @query, placeholder: t("search.placeholder"), class: "w-full max-w-xl rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100" %>
+    <%= submit_tag t("search.submit"), class: "rounded-md bg-teal-700 px-4 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
   <% end %>
 
   <% if @query.present? %>
     <section>
-      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Employees (<%= @employees.size %>)</h2>
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500"><%= t("search.employees", count: @employees.size) %></h2>
       <ul class="mt-3 divide-y divide-slate-100 rounded-lg border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-700 dark:bg-slate-900">
         <% @employees.each do |employee| %>
           <li class="px-4 py-3">
@@ -22,13 +22,13 @@
           </li>
         <% end %>
         <% if @employees.empty? %>
-          <li class="px-4 py-6 text-sm text-slate-500">No employees matched.</li>
+          <li class="px-4 py-6 text-sm text-slate-500"><%= t("search.no_employees") %></li>
         <% end %>
       </ul>
     </section>
 
     <section>
-      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Departments (<%= @departments.size %>)</h2>
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500"><%= t("search.departments", count: @departments.size) %></h2>
       <ul class="mt-3 divide-y divide-slate-100 rounded-lg border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-700 dark:bg-slate-900">
         <% @departments.each do |department| %>
           <li class="px-4 py-3">
@@ -36,7 +36,7 @@
           </li>
         <% end %>
         <% if @departments.empty? %>
-          <li class="px-4 py-6 text-sm text-slate-500">No departments matched.</li>
+          <li class="px-4 py-6 text-sm text-slate-500"><%= t("search.no_departments") %></li>
         <% end %>
       </ul>
     </section>

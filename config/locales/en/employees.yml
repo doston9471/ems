@@ -1,0 +1,32 @@
+en:
+  employees:
+    index:
+      title: "Employees"
+      subtitle: "People in %{company}"
+      new: "New employee"
+      empty: "No employees found."
+      placeholder_name: "Name"
+      placeholder_email: "Email"
+      placeholder_status: "Status"
+    form:
+      custom_fields: "Custom fields"
+      salary_hint: "Annual salary in major units (e.g. 120000.00)."
+      cancel: "Cancel"
+      department: "Department"
+      office: "Office"
+      manager: "Manager"
+      salary: "Salary"
+    new:
+      title: "New employee"
+    edit:
+      title: "Edit employee"
+    show:
+      no_title: "No title"
+      edit: "Edit"
+      email: "Email"
+      status: "Status"
+      department: "Department"
+      office: "Office"
+      manager: "Manager"
+      joined: "Joined"
+      salary: "Salary"

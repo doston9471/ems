@@ -1,0 +1,12 @@
+ru:
+  timesheets:
+    index:
+      title: "Табели / сверхурочные"
+      subtitle: "Проверка сверхурочных сверх стандартного рабочего дня компании (по умолчанию 8 часов)."
+      pending: "Ожидает одобрения"
+      worked: "Отработано"
+      overtime: "Сверхурочные"
+      empty_pending: "Нет ожидающих сверхурочных."
+      recent_decisions: "Недавние решения"
+      overtime_min: "%{minutes} мин ОТ"
+      empty_decisions: "Пока нет решений."

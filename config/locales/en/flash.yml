@@ -1,0 +1,32 @@
+en:
+  layout:
+    app_name: "Employee Management"
+    brand: "EMS"
+    overview_for: "Overview for %{company}"
+  flash:
+    unauthorized: "You are not authorized to perform this action."
+    no_employee_profile: "No employee profile linked to your account."
+    try_again_later: "Try again later."
+    sessions:
+      invalid_credentials: "Try another email address or password."
+      mfa_required: "Enter your authenticator code to finish signing in."
+    employees:
+      created: "Employee created."
+      updated: "Employee updated."
+    leave:
+      submitted: "Leave request submitted."
+      approved: "Leave request approved."
+      rejected: "Leave request rejected."
+    my:
+      review_submitted: "Review submitted."
+      leave_submitted: "Leave request submitted."
+      contact_added: "Emergency contact added."
+      contact_updated: "Emergency contact updated."
+      contact_removed: "Emergency contact removed."
+      preferences_saved: "Notification preferences saved."
+      marked_read: "Marked as read."
+      marked_all_read: "All notifications marked as read."
+      clocked_in: "Clocked in."
+      clocked_out: "Clocked out."
+      break_started: "Break started."
+      break_ended: "Break ended."

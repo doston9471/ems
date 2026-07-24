@@ -1,0 +1,32 @@
+ru:
+  employees:
+    index:
+      title: "Сотрудники"
+      subtitle: "Люди в %{company}"
+      new: "Новый сотрудник"
+      empty: "Сотрудники не найдены."
+      placeholder_name: "Имя"
+      placeholder_email: "Email"
+      placeholder_status: "Статус"
+    form:
+      custom_fields: "Свои поля"
+      salary_hint: "Годовая зарплата в основных единицах (например 120000.00)."
+      cancel: "Отмена"
+      department: "Отдел"
+      office: "Офис"
+      manager: "Руководитель"
+      salary: "Зарплата"
+    new:
+      title: "Новый сотрудник"
+    edit:
+      title: "Редактировать сотрудника"
+    show:
+      no_title: "Без должности"
+      edit: "Изменить"
+      email: "Email"
+      status: "Статус"
+      department: "Отдел"
+      office: "Офис"
+      manager: "Руководитель"
+      joined: "Дата найма"
+      salary: "Зарплата"

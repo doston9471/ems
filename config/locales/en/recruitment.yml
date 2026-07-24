@@ -1,0 +1,22 @@
+en:
+  recruitment:
+    index:
+      title: "Recruitment"
+      subtitle: "Applicants and hiring pipeline"
+      new: "New applicant"
+      empty: "No applicants yet."
+    new:
+      title: "New applicant"
+      submit: "Create applicant"
+    show:
+      applicant: "Applicant"
+      hired_employee: "Hired employee"
+      update_stage: "Update stage"
+      hire_title: "Hire applicant"
+      hire_hint: "Creates an employee record and marks this applicant as hired."
+      schedule_interview: "Schedule interview"
+      interviewer: "Interviewer"
+      interviews: "Interviews"
+      mode: "Mode"
+      empty_interviews: "No interviews yet."
+      back: "← All applicants"

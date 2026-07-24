@@ -1,0 +1,14 @@
+en:
+  mailers:
+    email_verifications:
+      subject: "Verify your email address"
+      html_intro: "Please confirm your email address by visiting"
+      html_link: "this verification link"
+      expires: "This link will expire in 2 days."
+      text_intro: "Please confirm your email address:"
+    passwords:
+      subject: "Reset your password"
+      html_intro: "You can reset your password on"
+      html_link: "this password reset page"
+      text_intro: "You can reset your password on"
+      expires_in: "This link will expire in %{duration}."

@@ -3,17 +3,17 @@
 <div class="space-y-6">
   <div>
     <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("nav.notifications") %></h1>
-    <p class="mt-1 text-sm text-slate-500">Recent notification delivery attempts for <%= current_company.name %>.</p>
+    <p class="mt-1 text-sm text-slate-500"><%= t("notifications_admin.index.subtitle", company: current_company.name) %></p>
   </div>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
     <table class="min-w-full divide-y divide-slate-200 text-sm dark:divide-slate-700">
       <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-800 dark:text-slate-400">
         <tr>
-          <th class="px-4 py-3 font-medium">Event</th>
-          <th class="px-4 py-3 font-medium">Channel</th>
-          <th class="px-4 py-3 font-medium">Status</th>
-          <th class="px-4 py-3 font-medium">Sent</th>
+          <th class="px-4 py-3 font-medium"><%= t("notifications_admin.index.event") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("notifications_admin.index.channel") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("common.status") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("notifications_admin.index.sent") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -26,12 +26,12 @@
                 <%= delivery.status %>
               </span>
             </td>
-            <td class="px-4 py-3 text-slate-500"><%= delivery.sent_at&.strftime("%Y-%m-%d %H:%M") || "—" %></td>
+            <td class="px-4 py-3 text-slate-500"><%= delivery.sent_at&.strftime("%Y-%m-%d %H:%M") || t("common.empty_value") %></td>
           </tr>
         <% end %>
         <% if @deliveries.empty? %>
           <tr>
-            <td colspan="4" class="px-4 py-8 text-center text-slate-500">No notification deliveries yet.</td>
+            <td colspan="4" class="px-4 py-8 text-center text-slate-500"><%= t("notifications_admin.index.empty") %></td>
           </tr>
         <% end %>
       </tbody>

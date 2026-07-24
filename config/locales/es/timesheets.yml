@@ -1,0 +1,12 @@
+es:
+  timesheets:
+    index:
+      title: "Hojas de tiempo / horas extra"
+      subtitle: "Revisar horas extra por encima de la jornada estándar de la empresa (predeterminado 8 horas)."
+      pending: "Pendiente de aprobación"
+      worked: "Trabajado"
+      overtime: "Horas extra"
+      empty_pending: "No hay horas extra pendientes."
+      recent_decisions: "Decisiones recientes"
+      overtime_min: "%{minutes} min HE"
+      empty_decisions: "Aún no hay decisiones."

@@ -1,0 +1,38 @@
+en:
+  reports:
+    index:
+      subtitle: "Headcount, attendance, salary distribution, and attrition."
+      headcount: "Headcount"
+      attendance_30d: "Attendance (30d)"
+      avg_salary: "Avg salary"
+      attrition: "Attrition %{year}"
+      headcount_by_department: "Headcount by department"
+      salary_distribution: "Salary distribution"
+    export:
+      sheet_name: "Employees"
+      pdf_title: "%{company} — Employee Report"
+      generated: "Generated %{timestamp}"
+      number: "Number"
+      name: "Name"
+      email: "Email"
+      title: "Title"
+      department: "Department"
+      status: "Status"
+      headers:
+        employee_number: "Employee number"
+        first_name: "First name"
+        last_name: "Last name"
+        email: "Email"
+        job_title: "Job title"
+        department: "Department"
+        office: "Office"
+        employment_status: "Employment status"
+        joining_date: "Joining date"
+        salary_cents: "Salary (cents)"
+        currency: "Currency"
+        manager: "Manager"
+    buckets:
+      under_50k: "< $50k"
+      from_50k_to_100k: "$50k–$100k"
+      from_100k_to_150k: "$100k–$150k"
+      over_150k: "$150k+"

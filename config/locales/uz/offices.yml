@@ -1,0 +1,18 @@
+uz:
+  offices:
+    index:
+      title: "Ofislar"
+      subtitle: "%{company} joylashuvlari"
+      new: "Yangi ofis"
+      empty: "Hali ofislar yo‘q."
+    new:
+      title: "Yangi ofis"
+    edit:
+      title: "Ofisni tahrirlash"
+    show:
+      no_code: "Kod yo‘q"
+      no_timezone: "Vaqt mintaqasi yo‘q"
+      no_employees: "Biriktirilgan xodimlar yo‘q."
+      back: "← Barcha ofislar"
+    form:
+      timezone_placeholder: "America/New_York"

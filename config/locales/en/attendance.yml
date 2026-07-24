@@ -1,0 +1,22 @@
+en:
+  attendance:
+    index:
+      title: "Attendance"
+      subtitle: "Daily summary for %{date}"
+      clock_in: "Clock in"
+      clock_out: "Clock out"
+      break_start: "Break start"
+      break_end: "Break end"
+      today_status: "Today: %{status}"
+      records_today: "Records today"
+      complete: "Complete"
+      open: "Open"
+      week_worked: "Week worked (hrs)"
+    my:
+      title: "My attendance"
+      subtitle: "Clock in/out and review your recent days."
+      start_break: "Start break"
+      end_break: "End break"
+      no_day: "No attendance day yet."
+      empty: "No attendance history yet."
+      minutes: "Minutes"

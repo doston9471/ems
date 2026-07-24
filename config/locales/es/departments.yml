@@ -1,0 +1,15 @@
+es:
+  departments:
+    index:
+      title: "Departamentos"
+      subtitle: "Estructura de la organización"
+      new: "Nuevo departamento"
+      empty: "Aún no hay departamentos."
+    new:
+      title: "Nuevo departamento"
+    edit:
+      title: "Editar departamento"
+    show:
+      parent: "Superior"
+    form:
+      parent: "Departamento superior"

@@ -1,0 +1,16 @@
+uz:
+  teams:
+    index:
+      title: "Jamoalar"
+      subtitle: "%{company} uchun jamoa tuzilmasi"
+      new: "Yangi jamoa"
+      empty: "Hali jamoalar yo‘q."
+    new:
+      title: "Yangi jamoa"
+    edit:
+      title: "Jamoani tahrirlash"
+    show:
+      no_department: "Bo‘lim yo‘q"
+      lead: "Rahbar: %{name}"
+      no_members: "Hali a’zolar yo‘q."
+      back: "← Barcha jamoalar"

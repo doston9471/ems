@@ -1,0 +1,19 @@
+uz:
+  integrations:
+    edit:
+      title: "Integratsiyalar"
+      heading: "Integratsiya sozlamalari"
+      subtitle: "%{company} uchun Slack, Teams, Telegram, Twilio SMS va taqvim stub bayroqlarini sozlang."
+      chat_webhooks: "Chat webhooklari"
+      slack_webhook: "Slack webhook URL"
+      teams_webhook: "Teams webhook URL"
+      telegram: "Telegram"
+      bot_token: "Bot tokeni"
+      default_chat_id: "Standart chat ID"
+      twilio: "Twilio SMS"
+      account_sid: "Account SID"
+      auth_token: "Auth token"
+      from_number: "Yuboruvchi raqam"
+      calendar_stubs: "Taqvim stublar"
+      force_google_stub: "Google Calendar stub rejimini majburlash"
+      force_outlook_stub: "Outlook Calendar stub rejimini majburlash"

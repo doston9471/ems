@@ -1,0 +1,18 @@
+es:
+  payroll:
+    index:
+      title: "Nómina"
+      subtitle: "Ejecuciones de nómina generadas e ítems de empleados"
+      generate: "Generar ejecución"
+      generated: "Generado"
+      items: "Ítems"
+      empty: "Aún no hay ejecuciones de nómina."
+    new:
+      title: "Generar ejecución de nómina"
+      submit: "Generar"
+    show:
+      title: "Ejecución de nómina"
+      generated_at: "Generado el"
+      total_net: "Neto total"
+      empty: "No hay ítems de nómina."
+      back: "← Todas las ejecuciones de nómina"

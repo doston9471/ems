@@ -1,0 +1,10 @@
+ru:
+  feature_flags:
+    index:
+      title: "Feature flags"
+      subtitle: "Включайте или отключайте возможности компании или глобальные."
+      scope: "Область"
+      description: "Описание"
+      enabled: "Включено"
+      company: "Компания"
+      global: "Глобально"

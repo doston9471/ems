@@ -1,0 +1,10 @@
+en:
+  feature_flags:
+    index:
+      title: "Feature flags"
+      subtitle: "Toggle company or global capabilities."
+      scope: "Scope"
+      description: "Description"
+      enabled: "Enabled"
+      company: "Company"
+      global: "Global"

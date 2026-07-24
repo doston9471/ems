@@ -1,0 +1,9 @@
+en:
+  search:
+    subtitle: "Employees and departments."
+    placeholder: "Name, email, title, department…"
+    submit: "Search"
+    employees: "Employees (%{count})"
+    departments: "Departments (%{count})"
+    no_employees: "No employees matched."
+    no_departments: "No departments matched."

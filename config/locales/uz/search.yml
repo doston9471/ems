@@ -1,0 +1,9 @@
+uz:
+  search:
+    subtitle: "Xodimlar va bo‘limlar."
+    placeholder: "Ism, email, lavozim, bo‘lim…"
+    submit: "Qidirish"
+    employees: "Xodimlar (%{count})"
+    departments: "Bo‘limlar (%{count})"
+    no_employees: "Mos xodimlar topilmadi."
+    no_departments: "Mos bo‘limlar topilmadi."

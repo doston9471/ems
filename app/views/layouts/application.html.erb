@@ -54,7 +54,7 @@
               <%= render "shared/nav_link", path: teams_path, label: t("nav.teams"), active: controller_name == "teams" %>
             <% end %>
             <%= render "shared/nav_link", path: attendance_days_path, label: t("nav.attendance"), active: controller_path.start_with?("attendance") %>
-            <%= render "shared/nav_link", path: timesheets_path, label: t("nav.timesheets", default: "Timesheets"), active: controller_name == "timesheets" %>
+            <%= render "shared/nav_link", path: timesheets_path, label: t("nav.timesheets"), active: controller_name == "timesheets" %>
             <%= render "shared/nav_link", path: leave_requests_path, label: t("nav.leave"), active: controller_name == "leave_requests" %>
             <%= render "shared/nav_link", path: review_cycles_path, label: t("nav.performance"), active: %w[review_cycles performance_reviews goals].include?(controller_name) %>
             <%= render "shared/nav_link", path: company_assets_path, label: t("nav.assets"), active: controller_name == "company_assets" %>
@@ -64,7 +64,7 @@
           <div class="shrink-0 px-4 py-4 border-t border-slate-800 text-sm space-y-2">
             <p class="text-slate-400 truncate"><%= current_user&.full_name %></p>
             <%= render "shared/locale_and_theme" %>
-            <%= link_to "Security (MFA)", mfa_path, class: "block text-teal-400 hover:text-teal-300" %>
+            <%= link_to t("nav.security_mfa"), mfa_path, class: "block text-teal-400 hover:text-teal-300" %>
             <%= button_to t("nav.sign_out"), session_path, method: :delete, class: "text-teal-400 hover:text-teal-300" %>
           </div>
         </aside>

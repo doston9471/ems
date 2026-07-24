@@ -1,0 +1,25 @@
+en:
+  assets:
+    index:
+      title: "Assets"
+      subtitle: "Company equipment and assignments"
+      new: "New asset"
+      assigned_to: "Assigned to"
+      empty: "No assets yet."
+    new:
+      title: "New asset"
+      submit: "Create asset"
+    show:
+      serial_number: "Serial number"
+      purchased: "Purchased"
+      assign_title: "Assign asset"
+      assigned_on: "Assigned on"
+      return_title: "Return asset"
+      returned_on: "Returned on"
+      condition: "Condition"
+      mark_returned: "Mark returned"
+      history: "Assignment history"
+      assigned: "Assigned"
+      returned: "Returned"
+      empty_assignments: "No assignments yet."
+      back: "← All assets"

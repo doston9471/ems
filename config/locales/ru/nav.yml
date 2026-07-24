@@ -1,5 +1,4 @@
 ru:
-  hello: "Привет, мир"
   nav:
     dashboard: "Панель"
     employees: "Сотрудники"
@@ -21,4 +20,7 @@ ru:
     calendars: "Календарь"
     integrations: "Интеграции"
     org_chart: "Оргструктура"
+    timesheets: "Табели"
+    custom_fields: "Свои поля"
+    security_mfa: "Безопасность (MFA)"
     sign_out: "Выйти"

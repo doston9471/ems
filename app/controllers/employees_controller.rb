@@ -29,7 +29,7 @@ class EmployeesController < ApplicationController
     result = Employees::CreateService.call(company: Current.company, attributes: employee_params)
     if result.success?
       CustomFields::SyncValuesService.call(record: result.value, values: custom_field_params)
-      redirect_to result.value, notice: "Employee created."
+      redirect_to result.value, notice: t("flash.employees.created")
     else
       @employee = Current.company.employees.new(employee_params)
       @employee.errors.add(:base, result.errors.join(", "))
@@ -49,7 +49,7 @@ class EmployeesController < ApplicationController
     result = Employees::UpdateService.call(employee: @employee, attributes: employee_params)
     if result.success?
       CustomFields::SyncValuesService.call(record: result.value, values: custom_field_params)
-      redirect_to result.value, notice: "Employee updated."
+      redirect_to result.value, notice: t("flash.employees.updated")
     else
       load_form_collections
       render :edit, status: :unprocessable_entity

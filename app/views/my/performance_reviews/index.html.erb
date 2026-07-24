@@ -1,18 +1,18 @@
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">My reviews</h1>
-    <p class="mt-1 text-sm text-slate-500">Reviews you need to submit or that are about you.</p>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("my.reviews.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= t("my.reviews.subtitle") %></p>
   </div>
 
   <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
     <table class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
-          <th class="px-4 py-3">Employee</th>
-          <th class="px-4 py-3">Reviewer</th>
-          <th class="px-4 py-3">Type</th>
-          <th class="px-4 py-3">Cycle</th>
-          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3"><%= t("common.employee") %></th>
+          <th class="px-4 py-3"><%= t("my.reviews.reviewer") %></th>
+          <th class="px-4 py-3"><%= t("common.type") %></th>
+          <th class="px-4 py-3"><%= t("my.reviews.cycle") %></th>
+          <th class="px-4 py-3"><%= t("common.status") %></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
@@ -28,7 +28,7 @@
       </tbody>
     </table>
     <% if @performance_reviews.empty? %>
-      <p class="px-4 py-8 text-center text-sm text-slate-500">No reviews assigned.</p>
+      <p class="px-4 py-8 text-center text-sm text-slate-500"><%= t("my.reviews.empty") %></p>
     <% end %>
   </div>
 </div>

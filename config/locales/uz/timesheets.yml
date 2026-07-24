@@ -1,0 +1,12 @@
+uz:
+  timesheets:
+    index:
+      title: "Tabel / qo‘shimcha ish soatlari"
+      subtitle: "Kompaniyaning standart ish kunidan (standart 8 soat) ortiqcha ish soatlarini ko‘rib chiqish."
+      pending: "Tasdiqlash kutilmoqda"
+      worked: "Ishlangan"
+      overtime: "Qo‘shimcha ish"
+      empty_pending: "Kutilayotgan qo‘shimcha ish yo‘q."
+      recent_decisions: "So‘nggi qarorlar"
+      overtime_min: "%{minutes} daq OT"
+      empty_decisions: "Hali qarorlar yo‘q."

@@ -1,0 +1,9 @@
+ky:
+  search:
+    subtitle: "Кызматкерлер жана бөлүмдөр."
+    placeholder: "Аты, email, кызматы, бөлүм…"
+    submit: "Издөө"
+    employees: "Кызматкерлер (%{count})"
+    departments: "Бөлүмдөр (%{count})"
+    no_employees: "Далял келген кызматкерлер жок."
+    no_departments: "Далял келген бөлүмдөр жок."

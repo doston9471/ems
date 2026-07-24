@@ -1,0 +1,22 @@
+es:
+  recruitment:
+    index:
+      title: "Reclutamiento"
+      subtitle: "Candidatos y proceso de contratación"
+      new: "Nuevo candidato"
+      empty: "Aún no hay candidatos."
+    new:
+      title: "Nuevo candidato"
+      submit: "Crear candidato"
+    show:
+      applicant: "Candidato"
+      hired_employee: "Empleado contratado"
+      update_stage: "Actualizar etapa"
+      hire_title: "Contratar candidato"
+      hire_hint: "Crea un registro de empleado y marca a este candidato como contratado."
+      schedule_interview: "Programar entrevista"
+      interviewer: "Entrevistador"
+      interviews: "Entrevistas"
+      mode: "Modalidad"
+      empty_interviews: "Aún no hay entrevistas."
+      back: "← Todos los candidatos"

@@ -1,0 +1,26 @@
+en:
+  calendars:
+    index:
+      subtitle: "Connect Google or Outlook calendars to sync approved leave and interviews."
+      connect_google: "Connect Google"
+      connect_outlook: "Connect Outlook"
+      sync_history: "Sync history"
+      provider: "Provider"
+      calendar_id: "Calendar ID"
+      enabled: "Enabled"
+      expires: "Expires"
+      remove_confirm: "Remove this calendar connection?"
+      empty: "No calendar connections yet."
+      add: "Add connection"
+      add_hint: "Provider and calendar ID placeholders for local demos. Tokens can be filled later."
+      calendar_id_placeholder: "primary"
+    events:
+      title: "Calendar sync history"
+      page_title: "%{calendars} — Sync history"
+      subtitle: "Recent calendar sync attempts for %{company}."
+      connections: "Connections"
+      eventable: "Eventable"
+      external_id: "External ID"
+      synced: "Synced"
+      error: "Error"
+      empty: "No calendar sync attempts yet."

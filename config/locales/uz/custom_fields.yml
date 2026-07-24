@@ -1,0 +1,16 @@
+uz:
+  custom_fields:
+    index:
+      title: "Maxsus maydonlar"
+      subtitle: "Xodimlar uchun ijarachi belgilagan atributlar."
+      new: "Yangi maydon"
+      delete_confirm: "Bu maydon o‘chirilsinmi?"
+      empty: "Hali maxsus maydonlar yo‘q."
+    new:
+      title: "Yangi maxsus maydon"
+    edit:
+      title: "Maxsus maydonni tahrirlash"
+    form:
+      key_hint: "snake_case identifikator, kompaniya bo‘yicha noyob."
+      select_choices: "Tanlov variantlari (vergul bilan)"
+      choices_placeholder: "A, B, C"

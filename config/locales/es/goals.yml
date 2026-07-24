@@ -1,0 +1,12 @@
+es:
+  goals:
+    index:
+      title: "Objetivos"
+      subtitle: "Seguimiento de objetivos de empleados"
+      review_cycles: "Ciclos de evaluación"
+      new: "Nuevo objetivo"
+      empty: "Aún no hay objetivos."
+    new:
+      title: "Nuevo objetivo"
+      progress_percent: "Progreso %"
+      submit: "Crear objetivo"

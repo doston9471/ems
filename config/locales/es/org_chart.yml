@@ -1,0 +1,7 @@
+es:
+  org_chart:
+    show:
+      subtitle: "Líneas de reporte por manager."
+      empty: "No hay empleados activos para mostrar."
+      no_department: "Sin departamento"
+      you: "tú"

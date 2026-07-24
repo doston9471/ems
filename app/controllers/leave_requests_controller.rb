@@ -30,7 +30,7 @@ class LeaveRequestsController < ApplicationController
     )
 
     if result.success?
-      redirect_to leave_requests_path, notice: "Leave request submitted."
+      redirect_to leave_requests_path, notice: t("flash.leave.submitted")
     else
       @leave_request.assign_attributes(leave_request_params)
       @leave_request.errors.add(:base, result.errors.join(", "))
@@ -42,13 +42,13 @@ class LeaveRequestsController < ApplicationController
   def approve
     authorize @leave_request, :approve?
     result = Leave::ApproveService.call(leave_request: @leave_request, approver: Current.user, comment: params[:comment])
-    redirect_with_result(result, "Leave request approved.")
+    redirect_with_result(result, t("flash.leave.approved"))
   end
 
   def reject
     authorize @leave_request, :reject?
     result = Leave::RejectService.call(leave_request: @leave_request, approver: Current.user, reason: params[:reason])
-    redirect_with_result(result, "Leave request rejected.")
+    redirect_with_result(result, t("flash.leave.rejected"))
   end
 
   private
@@ -60,7 +60,7 @@ class LeaveRequestsController < ApplicationController
   def require_employee!
     return if Current.employee
 
-    redirect_to leave_requests_path, alert: "No employee profile linked to your account."
+    redirect_to leave_requests_path, alert: t("flash.no_employee_profile")
   end
 
   def leave_request_params

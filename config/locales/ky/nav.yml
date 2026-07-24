@@ -1,5 +1,4 @@
 ky:
-  hello: "Салам дүйнө"
   nav:
     dashboard: "Башкаруу панели"
     employees: "Кызматкерлер"
@@ -21,4 +20,7 @@ ky:
     calendars: "Календарь"
     integrations: "Интеграциялар"
     org_chart: "Уюштуруу түзүмү"
+    timesheets: "Табелдер"
+    custom_fields: "Жеке талаалар"
+    security_mfa: "Коопсуздук (MFA)"
     sign_out: "Чыгуу"

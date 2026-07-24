@@ -1,34 +1,34 @@
 <div class="space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">My workspace</h1>
-    <p class="mt-1 text-sm text-slate-500"><%= @employee.full_name %> · <%= @employee.job_title.presence || "Employee" %></p>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("my.dashboard.title") %></h1>
+    <p class="mt-1 text-sm text-slate-500"><%= @employee.full_name %> · <%= @employee.job_title.presence || t("my.dashboard.employee_fallback") %></p>
   </div>
 
   <section class="rounded-lg border border-slate-200 bg-white p-5">
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
-        <p class="text-xs uppercase tracking-wide text-slate-500">Today's actions</p>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.todays_actions") %></p>
         <p class="mt-1 text-sm text-slate-700">
-          <%= @today ? "#{@today.status.humanize} · in #{@today.clock_in_at&.strftime('%H:%M') || '—'} · out #{@today.clock_out_at&.strftime('%H:%M') || '—'}" : "Not clocked in yet." %>
+          <%= @today ? "#{@today.status.humanize} · #{t('common.in')} #{@today.clock_in_at&.strftime('%H:%M') || t('common.empty_value')} · #{t('common.out')} #{@today.clock_out_at&.strftime('%H:%M') || t('common.empty_value')}" : t("my.dashboard.not_clocked_in") %>
         </p>
       </div>
       <% if @can_clock %>
         <div class="flex flex-wrap gap-2">
           <% unless @today&.clock_in_at %>
-            <%= button_to "Clock in", clock_in_my_attendance_path, method: :post, class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
+            <%= button_to t("attendance.index.clock_in"), clock_in_my_attendance_path, method: :post, class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
           <% end %>
           <% if @today&.clock_in_at && @today.clock_out_at.blank? %>
-            <%= button_to "Start break", break_start_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
-            <%= button_to "End break", break_end_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
-            <%= button_to "Clock out", clock_out_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
+            <%= button_to t("attendance.my.start_break"), break_start_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
+            <%= button_to t("attendance.my.end_break"), break_end_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
+            <%= button_to t("attendance.index.clock_out"), clock_out_my_attendance_path, method: :post, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
           <% end %>
         </div>
       <% end %>
     </div>
     <div class="mt-4 flex flex-wrap gap-2">
-      <%= link_to "Request leave", new_my_leave_request_path, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
+      <%= link_to t("my.dashboard.request_leave"), new_my_leave_request_path, class: "rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
       <% if @pending_reviews.any? %>
-        <%= link_to "Submit review (#{@pending_reviews.size})", my_performance_review_path(@pending_reviews.first), class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
+        <%= link_to t("my.dashboard.submit_review", count: @pending_reviews.size), my_performance_review_path(@pending_reviews.first), class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
       <% end %>
     </div>
   </section>
@@ -36,70 +36,70 @@
   <section class="grid gap-4 lg:grid-cols-3">
     <div class="rounded-lg border border-slate-200 bg-white p-5 lg:col-span-2">
       <div class="flex items-center justify-between gap-2">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Action inbox</p>
-        <%= link_to "All notifications", my_notifications_path, class: "text-xs text-teal-700 hover:text-teal-800" %>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.action_inbox") %></p>
+        <%= link_to t("my.dashboard.all_notifications"), my_notifications_path, class: "text-xs text-teal-700 hover:text-teal-800" %>
       </div>
       <ul class="mt-3 space-y-2 text-sm">
         <% @pending_reviews.each do |review| %>
           <li class="flex items-center justify-between gap-2 rounded-md bg-amber-50 px-3 py-2">
-            <span>Review pending: <%= review.employee.full_name %> (<%= review.review_type.humanize %>)</span>
-            <%= link_to "Open", my_performance_review_path(review), class: "text-teal-700 hover:text-teal-800" %>
+            <span><%= t("my.dashboard.review_pending", name: review.employee.full_name, type: review.review_type.humanize) %></span>
+            <%= link_to t("my.dashboard.open"), my_performance_review_path(review), class: "text-teal-700 hover:text-teal-800" %>
           </li>
         <% end %>
         <% @awaiting_leave.each do |leave| %>
           <li class="flex items-center justify-between gap-2 rounded-md bg-slate-50 px-3 py-2">
-            <span>Leave awaiting decision: <%= leave.leave_type.name %> · <%= leave.status.humanize %></span>
-            <%= link_to "View", my_leave_request_path(leave), class: "text-teal-700 hover:text-teal-800" %>
+            <span><%= t("my.dashboard.leave_awaiting", type: leave.leave_type.name, status: leave.status.humanize) %></span>
+            <%= link_to t("my.dashboard.view"), my_leave_request_path(leave), class: "text-teal-700 hover:text-teal-800" %>
           </li>
         <% end %>
         <% @unread_notifications.each do |note| %>
           <li class="flex items-center justify-between gap-2 rounded-md bg-teal-50 px-3 py-2">
             <span><%= note.event_key.tr(".", " ").humanize %></span>
-            <%= button_to "Mark read", mark_read_my_notification_path(note), method: :post, class: "text-teal-700 hover:text-teal-800" %>
+            <%= button_to t("my.dashboard.mark_read"), mark_read_my_notification_path(note), method: :post, class: "text-teal-700 hover:text-teal-800" %>
           </li>
         <% end %>
         <% if @pending_reviews.empty? && @awaiting_leave.empty? && @unread_notifications.empty? %>
-          <li class="text-slate-500">You're all caught up.</li>
+          <li class="text-slate-500"><%= t("my.dashboard.caught_up") %></li>
         <% end %>
       </ul>
     </div>
 
     <div class="rounded-lg border border-slate-200 bg-white p-5">
-      <p class="text-xs uppercase tracking-wide text-slate-500">Profile</p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.profile") %></p>
       <dl class="mt-3 space-y-2 text-sm">
-        <div><dt class="text-slate-500">Department</dt><dd class="font-medium"><%= @employee.department&.name || "—" %></dd></div>
-        <div><dt class="text-slate-500">Office</dt><dd class="font-medium"><%= @employee.office&.name || "—" %></dd></div>
-        <div><dt class="text-slate-500">Manager</dt><dd class="font-medium"><%= @employee.manager&.full_name || "—" %></dd></div>
-        <div><dt class="text-slate-500">Teams</dt><dd class="font-medium"><%= @employee.teams.map(&:name).presence&.to_sentence || "—" %></dd></div>
-        <div><dt class="text-slate-500">Joined</dt><dd class="font-medium"><%= @employee.joining_date || "—" %></dd></div>
-        <div><dt class="text-slate-500">Status</dt><dd class="font-medium"><%= @employee.employment_status.humanize %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.department") %></dt><dd class="font-medium"><%= @employee.department&.name || t("common.empty_value") %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.office") %></dt><dd class="font-medium"><%= @employee.office&.name || t("common.empty_value") %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.manager") %></dt><dd class="font-medium"><%= @employee.manager&.full_name || t("common.empty_value") %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.teams") %></dt><dd class="font-medium"><%= @employee.teams.map(&:name).presence&.to_sentence || t("common.empty_value") %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.joined") %></dt><dd class="font-medium"><%= @employee.joining_date || t("common.empty_value") %></dd></div>
+        <div><dt class="text-slate-500"><%= t("my.dashboard.status") %></dt><dd class="font-medium"><%= @employee.employment_status.humanize %></dd></div>
       </dl>
-      <p class="mt-3"><%= link_to "View team & org →", my_team_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
+      <p class="mt-3"><%= link_to t("my.dashboard.view_team"), my_team_path, class: "text-sm text-teal-700 hover:text-teal-800" %></p>
     </div>
   </section>
 
   <section class="grid gap-4 lg:grid-cols-2">
     <div class="rounded-lg border border-slate-200 bg-white p-5">
-      <p class="text-xs uppercase tracking-wide text-slate-500">Leave balances</p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.leave_balances") %></p>
       <% if @leave_balances.any? %>
         <div class="mt-3 flex flex-wrap gap-3">
           <% @leave_balances.each do |balance| %>
             <div class="min-w-[7rem] rounded-md bg-slate-50 px-3 py-2">
               <p class="text-xs text-slate-500"><%= balance.leave_type.name %></p>
               <p class="text-lg font-semibold text-slate-900"><%= balance.remaining %></p>
-              <p class="text-xs text-slate-500"><%= balance.used %>/<%= balance.entitled %> used</p>
+              <p class="text-xs text-slate-500"><%= t("my.dashboard.used_of", used: balance.used, entitled: balance.entitled) %></p>
             </div>
           <% end %>
         </div>
       <% else %>
-        <p class="mt-3 text-sm text-slate-500">No leave balances for <%= Date.current.year %>.</p>
+        <p class="mt-3 text-sm text-slate-500"><%= t("my.dashboard.no_balances", year: Date.current.year) %></p>
       <% end %>
     </div>
 
     <div class="rounded-lg border border-slate-200 bg-white p-5">
       <div class="flex items-center justify-between gap-2">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Week attendance</p>
-        <%= link_to "Details", my_attendance_path, class: "text-xs text-teal-700 hover:text-teal-800" %>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.week_attendance") %></p>
+        <%= link_to t("my.dashboard.details"), my_attendance_path, class: "text-xs text-teal-700 hover:text-teal-800" %>
       </div>
       <div class="mt-4 flex items-end gap-2">
         <% @week_days.each do |entry| %>
@@ -116,15 +116,15 @@
     <section class="rounded-lg border border-teal-200 bg-teal-50/40 p-5">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p class="text-xs uppercase tracking-wide text-teal-800/70">Latest payslip</p>
+          <p class="text-xs uppercase tracking-wide text-teal-800/70"><%= t("my.dashboard.latest_payslip") %></p>
           <p class="mt-1 text-lg font-semibold text-slate-900">
             <%= number_to_currency(@latest_payslip.net_cents / 100.0, unit: "#{@latest_payslip.currency} ") %>
-            <span class="text-sm font-normal text-slate-500">net · <%= @latest_payslip.payroll_run.period_start %> → <%= @latest_payslip.payroll_run.period_end %></span>
+            <span class="text-sm font-normal text-slate-500"><%= t("my.dashboard.net_period", start: @latest_payslip.payroll_run.period_start, end: @latest_payslip.payroll_run.period_end) %></span>
           </p>
         </div>
         <div class="flex gap-2">
-          <%= link_to "View", my_payslip_path(@latest_payslip), class: "rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
-          <%= link_to "Download PDF", my_payslip_path(@latest_payslip, format: :pdf), data: { turbo: false }, class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
+          <%= link_to t("my.dashboard.view"), my_payslip_path(@latest_payslip), class: "rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50" %>
+          <%= link_to t("common.download_pdf"), my_payslip_path(@latest_payslip, format: :pdf), data: { turbo: false }, class: "rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-600" %>
         </div>
       </div>
     </section>
@@ -132,70 +132,59 @@
 
   <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <%= link_to my_attendance_path, class: "rounded-lg border border-slate-200 bg-white p-5 hover:border-teal-300" do %>
-      <p class="text-xs uppercase tracking-wide text-slate-500">Attendance</p>
-      <p class="mt-2 text-lg font-semibold text-slate-900"><%= @today&.status&.humanize || "Not clocked in" %></p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.attendance") %></p>
+      <p class="mt-2 text-lg font-semibold text-slate-900"><%= @today&.status&.humanize || t("my.dashboard.not_clocked_in") %></p>
     <% end %>
     <%= link_to my_leave_requests_path, class: "rounded-lg border border-slate-200 bg-white p-5 hover:border-teal-300" do %>
-      <p class="text-xs uppercase tracking-wide text-slate-500">Leave</p>
-      <p class="mt-2 text-lg font-semibold text-slate-900"><%= @leave_requests.size %> recent</p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.leave") %></p>
+      <p class="mt-2 text-lg font-semibold text-slate-900"><%= t("my.dashboard.recent_count", count: @leave_requests.size) %></p>
     <% end %>
     <%= link_to my_performance_reviews_path, class: "rounded-lg border border-slate-200 bg-white p-5 hover:border-teal-300" do %>
-      <p class="text-xs uppercase tracking-wide text-slate-500">Reviews</p>
-      <p class="mt-2 text-lg font-semibold text-slate-900"><%= @reviews.size %> recent</p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.reviews") %></p>
+      <p class="mt-2 text-lg font-semibold text-slate-900"><%= t("my.dashboard.recent_count", count: @reviews.size) %></p>
     <% end %>
     <%= link_to my_payslips_path, class: "rounded-lg border border-slate-200 bg-white p-5 hover:border-teal-300" do %>
-      <p class="text-xs uppercase tracking-wide text-slate-500">Payslips</p>
-      <p class="mt-2 text-lg font-semibold text-slate-900"><%= @payslips.size %> available</p>
+      <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.payslips") %></p>
+      <p class="mt-2 text-lg font-semibold text-slate-900"><%= t("my.dashboard.available_count", count: @payslips.size) %></p>
     <% end %>
   </section>
 
   <section class="grid gap-4 lg:grid-cols-3">
     <div class="rounded-lg border border-slate-200 bg-white p-5">
       <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Recent leave</p>
-        <%= link_to "All", my_leave_requests_path, class: "text-xs text-teal-700" %>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.recent_leave") %></p>
+        <%= link_to t("my.dashboard.all"), my_leave_requests_path, class: "text-xs text-teal-700" %>
       </div>
       <ul class="mt-3 space-y-2 text-sm">
         <% @leave_requests.each do |leave| %>
           <li><%= link_to "#{leave.leave_type.name} · #{leave.status.humanize}", my_leave_request_path(leave), class: "text-slate-700 hover:text-teal-700" %></li>
         <% end %>
-        <% if @leave_requests.empty? %><li class="text-slate-500">No leave requests yet.</li><% end %>
+        <% if @leave_requests.empty? %><li class="text-slate-500"><%= t("my.dashboard.no_leave") %></li><% end %>
       </ul>
     </div>
     <div class="rounded-lg border border-slate-200 bg-white p-5">
       <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Recent reviews</p>
-        <%= link_to "All", my_performance_reviews_path, class: "text-xs text-teal-700" %>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.recent_reviews") %></p>
+        <%= link_to t("my.dashboard.all"), my_performance_reviews_path, class: "text-xs text-teal-700" %>
       </div>
       <ul class="mt-3 space-y-2 text-sm">
         <% @reviews.each do |review| %>
           <li><%= link_to "#{review.review_type.humanize} · #{review.status.humanize}", my_performance_review_path(review), class: "text-slate-700 hover:text-teal-700" %></li>
         <% end %>
-        <% if @reviews.empty? %><li class="text-slate-500">No reviews yet.</li><% end %>
+        <% if @reviews.empty? %><li class="text-slate-500"><%= t("my.dashboard.no_reviews") %></li><% end %>
       </ul>
     </div>
     <div class="rounded-lg border border-slate-200 bg-white p-5">
       <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Recent payslips</p>
-        <%= link_to "All", my_payslips_path, class: "text-xs text-teal-700" %>
+        <p class="text-xs uppercase tracking-wide text-slate-500"><%= t("my.dashboard.recent_payslips") %></p>
+        <%= link_to t("my.dashboard.all"), my_payslips_path, class: "text-xs text-teal-700" %>
       </div>
       <ul class="mt-3 space-y-2 text-sm">
         <% @payslips.each do |item| %>
           <li><%= link_to "#{item.payroll_run.period_end} · #{number_to_currency(item.net_cents / 100.0)}", my_payslip_path(item), class: "text-slate-700 hover:text-teal-700" %></li>
         <% end %>
-        <% if @payslips.empty? %><li class="text-slate-500">No payslips yet.</li><% end %>
+        <% if @payslips.empty? %><li class="text-slate-500"><%= t("my.dashboard.no_payslips") %></li><% end %>
       </ul>
     </div>
   </section>
-
-  <!--
-  <section class="flex flex-wrap gap-3 text-sm">
-    <%#= link_to "Objectives", my_objectives_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-    <%#= link_to "Documents", my_documents_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-    <%#= link_to "Assets", my_assets_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-    <%#= link_to "Upcoming", my_upcoming_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-    <%#= link_to "Emergency contacts", my_emergency_contacts_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-    <%#= link_to "Notification preferences", edit_my_notification_preferences_path, class: "rounded-md border border-slate-200 bg-white px-3 py-2 hover:border-teal-300" %>
-  </section>
--->
 </div>

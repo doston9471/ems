@@ -4,14 +4,14 @@
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
       <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-100"><%= t("nav.calendars") %></h1>
-      <p class="mt-1 text-sm text-slate-500">Connect Google or Outlook calendars to sync approved leave and interviews.</p>
+      <p class="mt-1 text-sm text-slate-500"><%= t("calendars.index.subtitle") %></p>
     </div>
   <div class="flex flex-wrap gap-2">
     <% if policy(CalendarConnection).create? %>
-      <%= link_to "Connect Google", calendar_oauth_initiate_path(provider: "google"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
-      <%= link_to "Connect Outlook", calendar_oauth_initiate_path(provider: "outlook"), class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200" %>
+      <%= link_to t("calendars.index.connect_google"), calendar_oauth_initiate_path(provider: "google"), class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= link_to t("calendars.index.connect_outlook"), calendar_oauth_initiate_path(provider: "outlook"), class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200" %>
     <% end %>
-    <%= link_to "Sync history", calendar_events_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-400" %>
+    <%= link_to t("calendars.index.sync_history"), calendar_events_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-400" %>
   </div>
 </div>
 
@@ -19,10 +19,10 @@
     <table class="min-w-full divide-y divide-slate-200 text-sm dark:divide-slate-700">
       <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-800 dark:text-slate-400">
         <tr>
-          <th class="px-4 py-3 font-medium">Provider</th>
-          <th class="px-4 py-3 font-medium">Calendar ID</th>
-          <th class="px-4 py-3 font-medium">Enabled</th>
-          <th class="px-4 py-3 font-medium">Expires</th>
+          <th class="px-4 py-3 font-medium"><%= t("calendars.index.provider") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("calendars.index.calendar_id") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("calendars.index.enabled") %></th>
+          <th class="px-4 py-3 font-medium"><%= t("calendars.index.expires") %></th>
           <th class="px-4 py-3 font-medium"></th>
         </tr>
       </thead>
@@ -30,22 +30,22 @@
         <% @connections.each do |connection| %>
           <tr>
             <td class="px-4 py-3 capitalize"><%= connection.provider %></td>
-            <td class="px-4 py-3 font-mono text-xs"><%= connection.calendar_id.presence || "—" %></td>
+            <td class="px-4 py-3 font-mono text-xs"><%= connection.calendar_id.presence || t("common.empty_value") %></td>
             <td class="px-4 py-3">
-              <%= button_to connection.enabled? ? "On" : "Off",
+              <%= button_to connection.enabled? ? t("common.on") : t("common.off"),
                             calendar_connection_path(connection, enabled: !connection.enabled?),
                             method: :patch,
                             class: "rounded px-3 py-1 text-xs font-medium #{connection.enabled? ? 'bg-teal-100 text-teal-800' : 'bg-slate-100 text-slate-600'}" %>
             </td>
-            <td class="px-4 py-3 text-slate-500"><%= connection.expires_at&.strftime("%Y-%m-%d %H:%M") || "—" %></td>
+            <td class="px-4 py-3 text-slate-500"><%= connection.expires_at&.strftime("%Y-%m-%d %H:%M") || t("common.empty_value") %></td>
             <td class="px-4 py-3 text-right">
-              <%= button_to "Remove", calendar_connection_path(connection), method: :delete, class: "text-xs text-red-600 hover:text-red-800", form: { data: { turbo_confirm: "Remove this calendar connection?" } } %>
+              <%= button_to t("common.remove"), calendar_connection_path(connection), method: :delete, class: "text-xs text-red-600 hover:text-red-800", form: { data: { turbo_confirm: t("calendars.index.remove_confirm") } } %>
             </td>
           </tr>
         <% end %>
         <% if @connections.empty? %>
           <tr>
-            <td colspan="5" class="px-4 py-8 text-center text-slate-500">No calendar connections yet.</td>
+            <td colspan="5" class="px-4 py-8 text-center text-slate-500"><%= t("calendars.index.empty") %></td>
           </tr>
         <% end %>
       </tbody>
@@ -53,8 +53,8 @@
   </div>
 
   <div class="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-    <h2 class="text-lg font-medium text-slate-900 dark:text-slate-100">Add connection</h2>
-    <p class="mt-1 text-sm text-slate-500">Provider and calendar ID placeholders for local demos. Tokens can be filled later.</p>
+    <h2 class="text-lg font-medium text-slate-900 dark:text-slate-100"><%= t("calendars.index.add") %></h2>
+    <p class="mt-1 text-sm text-slate-500"><%= t("calendars.index.add_hint") %></p>
 
     <%= form_with model: @connection, url: calendar_connections_path, class: "mt-4 grid gap-4 sm:grid-cols-3" do |f| %>
       <div>
@@ -62,11 +62,11 @@
         <%= f.select :provider, CalendarConnection::PROVIDERS.map { |p| [p.titleize, p] }, {}, class: "mt-1 w-full rounded-md border-slate-300 dark:border-slate-600 dark:bg-slate-800" %>
       </div>
       <div>
-        <%= f.label :calendar_id, "Calendar ID", class: "block text-sm font-medium text-slate-700 dark:text-slate-300" %>
-        <%= f.text_field :calendar_id, placeholder: "primary", class: "mt-1 w-full rounded-md border-slate-300 dark:border-slate-600 dark:bg-slate-800" %>
+        <%= f.label :calendar_id, t("calendars.index.calendar_id"), class: "block text-sm font-medium text-slate-700 dark:text-slate-300" %>
+        <%= f.text_field :calendar_id, placeholder: t("calendars.index.calendar_id_placeholder"), class: "mt-1 w-full rounded-md border-slate-300 dark:border-slate-600 dark:bg-slate-800" %>
       </div>
       <div class="flex items-end">
-        <%= f.submit "Create", class: "rounded-md bg-teal-700 px-4 py-2 text-sm font-medium text-white hover:bg-teal-800" %>
+        <%= f.submit t("common.create"), class: "rounded-md bg-teal-700 px-4 py-2 text-sm font-medium text-white hover:bg-teal-800" %>
       </div>
     <% end %>
   </div>

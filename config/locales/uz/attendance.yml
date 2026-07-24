@@ -1,0 +1,22 @@
+uz:
+  attendance:
+    index:
+      title: "Davomat"
+      subtitle: "%{date} uchun kunlik xulosa"
+      clock_in: "Kirish"
+      clock_out: "Chiqish"
+      break_start: "Tanaffus boshlash"
+      break_end: "Tanaffusni tugatish"
+      today_status: "Bugun: %{status}"
+      records_today: "Bugungi yozuvlar"
+      complete: "Tugallangan"
+      open: "Ochiq"
+      week_worked: "Haftalik ish (soat)"
+    my:
+      title: "Mening davomatim"
+      subtitle: "Kirish/chiqishni belgilang va kunlarni ko‘ring."
+      start_break: "Tanaffusni boshlash"
+      end_break: "Tanaffusni tugatish"
+      no_day: "Hali davomat yozuvi yo‘q."
+      empty: "Hali davomat tarixi yo‘q."
+      minutes: "Daqiqalar"

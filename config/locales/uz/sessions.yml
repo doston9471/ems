@@ -1,0 +1,15 @@
+uz:
+  sessions:
+    brand: "Xodimlarni boshqarish"
+    title: "Kirish"
+    subtitle: "Kompaniya ish maydoniga kiring"
+    email: "Email"
+    password: "Parol"
+    submit: "Kirish"
+    forgot_password: "Parolni unutdingizmi?"
+    or_continue: "Yoki davom eting"
+    company_sso: "Kompaniya (SSO)"
+    load_sso: "SSO variantlarini yuklash"
+    sign_in_sso: "SSO orqali kirish (%{provider})"
+    continue_google: "Google orqali davom etish"
+    continue_github: "GitHub orqali davom etish"

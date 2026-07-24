@@ -1,0 +1,18 @@
+en:
+  offices:
+    index:
+      title: "Offices"
+      subtitle: "Locations for %{company}"
+      new: "New office"
+      empty: "No offices yet."
+    new:
+      title: "New office"
+    edit:
+      title: "Edit office"
+    show:
+      no_code: "No code"
+      no_timezone: "No timezone"
+      no_employees: "No employees assigned."
+      back: "← All offices"
+    form:
+      timezone_placeholder: "America/New_York"

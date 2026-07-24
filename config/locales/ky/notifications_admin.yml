@@ -1,0 +1,8 @@
+ky:
+  notifications_admin:
+    index:
+      subtitle: "%{company} үчүн акыркы билдирүү жеткирүү аракеттери."
+      event: "Окуя"
+      channel: "Канал"
+      sent: "Жөнөтүлгөн"
+      empty: "Билдирүү жеткирүүлөр жок."

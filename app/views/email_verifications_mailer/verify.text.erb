@@ -1,5 +1,5 @@
-Please confirm your email address:
+<%= t("mailers.email_verifications.text_intro") %>
 
 <%= email_verification_url(token: @token) %>
 
-This link will expire in 2 days.
+<%= t("mailers.email_verifications.expires") %>

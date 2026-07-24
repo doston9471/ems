@@ -1,0 +1,7 @@
+es:
+  audit:
+    index:
+      title: "Registro de auditoría"
+      subtitle: "Cambios recientes en el espacio de trabajo de la empresa"
+      empty: "No hay entradas de auditoría."
+      page: "Página %{page} de %{total}"

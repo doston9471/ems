@@ -1,0 +1,8 @@
+ru:
+  notifications_admin:
+    index:
+      subtitle: "Недавние попытки доставки уведомлений для %{company}."
+      event: "Событие"
+      channel: "Канал"
+      sent: "Отправлено"
+      empty: "Пока нет доставок уведомлений."

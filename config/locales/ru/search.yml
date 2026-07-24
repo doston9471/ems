@@ -1,0 +1,9 @@
+ru:
+  search:
+    subtitle: "Сотрудники и отделы."
+    placeholder: "Имя, email, должность, отдел…"
+    submit: "Поиск"
+    employees: "Сотрудники (%{count})"
+    departments: "Отделы (%{count})"
+    no_employees: "Сотрудники не найдены."
+    no_departments: "Отделы не найдены."

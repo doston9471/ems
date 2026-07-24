@@ -1,0 +1,16 @@
+es:
+  leave:
+    index:
+      title: "Solicitudes de ausencia"
+      subtitle: "Solicitar y aprobar tiempo libre"
+      request: "Solicitar ausencia"
+      empty: "Aún no hay solicitudes de ausencia."
+    show:
+      title: "Solicitud de ausencia"
+      reason: "Motivo"
+      approve: "Aprobar"
+      reject: "Rechazar"
+    new:
+      title: "Solicitar ausencia"
+      leave_type: "Tipo de ausencia"
+      submit: "Enviar solicitud"

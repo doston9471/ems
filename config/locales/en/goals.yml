@@ -1,0 +1,12 @@
+en:
+  goals:
+    index:
+      title: "Goals"
+      subtitle: "Track employee objectives"
+      review_cycles: "Review cycles"
+      new: "New goal"
+      empty: "No goals yet."
+    new:
+      title: "New goal"
+      progress_percent: "Progress %"
+      submit: "Create goal"

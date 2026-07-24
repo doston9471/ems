@@ -17,7 +17,7 @@
       <%= f.text_field :code, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div>
-      <%= f.label :parent_id, "Parent department", class: "block text-sm font-medium text-slate-700" %>
+      <%= f.label :parent_id, t("departments.form.parent"), class: "block text-sm font-medium text-slate-700" %>
       <%= f.collection_select :parent_id, @parents, :id, :name, { include_blank: true }, class: "mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm" %>
     </div>
     <div class="flex items-center gap-2">
@@ -27,7 +27,7 @@
 
     <div class="flex gap-3 pt-2">
       <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600 cursor-pointer" %>
-      <%= link_to "Cancel", departments_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
+      <%= link_to t("common.cancel"), departments_path, class: "rounded-md px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900" %>
     </div>
   <% end %>
 </div>

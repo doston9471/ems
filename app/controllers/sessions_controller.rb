@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
   skip_after_action :verify_authorized
-  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: "Try again later." }
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: I18n.t("flash.try_again_later") }
 
   def new
   end
@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
     if user = User.authenticate_by(params.permit(:email_address, :password))
       if user.mfa_enabled?
         session[:mfa_pending_user_id] = user.id
-        redirect_to new_mfa_challenge_path, notice: "Enter your authenticator code to finish signing in."
+        redirect_to new_mfa_challenge_path, notice: t("flash.sessions.mfa_required")
       else
         start_new_session_for user
         redirect_to after_authentication_url
       end
     else
-      redirect_to new_session_path, alert: "Try another email address or password."
+      redirect_to new_session_path, alert: t("flash.sessions.invalid_credentials")
     end
   end
 

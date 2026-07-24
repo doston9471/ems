@@ -1,0 +1,18 @@
+ru:
+  offices:
+    index:
+      title: "Офисы"
+      subtitle: "Локации для %{company}"
+      new: "Новый офис"
+      empty: "Пока нет офисов."
+    new:
+      title: "Новый офис"
+    edit:
+      title: "Редактировать офис"
+    show:
+      no_code: "Без кода"
+      no_timezone: "Без часового пояса"
+      no_employees: "Нет назначенных сотрудников."
+      back: "← Все офисы"
+    form:
+      timezone_placeholder: "America/New_York"

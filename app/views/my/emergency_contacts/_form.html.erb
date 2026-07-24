@@ -23,11 +23,11 @@
   </div>
   <div class="flex items-center gap-2">
     <%= f.check_box :primary, class: "rounded border-slate-300" %>
-    <%= f.label :primary, "Primary contact", class: "text-sm text-slate-700" %>
+    <%= f.label :primary, t("my.contacts.primary_contact"), class: "text-sm text-slate-700" %>
   </div>
 
   <div class="flex gap-2">
     <%= f.submit class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
-    <%= link_to "Cancel", my_emergency_contacts_path, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm text-slate-700 hover:bg-slate-50" %>
+    <%= link_to t("common.cancel"), my_emergency_contacts_path, class: "rounded-md border border-slate-300 px-3.5 py-2 text-sm text-slate-700 hover:bg-slate-50" %>
   </div>
 <% end %>

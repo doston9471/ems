@@ -1,0 +1,8 @@
+en:
+  notifications_admin:
+    index:
+      subtitle: "Recent notification delivery attempts for %{company}."
+      event: "Event"
+      channel: "Channel"
+      sent: "Sent"
+      empty: "No notification deliveries yet."

@@ -1,0 +1,17 @@
+es:
+  mfa:
+    show:
+      title: "Autenticación en dos pasos"
+      enabled_hint: "La verificación con app autenticadora está activada en tu cuenta."
+      disabled_hint: "Escanea el código QR con tu app autenticadora e introduce un código para activar MFA."
+      code: "Código del autenticador"
+      manual_secret: "O introduce este secreto manualmente"
+      enable: "Activar MFA"
+      disable: "Desactivar MFA"
+      back: "Volver al panel"
+    challenge:
+      brand: "Seguridad"
+      title: "Código del autenticador"
+      subtitle: "Introduce el código de 6 dígitos de tu app autenticadora para terminar el acceso."
+      code: "Código de autenticación"
+      verify: "Verificar"

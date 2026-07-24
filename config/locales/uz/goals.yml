@@ -1,0 +1,12 @@
+uz:
+  goals:
+    index:
+      title: "Maqsadlar"
+      subtitle: "Xodimlar maqsadlarini kuzatish"
+      review_cycles: "Baholash tsikllari"
+      new: "Yangi maqsad"
+      empty: "Hali maqsadlar yo‘q."
+    new:
+      title: "Yangi maqsad"
+      progress_percent: "Jarayon %"
+      submit: "Maqsad yaratish"

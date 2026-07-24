@@ -1,32 +1,32 @@
 <div class="mx-auto max-w-2xl space-y-6">
   <div>
-    <h1 class="text-2xl font-semibold text-slate-900">Leave request</h1>
+    <h1 class="text-2xl font-semibold text-slate-900"><%= t("leave.show.title") %></h1>
     <p class="mt-1 text-sm text-slate-500"><%= @leave_request.employee.full_name %> · <%= @leave_request.leave_type.name %></p>
   </div>
 
   <dl class="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:grid-cols-2 text-sm">
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Dates</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.dates") %></dt>
       <dd class="mt-1"><%= @leave_request.start_on %> → <%= @leave_request.end_on %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Days</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.days") %></dt>
       <dd class="mt-1"><%= @leave_request.days %></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Status</dt>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("common.status") %></dt>
       <dd class="mt-1"><%= @leave_request.status.humanize %></dd>
     </div>
     <div class="sm:col-span-2">
-      <dt class="text-xs uppercase tracking-wide text-slate-500">Reason</dt>
-      <dd class="mt-1"><%= @leave_request.reason.presence || "—" %></dd>
+      <dt class="text-xs uppercase tracking-wide text-slate-500"><%= t("leave.show.reason") %></dt>
+      <dd class="mt-1"><%= @leave_request.reason.presence || t("common.empty_value") %></dd>
     </div>
   </dl>
 
   <% if policy(@leave_request).approve? && (@leave_request.pending_manager? || @leave_request.pending_hr?) %>
     <div class="flex flex-wrap gap-3">
-      <%= button_to "Approve", approve_leave_request_path(@leave_request), method: :post, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
-      <%= button_to "Reject", reject_leave_request_path(@leave_request), method: :post, params: { reason: "Rejected" }, class: "rounded-md border border-red-300 px-3.5 py-2 text-sm font-medium text-red-700 hover:bg-red-50" %>
+      <%= button_to t("leave.show.approve"), approve_leave_request_path(@leave_request), method: :post, class: "rounded-md bg-teal-700 px-3.5 py-2 text-sm font-medium text-white hover:bg-teal-600" %>
+      <%= button_to t("leave.show.reject"), reject_leave_request_path(@leave_request), method: :post, params: { reason: "Rejected" }, class: "rounded-md border border-red-300 px-3.5 py-2 text-sm font-medium text-red-700 hover:bg-red-50" %>
     </div>
   <% end %>
 </div>

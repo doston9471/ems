@@ -1,0 +1,22 @@
+ru:
+  attendance:
+    index:
+      title: "Посещаемость"
+      subtitle: "Итог за %{date}"
+      clock_in: "Приход"
+      clock_out: "Уход"
+      break_start: "Начать перерыв"
+      break_end: "Закончить перерыв"
+      today_status: "Сегодня: %{status}"
+      records_today: "Записей сегодня"
+      complete: "Завершено"
+      open: "Открыто"
+      week_worked: "За неделю (ч)"
+    my:
+      title: "Моя посещаемость"
+      subtitle: "Отмечайте приход/уход и смотрите историю."
+      start_break: "Начать перерыв"
+      end_break: "Закончить перерыв"
+      no_day: "Пока нет записи за день."
+      empty: "Истории посещаемости пока нет."
+      minutes: "Минуты"

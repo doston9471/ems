@@ -12,7 +12,7 @@ module My
     def require_linked_employee!
       return if Current.employee
 
-      redirect_to root_path, alert: "No employee profile linked to your account."
+      redirect_to root_path, alert: t("flash.no_employee_profile")
     end
   end
 end

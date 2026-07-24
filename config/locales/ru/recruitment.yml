@@ -1,0 +1,22 @@
+ru:
+  recruitment:
+    index:
+      title: "Найм"
+      subtitle: "Кандидаты и воронка найма"
+      new: "Новый кандидат"
+      empty: "Пока нет кандидатов."
+    new:
+      title: "Новый кандидат"
+      submit: "Создать кандидата"
+    show:
+      applicant: "Кандидат"
+      hired_employee: "Нанятый сотрудник"
+      update_stage: "Обновить этап"
+      hire_title: "Нанять кандидата"
+      hire_hint: "Создаёт запись сотрудника и отмечает кандидата как нанятого."
+      schedule_interview: "Запланировать собеседование"
+      interviewer: "Интервьюер"
+      interviews: "Собеседования"
+      mode: "Формат"
+      empty_interviews: "Пока нет собеседований."
+      back: "← Все кандидаты"
