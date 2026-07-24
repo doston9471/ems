@@ -28,11 +28,12 @@ RSpec.describe "My::Dashboard", type: :request do
     get my_dashboard_path
 
     expect(response).to have_http_status(:ok)
-    expect(response.body).to include("My workspace")
-    expect(response.body).to include("Today's actions")
-    expect(response.body).to include("Action inbox")
-    expect(response.body).to include("Leave balances")
-    expect(response.body).to include("Week attendance")
-    expect(response.body).to include("Profile")
+    body = CGI.unescapeHTML(response.body)
+    expect(body).to include(I18n.t("my.dashboard.title"))
+    expect(body).to include(I18n.t("my.dashboard.todays_actions"))
+    expect(body).to include(I18n.t("my.dashboard.action_inbox"))
+    expect(body).to include(I18n.t("my.dashboard.leave_balances"))
+    expect(body).to include(I18n.t("my.dashboard.week_attendance"))
+    expect(body).to include(I18n.t("my.dashboard.profile"))
   end
 end
